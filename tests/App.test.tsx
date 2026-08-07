@@ -7,4 +7,9 @@ describe('App Component', () => {
     render(<App />);
     expect(screen.getByText('Nuzlocke Save Tracker')).toBeDefined();
   });
+
+  it('renders SaveLoader component', () => {
+    render(<App />);
+    expect(screen.getByLabelText(/Upload Save File/i)).toBeDefined();
+  });
 });

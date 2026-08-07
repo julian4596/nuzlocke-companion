@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { GBASaveParser } from '../src/lib/GBASaveParser';
+import { GBASaveParser } from '@/lib/GBASaveParser';
 
 describe('GBASaveParser', () => {
   it('should initialize and throw on invalid size', () => {

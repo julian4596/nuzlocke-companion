@@ -13,7 +13,13 @@ export default function SaveLoader({ onFileLoad }: Props) {
       const buffer = event.target?.result as ArrayBuffer;
       if (buffer) {
         onFileLoad(buffer);
+        e.target.value = ''; // Reset input value to allow reloading the same file
       }
+    };
+    reader.onerror = () => {
+      console.error('Error reading save file');
+      alert('Failed to read the save file. Please try again.');
+      e.target.value = '';
     };
     reader.readAsArrayBuffer(file);
   };

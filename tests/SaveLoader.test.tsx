@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import SaveLoader from '../src/components/SaveLoader';
+import SaveLoader from '@/components/SaveLoader';
 
 describe('SaveLoader', () => {
   it('renders a file input with label', () => {

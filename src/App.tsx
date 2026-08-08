@@ -1,25 +1,46 @@
 import { useState } from 'react';
-import SaveLoader from './components/SaveLoader';
+import SaveLoader from '@/components/SaveLoader';
+import { GBASaveParser, Pokemon } from '@/lib/GBASaveParser';
 
 export default function App() {
-  const [saveLoaded, setSaveLoaded] = useState<boolean>(false);
-  const [bufferSize, setBufferSize] = useState<number | null>(null);
+  const [team, setTeam] = useState<Pokemon[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   const handleFileLoad = (buffer: ArrayBuffer) => {
-    setSaveLoaded(true);
-    setBufferSize(buffer.byteLength);
-    console.log('Save file loaded, size:', buffer.byteLength);
+    try {
+      const parser = new GBASaveParser();
+      parser.validateSize(buffer);
+      const parsedTeam = parser.parseTeam(buffer);
+      setTeam(parsedTeam);
+      setError(null);
+    } catch (e: any) {
+      setError(e.message);
+      setTeam([]);
+    }
   };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
-      <h1 className="text-3xl font-bold mb-6">Nuzlocke Save Tracker</h1>
+      <h1 className="text-3xl font-bold mb-8">Nuzlocke Companion</h1>
       <SaveLoader onFileLoad={handleFileLoad} />
-      {saveLoaded && bufferSize !== null && (
-        <div className="mt-4 p-4 bg-gray-800 rounded-lg border border-gray-700">
-          <p className="text-green-400 font-medium">Save file loaded successfully ({bufferSize} bytes)</p>
+      
+      {error && <div className="text-red-500 mt-4">{error}</div>}
+      
+      {team.length > 0 && (
+        <div className="mt-8">
+          <h2 className="text-2xl font-semibold mb-4">Your Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {team.map((pkmn, i) => (
+              <div key={i} className="bg-gray-800 p-4 rounded-lg border border-gray-700 shadow">
+                <p className="text-lg">Slot {i + 1}</p>
+                <p className="text-sm text-gray-400">PID: {pkmn.pid}</p>
+                <p className="text-sm text-gray-400">OTID: {pkmn.otid}</p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
   );
 }
+

@@ -60,3 +60,31 @@ describe('GBASaveParser Save Slot Detection', () => {
   });
 });
 
+describe('GBASaveParser Team Extraction', () => {
+  it('should parse and decrypt a pokemon team', () => {
+    const buffer = new ArrayBuffer(65536);
+    const view = new DataView(buffer);
+    
+    // Mock Save A as active
+    view.setUint32(0x0FFC, 10, true);
+    
+    // Section 1 (Team/Items) ID at 0x1000 + 0x0FF4
+    view.setUint16(0x1000 + 0x0FF4, 1, true); // Section ID 1
+    
+    // Set Party Count
+    view.setUint32(0x1000 + 0x0234, 1, true); 
+    
+    // Set Pokemon 1 PID and OTID
+    const pkmnOffset = 0x1000 + 0x0238;
+    view.setUint32(pkmnOffset, 0x12345678, true); // PID
+    view.setUint32(pkmnOffset + 4, 0x87654321, true); // OTID
+    
+    const parser = new GBASaveParser();
+    const team = parser.parseTeam(buffer);
+    
+    expect(team.length).toBe(1);
+    expect(team[0].pid).toBe(0x12345678);
+  });
+});
+
+

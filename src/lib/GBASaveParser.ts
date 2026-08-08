@@ -18,8 +18,13 @@ export interface Pokemon {
   nickname?: string;
 }
 
+const GROWTH_SUBSTRUCTURE_INDEX = [0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3];
+export const LEVEL_OFFSET = 84;
+export const SUBSTRUCTURE_START_OFFSET = 32;
+export const SUBSTRUCTURE_SIZE = 12;
+
 export class GBASaveParser {
-  validateSize(buffer: ArrayBuffer): void {
+  public validateSize(buffer: ArrayBuffer): void {
     if (buffer.byteLength > MAX_SAVE_SIZE) {
       throw new Error('Invalid save file size. Expected maximum 2MB GBA save.');
     }
@@ -48,9 +53,6 @@ export class GBASaveParser {
   }
 
   public parseTeam(buffer: ArrayBuffer): Pokemon[] {
-    if (buffer.byteLength < 65536) {
-      return [];
-    }
     const activeOffset = this.findActiveSaveOffset(buffer);
     const view = new DataView(buffer);
     
@@ -97,19 +99,19 @@ export class GBASaveParser {
     const team: Pokemon[] = [];
     for (let i = 0; i < partyCount; i++) {
       const pkmnOffset = teamDataOffset + (i * 100);
-      if (pkmnOffset + 8 > buffer.byteLength) {
+      if (pkmnOffset + 100 > buffer.byteLength) {
         break;
       }
       const pid = view.getUint32(pkmnOffset, true);
       const otid = view.getUint32(pkmnOffset + 4, true);
       
-      const level = view.getUint8(pkmnOffset + 84);
+      const level = view.getUint8(pkmnOffset + LEVEL_OFFSET);
       const nickname = 'Unknown';
 
       const key = pid ^ otid;
-      const dataOffset = pkmnOffset + 32;
-      const growthIndex = [0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3][pid % 24];
-      const growthOffset = dataOffset + growthIndex * 12;
+      const dataOffset = pkmnOffset + SUBSTRUCTURE_START_OFFSET;
+      const growthIndex = GROWTH_SUBSTRUCTURE_INDEX[pid % 24];
+      const growthOffset = dataOffset + growthIndex * SUBSTRUCTURE_SIZE;
       
       const encryptedWord = view.getUint32(growthOffset, true);
       const decryptedWord = (encryptedWord ^ key) >>> 0;

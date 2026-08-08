@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface Props {
-  onFileLoad: (buffer: ArrayBuffer) => void;
+  onFileLoad: (buffer: ArrayBuffer, fileName: string) => void;
 }
 
 export default function SaveLoader({ onFileLoad }: Props) {
@@ -12,7 +12,7 @@ export default function SaveLoader({ onFileLoad }: Props) {
     reader.onload = (event) => {
       const buffer = event.target?.result as ArrayBuffer;
       if (buffer) {
-        onFileLoad(buffer);
+        onFileLoad(buffer, file.name);
       }
     };
     reader.onerror = () => {

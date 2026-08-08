@@ -1,0 +1,1495 @@
+[
+  {
+    "game": "Pokemon Red/Blue",
+    "caps": [
+      {
+        "name": "Brock",
+        "level": "14"
+      },
+      {
+        "name": "Misty",
+        "level": "21"
+      },
+      {
+        "name": "Surge",
+        "level": "24"
+      },
+      {
+        "name": "Erika",
+        "level": "29"
+      },
+      {
+        "name": "Koga and Sabrina",
+        "level": "43"
+      },
+      {
+        "name": "Blaine",
+        "level": "47"
+      },
+      {
+        "name": "Giovanni",
+        "level": "50"
+      },
+      {
+        "name": "Elite Four",
+        "level": "62"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Yellow",
+    "caps": [
+      {
+        "name": "Brock",
+        "level": "12"
+      },
+      {
+        "name": "Misty",
+        "level": "21"
+      },
+      {
+        "name": "Surge",
+        "level": "28"
+      },
+      {
+        "name": "Erika",
+        "level": "32"
+      },
+      {
+        "name": "Koga and Sabrina",
+        "level": "50"
+      },
+      {
+        "name": "Blaine",
+        "level": "54"
+      },
+      {
+        "name": "Giovanni",
+        "level": "55"
+      },
+      {
+        "name": "Elite Four",
+        "level": "62"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Gold/Silver/Crystal",
+    "caps": [
+      {
+        "name": "Falkner",
+        "level": "9 (I\u2019m not sure if this is legitimately possible to stay inside)"
+      },
+      {
+        "name": "Bugsy",
+        "level": "16"
+      },
+      {
+        "name": "Whitney",
+        "level": "20"
+      },
+      {
+        "name": "Morty",
+        "level": "25"
+      },
+      {
+        "name": "Chuck",
+        "level": "30"
+      },
+      {
+        "name": "Pryce",
+        "level": "31"
+      },
+      {
+        "name": "Jasmine",
+        "level": "35"
+      },
+      {
+        "name": "Clair",
+        "level": "40"
+      },
+      {
+        "name": "Elite Four",
+        "level": "47"
+      },
+      {
+        "name": "Blue",
+        "level": "58"
+      },
+      {
+        "name": "Red",
+        "level": "75 (Scaled the cap down a bit to account for EVs)"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Ruby/Sapphire",
+    "caps": [
+      {
+        "name": "Roxanne",
+        "level": "15"
+      },
+      {
+        "name": "Brawly",
+        "level": "18"
+      },
+      {
+        "name": "Wattson",
+        "level": "23"
+      },
+      {
+        "name": "Flannery",
+        "level": "28"
+      },
+      {
+        "name": "Norman",
+        "level": "31"
+      },
+      {
+        "name": "Winona",
+        "level": "33"
+      },
+      {
+        "name": "Tate & Liza",
+        "level": "42"
+      },
+      {
+        "name": "Wallace",
+        "level": "43"
+      },
+      {
+        "name": "Elite Four",
+        "level": "55"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Emerald",
+    "caps": [
+      {
+        "name": "Roxanne",
+        "level": "15"
+      },
+      {
+        "name": "Brawly",
+        "level": "19"
+      },
+      {
+        "name": "Wattson",
+        "level": "24"
+      },
+      {
+        "name": "Flannery",
+        "level": "29"
+      },
+      {
+        "name": "Norman",
+        "level": "31"
+      },
+      {
+        "name": "Winona",
+        "level": "33"
+      },
+      {
+        "name": "Tate & Liza",
+        "level": "42"
+      },
+      {
+        "name": "Juan",
+        "level": "46"
+      },
+      {
+        "name": "Elite Four",
+        "level": "55"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Fire Red/Leaf Green",
+    "caps": [
+      {
+        "name": "Brock",
+        "level": "14"
+      },
+      {
+        "name": "Misty",
+        "level": "21"
+      },
+      {
+        "name": "Surge",
+        "level": "24"
+      },
+      {
+        "name": "Erika",
+        "level": "29"
+      },
+      {
+        "name": "Koga and Sabrina",
+        "level": "43"
+      },
+      {
+        "name": "Blaine",
+        "level": "47"
+      },
+      {
+        "name": "Giovanni",
+        "level": "50"
+      },
+      {
+        "name": "Elite Four",
+        "level": "60"
+      },
+      {
+        "name": "Optional",
+        "level": ""
+      },
+      {
+        "name": "Elite Four Rematches",
+        "level": "72"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Diamond and Pearl",
+    "caps": [
+      {
+        "name": "Roark",
+        "level": "14"
+      },
+      {
+        "name": "Gardenia",
+        "level": "22"
+      },
+      {
+        "name": "Maylene and Wake",
+        "level": "30"
+      },
+      {
+        "name": "Fantina",
+        "level": "36"
+      },
+      {
+        "name": "Byron",
+        "level": "39"
+      },
+      {
+        "name": "Candice",
+        "level": "42"
+      },
+      {
+        "name": "Volkner",
+        "level": "49"
+      },
+      {
+        "name": "Elite Four",
+        "level": "63"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Platinum",
+    "caps": [
+      {
+        "name": "Roark",
+        "level": "14"
+      },
+      {
+        "name": "Gardenia",
+        "level": "22"
+      },
+      {
+        "name": "Fantina",
+        "level": "26"
+      },
+      {
+        "name": "Maylene",
+        "level": "32"
+      },
+      {
+        "name": "Wake",
+        "level": "37"
+      },
+      {
+        "name": "Byron",
+        "level": "41"
+      },
+      {
+        "name": "Candice",
+        "level": "44"
+      },
+      {
+        "name": "Volkner",
+        "level": "50"
+      },
+      {
+        "name": "Elite Four",
+        "level": "59"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon HeartGold/SoulSilver",
+    "caps": [
+      {
+        "name": "Falkner",
+        "level": "13"
+      },
+      {
+        "name": "Bugsy",
+        "level": "17"
+      },
+      {
+        "name": "Whitney",
+        "level": "19"
+      },
+      {
+        "name": "Morty",
+        "level": "25"
+      },
+      {
+        "name": "Chuck",
+        "level": "31"
+      },
+      {
+        "name": "Pryce",
+        "level": "34"
+      },
+      {
+        "name": "Jasmine",
+        "level": "35"
+      },
+      {
+        "name": "Clair",
+        "level": "41"
+      },
+      {
+        "name": "Elite Four",
+        "level": "47"
+      },
+      {
+        "name": "Blue",
+        "level": "60"
+      },
+      {
+        "name": "Red",
+        "level": "80"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Black and White",
+    "caps": [
+      {
+        "name": "Chili/Cress/Cilan",
+        "level": "14"
+      },
+      {
+        "name": "Lenora",
+        "level": "20"
+      },
+      {
+        "name": "Burgh",
+        "level": "23"
+      },
+      {
+        "name": "Elesa",
+        "level": "27"
+      },
+      {
+        "name": "Clay",
+        "level": "31"
+      },
+      {
+        "name": "Skyla",
+        "level": "35"
+      },
+      {
+        "name": "Brycen",
+        "level": "39"
+      },
+      {
+        "name": "Drayden/Iris",
+        "level": "43"
+      },
+      {
+        "name": "Elite Four",
+        "level": "50"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Black 2/White 2",
+    "caps": [
+      {
+        "name": "Cheren",
+        "level": "12/13/14"
+      },
+      {
+        "name": "Roxie",
+        "level": "17/18/19"
+      },
+      {
+        "name": "Burgh",
+        "level": "22/24/26"
+      },
+      {
+        "name": "Elesa",
+        "level": "28/30/32"
+      },
+      {
+        "name": "Clay",
+        "level": "30/33/36"
+      },
+      {
+        "name": "Skyla",
+        "level": "36/39/42"
+      },
+      {
+        "name": "Drayden",
+        "level": "44/48/52"
+      },
+      {
+        "name": "Marlon",
+        "level": "47/51/55"
+      },
+      {
+        "name": "Elite Four",
+        "level": "54/58/62"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon X and Y",
+    "caps": [
+      {
+        "name": "Viola",
+        "level": "12"
+      },
+      {
+        "name": "Grant",
+        "level": "25"
+      },
+      {
+        "name": "Korrina",
+        "level": "32"
+      },
+      {
+        "name": "Ramos",
+        "level": "34"
+      },
+      {
+        "name": "Clemont",
+        "level": "37"
+      },
+      {
+        "name": "Valerie",
+        "level": "42"
+      },
+      {
+        "name": "Olympia",
+        "level": "48"
+      },
+      {
+        "name": "Wulfric",
+        "level": "59"
+      },
+      {
+        "name": "Elite Four",
+        "level": "65"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Omega Ruby/Alpha Sapphire",
+    "caps": [
+      {
+        "name": "Roxanne",
+        "level": "14"
+      },
+      {
+        "name": "Brawly",
+        "level": "16"
+      },
+      {
+        "name": "Wattson",
+        "level": "21"
+      },
+      {
+        "name": "Flannery",
+        "level": "28"
+      },
+      {
+        "name": "Norman",
+        "level": "30"
+      },
+      {
+        "name": "Winona",
+        "level": "35"
+      },
+      {
+        "name": "Tate & Liza",
+        "level": "45"
+      },
+      {
+        "name": "Wallace",
+        "level": "46"
+      },
+      {
+        "name": "Elite Four",
+        "level": "55"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Sun/Moon",
+    "caps": [
+      {
+        "name": "Totem Gumshoos/Raticate",
+        "level": "12"
+      },
+      {
+        "name": "Hala",
+        "level": "15"
+      },
+      {
+        "name": "Totem Wishiwashi",
+        "level": "20"
+      },
+      {
+        "name": "Totem Salazzle",
+        "level": "22"
+      },
+      {
+        "name": "Totem Lurantis",
+        "level": "24"
+      },
+      {
+        "name": "Olivia",
+        "level": "27"
+      },
+      {
+        "name": "Totem Vikavolt",
+        "level": "29"
+      },
+      {
+        "name": "Totem Mimikyu",
+        "level": "33"
+      },
+      {
+        "name": "Nanu",
+        "level": "39"
+      },
+      {
+        "name": "Totem Kommo",
+        "level": "o -  45"
+      },
+      {
+        "name": "Hapu",
+        "level": "48"
+      },
+      {
+        "name": "Elite Four",
+        "level": "55"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Ultra Sun/Ultra Moon",
+    "caps": [
+      {
+        "name": "Totem Gumshoos/Raticate",
+        "level": "12"
+      },
+      {
+        "name": "Hala",
+        "level": "16"
+      },
+      {
+        "name": "Totem Araquanid",
+        "level": "20"
+      },
+      {
+        "name": "Totem Alolan Marowak",
+        "level": "22"
+      },
+      {
+        "name": "Totem Lurantis",
+        "level": "24"
+      },
+      {
+        "name": "Olivia",
+        "level": "28"
+      },
+      {
+        "name": "Totem Togedamaru",
+        "level": "33"
+      },
+      {
+        "name": "Totem Mimikyu",
+        "level": "35"
+      },
+      {
+        "name": "Nanu",
+        "level": "44"
+      },
+      {
+        "name": "Totem Kommo",
+        "level": "o -  49"
+      },
+      {
+        "name": "Hapu",
+        "level": "54"
+      },
+      {
+        "name": "Totem Ribombee",
+        "level": "55"
+      },
+      {
+        "name": "Elite Four",
+        "level": "57"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Let\u2019s Go Pikachu/Let\u2019s Go Eevee",
+    "caps": [
+      {
+        "name": "Brock",
+        "level": "12"
+      },
+      {
+        "name": "Misty",
+        "level": "19"
+      },
+      {
+        "name": "Surge",
+        "level": "26"
+      },
+      {
+        "name": "Erika",
+        "level": "34"
+      },
+      {
+        "name": "Koga and Sabrina",
+        "level": "44"
+      },
+      {
+        "name": "Blaine",
+        "level": "48"
+      },
+      {
+        "name": "Giovanni",
+        "level": "50"
+      },
+      {
+        "name": "Elite Four",
+        "level": "55"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Sword/Shield",
+    "caps": [
+      {
+        "name": "Milo",
+        "level": "20"
+      },
+      {
+        "name": "Nessa",
+        "level": "24"
+      },
+      {
+        "name": "Kabu",
+        "level": "27"
+      },
+      {
+        "name": "Bea/Allister",
+        "level": "36"
+      },
+      {
+        "name": "Opal",
+        "level": "38"
+      },
+      {
+        "name": "Gordie/Melony",
+        "level": "42"
+      },
+      {
+        "name": "Piers",
+        "level": "46"
+      },
+      {
+        "name": "Raihan",
+        "level": "48"
+      },
+      {
+        "name": "Champion Cup Round 1",
+        "level": "49"
+      },
+      {
+        "name": "Champion Cup Round 2",
+        "level": "55"
+      },
+      {
+        "name": "Leon",
+        "level": "65"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Scarlet/Violet",
+    "caps": [
+      {
+        "name": "Katy",
+        "level": "15"
+      },
+      {
+        "name": "Stony Cliff Titan",
+        "level": "16"
+      },
+      {
+        "name": "Brassius",
+        "level": "17"
+      },
+      {
+        "name": "Open Sky Titan",
+        "level": "20"
+      },
+      {
+        "name": "Team Star Giacomo (Segin Squad)",
+        "level": "21"
+      },
+      {
+        "name": "Iono",
+        "level": "24"
+      },
+      {
+        "name": "Team Star Mela (Schedar Squad)",
+        "level": "27"
+      },
+      {
+        "name": "Lurking Steel Titan",
+        "level": "29"
+      },
+      {
+        "name": "Kofu",
+        "level": "30"
+      },
+      {
+        "name": "Team Star Atticus (Navi Squad)",
+        "level": "33"
+      },
+      {
+        "name": "Larry",
+        "level": "36"
+      },
+      {
+        "name": "Ryme",
+        "level": "42"
+      },
+      {
+        "name": "Quaking Earth Titan",
+        "level": "45"
+      },
+      {
+        "name": "Tulip",
+        "level": "45"
+      },
+      {
+        "name": "Grusha",
+        "level": "48"
+      },
+      {
+        "name": "Team Star Ortega (Ruchbah Squad)",
+        "level": "51"
+      },
+      {
+        "name": "Team Star Eri (Caph Squad)",
+        "level": "56"
+      },
+      {
+        "name": "False Dragon Titan",
+        "level": "57"
+      },
+      {
+        "name": "Elite Four",
+        "level": "58/59/60/61"
+      },
+      {
+        "name": "Geeta",
+        "level": "62"
+      },
+      {
+        "name": "Arven",
+        "level": "63"
+      },
+      {
+        "name": "Penny",
+        "level": "63"
+      },
+      {
+        "name": "Nemona",
+        "level": "66"
+      },
+      {
+        "name": "Sada/Turo",
+        "level": "67"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Colosseum",
+    "caps": [
+      {
+        "name": "Ferma",
+        "level": "33"
+      },
+      {
+        "name": "Miror B.",
+        "level": "35"
+      },
+      {
+        "name": "Skrub",
+        "level": "38"
+      },
+      {
+        "name": "Dakim",
+        "level": "40"
+      },
+      {
+        "name": "Venus",
+        "level": "45"
+      },
+      {
+        "name": "Ein",
+        "level": "48"
+      },
+      {
+        "name": "Gonzap",
+        "level": "53"
+      },
+      {
+        "name": "Nascour",
+        "level": "56 (Last member of \u201cE4\u201d cap)"
+      },
+      {
+        "name": "Evice",
+        "level": "61 (Champion of \u201cE4\u201d cap)"
+      },
+      {
+        "name": "Pokemon XD",
+        "level": "Gale of Darkness"
+      },
+      {
+        "name": "Lovrina",
+        "level": "20"
+      },
+      {
+        "name": "Cipher Cmdr. Exol",
+        "level": "23"
+      },
+      {
+        "name": "Snattle",
+        "level": "28"
+      },
+      {
+        "name": "Gonzap",
+        "level": "32"
+      },
+      {
+        "name": "Gorigan",
+        "level": "36"
+      },
+      {
+        "name": "Greevil",
+        "level": "50"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Fire Red Omega",
+    "caps": [
+      {
+        "name": "Brock",
+        "level": "14"
+      },
+      {
+        "name": "Misty",
+        "level": "23"
+      },
+      {
+        "name": "Lt. Surge",
+        "level": "27"
+      },
+      {
+        "name": "Erika",
+        "level": "35"
+      },
+      {
+        "name": "Koga",
+        "level": "50"
+      },
+      {
+        "name": "Sabrina",
+        "level": "53"
+      },
+      {
+        "name": "Blaine",
+        "level": "58"
+      },
+      {
+        "name": "Giovanni",
+        "level": "63"
+      },
+      {
+        "name": "Elite Four",
+        "level": "69"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Blaze Black/Volt White",
+    "caps": [
+      {
+        "name": "Trio",
+        "level": "14"
+      },
+      {
+        "name": "Lenora",
+        "level": "20"
+      },
+      {
+        "name": "Burgh",
+        "level": "30"
+      },
+      {
+        "name": "Elesa",
+        "level": "38"
+      },
+      {
+        "name": "Clay",
+        "level": "44"
+      },
+      {
+        "name": "Skyla",
+        "level": "56"
+      },
+      {
+        "name": "Brycen",
+        "level": "63"
+      },
+      {
+        "name": "Drayden",
+        "level": "66"
+      },
+      {
+        "name": "Elite Four",
+        "level": "73"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Sacred Gold/Storm Silver",
+    "caps": [
+      {
+        "name": "Falkner",
+        "level": "15"
+      },
+      {
+        "name": "Bugsy",
+        "level": "21"
+      },
+      {
+        "name": "Whitney",
+        "level": "24"
+      },
+      {
+        "name": "Morty",
+        "level": "29"
+      },
+      {
+        "name": "Chuck",
+        "level": "35"
+      },
+      {
+        "name": "Jasmine",
+        "level": "40"
+      },
+      {
+        "name": "Pryce",
+        "level": "44"
+      },
+      {
+        "name": "Clair",
+        "level": "50"
+      },
+      {
+        "name": "Elite Four",
+        "level": "55"
+      },
+      {
+        "name": "Brock",
+        "level": "61"
+      },
+      {
+        "name": "Misty",
+        "level": "62"
+      },
+      {
+        "name": "Surge",
+        "level": "63"
+      },
+      {
+        "name": "Janine",
+        "level": "64"
+      },
+      {
+        "name": "Erika",
+        "level": "65"
+      },
+      {
+        "name": "Sabrina",
+        "level": "66"
+      },
+      {
+        "name": "Blaine",
+        "level": "68"
+      },
+      {
+        "name": "Blue",
+        "level": "70"
+      },
+      {
+        "name": "Red",
+        "level": "88"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Blaze Black 2/Volt White 2",
+    "caps": [
+      {
+        "name": "Cheren",
+        "level": "13/14"
+      },
+      {
+        "name": "Roxie",
+        "level": "20/21"
+      },
+      {
+        "name": "Burgh",
+        "level": "27/29"
+      },
+      {
+        "name": "Elesa",
+        "level": "35/38"
+      },
+      {
+        "name": "Clay",
+        "level": "42/45"
+      },
+      {
+        "name": "Skyla",
+        "level": "49/53"
+      },
+      {
+        "name": "Drayden",
+        "level": "56/60"
+      },
+      {
+        "name": "Marlon",
+        "level": "62/66"
+      },
+      {
+        "name": "Elite Four",
+        "level": "74/78"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Rising Ruby/Sinking Sapphire",
+    "caps": [
+      {
+        "name": "Roxanne",
+        "level": "16"
+      },
+      {
+        "name": "Brawly",
+        "level": "19"
+      },
+      {
+        "name": "Wattson",
+        "level": "26"
+      },
+      {
+        "name": "Flannery",
+        "level": "38"
+      },
+      {
+        "name": "Norman",
+        "level": "42"
+      },
+      {
+        "name": "Winona",
+        "level": "50"
+      },
+      {
+        "name": "Tate and Liza",
+        "level": "62"
+      },
+      {
+        "name": "Wallace",
+        "level": "67"
+      },
+      {
+        "name": "Elite Four",
+        "level": "75"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Renegade Platinum",
+    "caps": [
+      {
+        "name": "Roark",
+        "level": "16"
+      },
+      {
+        "name": "Gardenia",
+        "level": "26"
+      },
+      {
+        "name": "Fantina",
+        "level": "33"
+      },
+      {
+        "name": "Maylene",
+        "level": "39"
+      },
+      {
+        "name": "Wake",
+        "level": "44"
+      },
+      {
+        "name": "Byron",
+        "level": "53"
+      },
+      {
+        "name": "Candice",
+        "level": "56"
+      },
+      {
+        "name": "Volkner",
+        "level": "62"
+      },
+      {
+        "name": "Elite Four",
+        "level": "75"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Blue Kaizo",
+    "caps": [
+      {
+        "name": "Brock",
+        "level": "16"
+      },
+      {
+        "name": "Misty",
+        "level": "28"
+      },
+      {
+        "name": "Surge",
+        "level": "39"
+      },
+      {
+        "name": "Erika",
+        "level": "49"
+      },
+      {
+        "name": "Koga",
+        "level": "59"
+      },
+      {
+        "name": "Sabrina",
+        "level": "69"
+      },
+      {
+        "name": "Blaine",
+        "level": "79"
+      },
+      {
+        "name": "Giovanni",
+        "level": "88"
+      },
+      {
+        "name": "Elite Four",
+        "level": "100"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Crystal Kaizo",
+    "caps": [
+      {
+        "name": "Falkner",
+        "level": "15"
+      },
+      {
+        "name": "Bugsy",
+        "level": "28"
+      },
+      {
+        "name": "Whitney",
+        "level": "39"
+      },
+      {
+        "name": "Morty",
+        "level": "47"
+      },
+      {
+        "name": "Chuck",
+        "level": "62"
+      },
+      {
+        "name": "Pryce",
+        "level": "77"
+      },
+      {
+        "name": "Jasmine",
+        "level": "83"
+      },
+      {
+        "name": "Literally everything else",
+        "level": "100"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Theta Emerald EX",
+    "caps": [
+      {
+        "name": "Roxanne",
+        "level": "16"
+      },
+      {
+        "name": "Brawly",
+        "level": "20"
+      },
+      {
+        "name": "Wattson",
+        "level": "28"
+      },
+      {
+        "name": "Flannery",
+        "level": "38"
+      },
+      {
+        "name": "Norman",
+        "level": "41"
+      },
+      {
+        "name": "Winona",
+        "level": "50"
+      },
+      {
+        "name": "Tate and Liza",
+        "level": "64"
+      },
+      {
+        "name": "Juan",
+        "level": "67"
+      },
+      {
+        "name": "Elite 4",
+        "level": "78"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Prestigious Platinum",
+    "caps": [
+      {
+        "name": "Roark",
+        "level": "16"
+      },
+      {
+        "name": "Gardenia",
+        "level": "26"
+      },
+      {
+        "name": "Fantina",
+        "level": "38"
+      },
+      {
+        "name": "Maylene",
+        "level": "50"
+      },
+      {
+        "name": "Wake",
+        "level": "58"
+      },
+      {
+        "name": "Byron",
+        "level": "66"
+      },
+      {
+        "name": "Candice",
+        "level": "70"
+      },
+      {
+        "name": "Volkner",
+        "level": "77"
+      },
+      {
+        "name": "Elite 4",
+        "level": "87"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Photonic Sun/Prismatic Moon",
+    "caps": [
+      {
+        "name": "Totem Gumshoos/Totem Raticate",
+        "level": "16"
+      },
+      {
+        "name": "Hala",
+        "level": "21"
+      },
+      {
+        "name": "Totem Araquanid",
+        "level": "28"
+      },
+      {
+        "name": "Totem Marowak",
+        "level": "37"
+      },
+      {
+        "name": "Totem Lurantis",
+        "level": "44"
+      },
+      {
+        "name": "Olivia",
+        "level": "47"
+      },
+      {
+        "name": "Totem Togedemaru",
+        "level": "59"
+      },
+      {
+        "name": "Totem Mimikyu",
+        "level": "66"
+      },
+      {
+        "name": "Nanu",
+        "level": "79"
+      },
+      {
+        "name": "Totem Kommo",
+        "level": "o -  92"
+      },
+      {
+        "name": "Totem Ribombee",
+        "level": "95"
+      },
+      {
+        "name": "Hapu",
+        "level": "96"
+      },
+      {
+        "name": "E4/Champion",
+        "level": "100"
+      }
+    ]
+  },
+  {
+    "game": "Pokemon Insurgence",
+    "caps": [
+      {
+        "name": "Trainer School",
+        "level": "16 / 17 / 17"
+      },
+      {
+        "name": "Suntouched Gym",
+        "level": "23 / 25 / 25"
+      },
+      {
+        "name": "Vipik Gym",
+        "level": "33 / 35 / 35"
+      },
+      {
+        "name": "Helios Gym",
+        "level": "46 / 49 / 49"
+      },
+      {
+        "name": "Sonata Gym",
+        "level": "53 / 55 / 55"
+      },
+      {
+        "name": "Kepler Gym",
+        "level": "56 / 58 / 59"
+      },
+      {
+        "name": "Selene Gym",
+        "level": "61 / 64 / 65"
+      }
+    ]
+  },
+  {
+    "game": "Amphirite",
+    "caps": [
+      {
+        "name": "Gym",
+        "level": "73 / 75 / 76"
+      },
+      {
+        "name": "Erebus Gym",
+        "level": "81 / 82 / 84"
+      }
+    ]
+  },
+  {
+    "game": "Pok\u00e9mon Unbound",
+    "caps": [
+      {
+        "name": "Gym 1",
+        "level": "16 / 20"
+      },
+      {
+        "name": "Gym 2",
+        "level": "/ 25"
+      },
+      {
+        "name": "Gym 3",
+        "level": "/ 32"
+      },
+      {
+        "name": "Gym 4",
+        "level": "/ 36"
+      },
+      {
+        "name": "Gym 5",
+        "level": "/ 45"
+      },
+      {
+        "name": "Gym 6",
+        "level": "/ 52"
+      },
+      {
+        "name": "Gym 7",
+        "level": "/ 57"
+      },
+      {
+        "name": "Gym 8",
+        "level": "/ 61"
+      },
+      {
+        "name": "Elite Four",
+        "level": "/ 75"
+      }
+    ]
+  }
+]

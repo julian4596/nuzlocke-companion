@@ -1,0 +1,3476 @@
+﻿{
+    "51":  {
+               "def":  50,
+               "spe":  120,
+               "growthRate":  "medium",
+               "atk":  100,
+               "spa":  50,
+               "spd":  70,
+               "hp":  35
+           },
+    "3":  {
+              "def":  83,
+              "spe":  80,
+              "growthRate":  "medium-slow",
+              "atk":  82,
+              "spa":  100,
+              "spd":  100,
+              "hp":  80
+          },
+    "364":  {
+                "def":  70,
+                "spe":  45,
+                "growthRate":  "medium-slow",
+                "atk":  60,
+                "spa":  75,
+                "spd":  70,
+                "hp":  90
+            },
+    "319":  {
+                "def":  40,
+                "spe":  95,
+                "growthRate":  "slow",
+                "atk":  120,
+                "spa":  95,
+                "spd":  40,
+                "hp":  70
+            },
+    "375":  {
+                "def":  100,
+                "spe":  50,
+                "growthRate":  "slow",
+                "atk":  75,
+                "spa":  55,
+                "spd":  80,
+                "hp":  60
+            },
+    "346":  {
+                "def":  97,
+                "spe":  43,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  81,
+                "spa":  81,
+                "spd":  107,
+                "hp":  86
+            },
+    "378":  {
+                "def":  100,
+                "spe":  50,
+                "growthRate":  "slow",
+                "atk":  50,
+                "spa":  100,
+                "spd":  200,
+                "hp":  80
+            },
+    "294":  {
+                "def":  43,
+                "spe":  48,
+                "growthRate":  "medium-slow",
+                "atk":  71,
+                "spa":  71,
+                "spd":  43,
+                "hp":  84
+            },
+    "90":  {
+               "def":  100,
+               "spe":  40,
+               "growthRate":  "slow",
+               "atk":  65,
+               "spa":  45,
+               "spd":  25,
+               "hp":  30
+           },
+    "13":  {
+               "def":  30,
+               "spe":  50,
+               "growthRate":  "medium",
+               "atk":  35,
+               "spa":  20,
+               "spd":  20,
+               "hp":  40
+           },
+    "31":  {
+               "def":  87,
+               "spe":  76,
+               "growthRate":  "medium-slow",
+               "atk":  92,
+               "spa":  75,
+               "spd":  85,
+               "hp":  90
+           },
+    "81":  {
+               "def":  70,
+               "spe":  45,
+               "growthRate":  "medium",
+               "atk":  35,
+               "spa":  95,
+               "spd":  55,
+               "hp":  25
+           },
+    "192":  {
+                "def":  55,
+                "spe":  30,
+                "growthRate":  "medium-slow",
+                "atk":  75,
+                "spa":  105,
+                "spd":  85,
+                "hp":  75
+            },
+    "111":  {
+                "def":  95,
+                "spe":  25,
+                "growthRate":  "slow",
+                "atk":  85,
+                "spa":  30,
+                "spd":  30,
+                "hp":  80
+            },
+    "284":  {
+                "def":  62,
+                "spe":  80,
+                "growthRate":  "medium",
+                "atk":  60,
+                "spa":  100,
+                "spd":  82,
+                "hp":  70
+            },
+    "122":  {
+                "def":  65,
+                "spe":  90,
+                "growthRate":  "medium",
+                "atk":  45,
+                "spa":  100,
+                "spd":  120,
+                "hp":  40
+            },
+    "60":  {
+               "def":  40,
+               "spe":  90,
+               "growthRate":  "medium-slow",
+               "atk":  50,
+               "spa":  40,
+               "spd":  40,
+               "hp":  40
+           },
+    "150":  {
+                "def":  90,
+                "spe":  130,
+                "growthRate":  "slow",
+                "atk":  110,
+                "spa":  154,
+                "spd":  90,
+                "hp":  106
+            },
+    "363":  {
+                "def":  50,
+                "spe":  25,
+                "growthRate":  "medium-slow",
+                "atk":  40,
+                "spa":  55,
+                "spd":  50,
+                "hp":  70
+            },
+    "372":  {
+                "def":  100,
+                "spe":  50,
+                "growthRate":  "slow",
+                "atk":  95,
+                "spa":  60,
+                "spd":  50,
+                "hp":  65
+            },
+    "341":  {
+                "def":  65,
+                "spe":  35,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  80,
+                "spa":  50,
+                "spd":  35,
+                "hp":  43
+            },
+    "180":  {
+                "def":  55,
+                "spe":  45,
+                "growthRate":  "medium-slow",
+                "atk":  55,
+                "spa":  80,
+                "spd":  60,
+                "hp":  70
+            },
+    "293":  {
+                "def":  23,
+                "spe":  28,
+                "growthRate":  "medium-slow",
+                "atk":  51,
+                "spa":  51,
+                "spd":  23,
+                "hp":  64
+            },
+    "236":  {
+                "def":  35,
+                "spe":  35,
+                "growthRate":  "medium",
+                "atk":  35,
+                "spa":  35,
+                "spd":  35,
+                "hp":  35
+            },
+    "282":  {
+                "def":  65,
+                "spe":  80,
+                "growthRate":  "slow",
+                "atk":  65,
+                "spa":  125,
+                "spd":  115,
+                "hp":  68
+            },
+    "386":  {
+                "def":  50,
+                "spe":  150,
+                "growthRate":  "slow",
+                "atk":  150,
+                "spa":  150,
+                "spd":  50,
+                "hp":  50
+            },
+    "233":  {
+                "def":  90,
+                "spe":  60,
+                "growthRate":  "medium",
+                "atk":  80,
+                "spa":  105,
+                "spd":  95,
+                "hp":  85
+            },
+    "310":  {
+                "def":  60,
+                "spe":  105,
+                "growthRate":  "slow",
+                "atk":  75,
+                "spa":  105,
+                "spd":  60,
+                "hp":  70
+            },
+    "222":  {
+                "def":  95,
+                "spe":  35,
+                "growthRate":  "fast",
+                "atk":  55,
+                "spa":  65,
+                "spd":  95,
+                "hp":  65
+            },
+    "211":  {
+                "def":  85,
+                "spe":  85,
+                "growthRate":  "medium",
+                "atk":  95,
+                "spa":  55,
+                "spd":  55,
+                "hp":  65
+            },
+    "53":  {
+               "def":  60,
+               "spe":  115,
+               "growthRate":  "medium",
+               "atk":  70,
+               "spa":  65,
+               "spd":  65,
+               "hp":  65
+           },
+    "128":  {
+                "def":  95,
+                "spe":  110,
+                "growthRate":  "slow",
+                "atk":  100,
+                "spa":  40,
+                "spd":  70,
+                "hp":  75
+            },
+    "71":  {
+               "def":  65,
+               "spe":  70,
+               "growthRate":  "medium-slow",
+               "atk":  105,
+               "spa":  100,
+               "spd":  70,
+               "hp":  80
+           },
+    "250":  {
+                "def":  90,
+                "spe":  90,
+                "growthRate":  "slow",
+                "atk":  130,
+                "spa":  110,
+                "spd":  154,
+                "hp":  106
+            },
+    "125":  {
+                "def":  57,
+                "spe":  105,
+                "growthRate":  "medium",
+                "atk":  83,
+                "spa":  95,
+                "spd":  85,
+                "hp":  65
+            },
+    "149":  {
+                "def":  95,
+                "spe":  80,
+                "growthRate":  "slow",
+                "atk":  134,
+                "spa":  100,
+                "spd":  100,
+                "hp":  91
+            },
+    "134":  {
+                "def":  60,
+                "spe":  65,
+                "growthRate":  "medium",
+                "atk":  65,
+                "spa":  110,
+                "spd":  95,
+                "hp":  130
+            },
+    "158":  {
+                "def":  64,
+                "spe":  43,
+                "growthRate":  "medium-slow",
+                "atk":  65,
+                "spa":  44,
+                "spd":  48,
+                "hp":  50
+            },
+    "94":  {
+               "def":  60,
+               "spe":  110,
+               "growthRate":  "medium-slow",
+               "atk":  65,
+               "spa":  130,
+               "spd":  75,
+               "hp":  60
+           },
+    "238":  {
+                "def":  15,
+                "spe":  65,
+                "growthRate":  "medium",
+                "atk":  30,
+                "spa":  85,
+                "spd":  65,
+                "hp":  45
+            },
+    "109":  {
+                "def":  95,
+                "spe":  35,
+                "growthRate":  "medium",
+                "atk":  65,
+                "spa":  60,
+                "spd":  45,
+                "hp":  40
+            },
+    "323":  {
+                "def":  70,
+                "spe":  40,
+                "growthRate":  "medium",
+                "atk":  100,
+                "spa":  105,
+                "spd":  75,
+                "hp":  70
+            },
+    "99":  {
+               "def":  115,
+               "spe":  75,
+               "growthRate":  "medium",
+               "atk":  130,
+               "spa":  50,
+               "spd":  50,
+               "hp":  55
+           },
+    "292":  {
+                "def":  45,
+                "spe":  40,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  90,
+                "spa":  30,
+                "spd":  30,
+                "hp":  1
+            },
+    "88":  {
+               "def":  50,
+               "spe":  25,
+               "growthRate":  "medium",
+               "atk":  80,
+               "spa":  40,
+               "spd":  50,
+               "hp":  80
+           },
+    "283":  {
+                "def":  32,
+                "spe":  65,
+                "growthRate":  "medium",
+                "atk":  30,
+                "spa":  50,
+                "spd":  52,
+                "hp":  40
+            },
+    "224":  {
+                "def":  75,
+                "spe":  45,
+                "growthRate":  "medium",
+                "atk":  105,
+                "spa":  105,
+                "spd":  75,
+                "hp":  75
+            },
+    "217":  {
+                "def":  75,
+                "spe":  55,
+                "growthRate":  "medium",
+                "atk":  130,
+                "spa":  75,
+                "spd":  75,
+                "hp":  90
+            },
+    "55":  {
+               "def":  78,
+               "spe":  85,
+               "growthRate":  "medium",
+               "atk":  82,
+               "spa":  95,
+               "spd":  80,
+               "hp":  80
+           },
+    "340":  {
+                "def":  73,
+                "spe":  60,
+                "growthRate":  "medium",
+                "atk":  78,
+                "spa":  76,
+                "spd":  71,
+                "hp":  110
+            },
+    "43":  {
+               "def":  55,
+               "spe":  30,
+               "growthRate":  "medium-slow",
+               "atk":  50,
+               "spa":  75,
+               "spd":  65,
+               "hp":  45
+           },
+    "143":  {
+                "def":  65,
+                "spe":  30,
+                "growthRate":  "slow",
+                "atk":  110,
+                "spa":  65,
+                "spd":  110,
+                "hp":  160
+            },
+    "61":  {
+               "def":  65,
+               "spe":  90,
+               "growthRate":  "medium-slow",
+               "atk":  65,
+               "spa":  50,
+               "spd":  50,
+               "hp":  65
+           },
+    "152":  {
+                "def":  65,
+                "spe":  45,
+                "growthRate":  "medium-slow",
+                "atk":  49,
+                "spa":  49,
+                "spd":  65,
+                "hp":  45
+            },
+    "8":  {
+              "def":  80,
+              "spe":  58,
+              "growthRate":  "medium-slow",
+              "atk":  63,
+              "spa":  65,
+              "spd":  80,
+              "hp":  59
+          },
+    "240":  {
+                "def":  37,
+                "spe":  83,
+                "growthRate":  "medium",
+                "atk":  75,
+                "spa":  70,
+                "spd":  55,
+                "hp":  45
+            },
+    "159":  {
+                "def":  80,
+                "spe":  58,
+                "growthRate":  "medium-slow",
+                "atk":  80,
+                "spa":  59,
+                "spd":  63,
+                "hp":  65
+            },
+    "374":  {
+                "def":  80,
+                "spe":  30,
+                "growthRate":  "slow",
+                "atk":  55,
+                "spa":  35,
+                "spd":  60,
+                "hp":  40
+            },
+    "20":  {
+               "def":  60,
+               "spe":  97,
+               "growthRate":  "medium",
+               "atk":  81,
+               "spa":  50,
+               "spd":  70,
+               "hp":  55
+           },
+    "184":  {
+                "def":  80,
+                "spe":  50,
+                "growthRate":  "fast",
+                "atk":  50,
+                "spa":  60,
+                "spd":  80,
+                "hp":  100
+            },
+    "195":  {
+                "def":  85,
+                "spe":  35,
+                "growthRate":  "medium",
+                "atk":  85,
+                "spa":  65,
+                "spd":  65,
+                "hp":  95
+            },
+    "209":  {
+                "def":  50,
+                "spe":  30,
+                "growthRate":  "fast",
+                "atk":  80,
+                "spa":  40,
+                "spd":  40,
+                "hp":  60
+            },
+    "103":  {
+                "def":  85,
+                "spe":  55,
+                "growthRate":  "slow",
+                "atk":  95,
+                "spa":  125,
+                "spd":  75,
+                "hp":  95
+            },
+    "382":  {
+                "def":  90,
+                "spe":  90,
+                "growthRate":  "slow",
+                "atk":  100,
+                "spa":  150,
+                "spd":  140,
+                "hp":  100
+            },
+    "325":  {
+                "def":  35,
+                "spe":  60,
+                "growthRate":  "fast",
+                "atk":  25,
+                "spa":  70,
+                "spd":  80,
+                "hp":  60
+            },
+    "334":  {
+                "def":  90,
+                "spe":  80,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  70,
+                "spa":  70,
+                "spd":  105,
+                "hp":  75
+            },
+    "328":  {
+                "def":  45,
+                "spe":  10,
+                "growthRate":  "medium-slow",
+                "atk":  100,
+                "spa":  45,
+                "spd":  45,
+                "hp":  45
+            },
+    "311":  {
+                "def":  40,
+                "spe":  95,
+                "growthRate":  "medium",
+                "atk":  50,
+                "spa":  85,
+                "spd":  75,
+                "hp":  60
+            },
+    "276":  {
+                "def":  30,
+                "spe":  85,
+                "growthRate":  "medium-slow",
+                "atk":  55,
+                "spa":  30,
+                "spd":  30,
+                "hp":  40
+            },
+    "54":  {
+               "def":  48,
+               "spe":  55,
+               "growthRate":  "medium",
+               "atk":  52,
+               "spa":  65,
+               "spd":  50,
+               "hp":  50
+           },
+    "267":  {
+                "def":  50,
+                "spe":  65,
+                "growthRate":  "medium",
+                "atk":  70,
+                "spa":  100,
+                "spd":  50,
+                "hp":  60
+            },
+    "45":  {
+               "def":  85,
+               "spe":  50,
+               "growthRate":  "medium-slow",
+               "atk":  80,
+               "spa":  110,
+               "spd":  90,
+               "hp":  75
+           },
+    "254":  {
+                "def":  65,
+                "spe":  120,
+                "growthRate":  "medium-slow",
+                "atk":  85,
+                "spa":  105,
+                "spd":  85,
+                "hp":  70
+            },
+    "76":  {
+               "def":  130,
+               "spe":  45,
+               "growthRate":  "medium-slow",
+               "atk":  120,
+               "spa":  55,
+               "spd":  65,
+               "hp":  80
+           },
+    "245":  {
+                "def":  115,
+                "spe":  85,
+                "growthRate":  "slow",
+                "atk":  75,
+                "spa":  90,
+                "spd":  115,
+                "hp":  100
+            },
+    "67":  {
+               "def":  70,
+               "spe":  45,
+               "growthRate":  "medium-slow",
+               "atk":  100,
+               "spa":  50,
+               "spd":  60,
+               "hp":  80
+           },
+    "350":  {
+                "def":  79,
+                "spe":  81,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  60,
+                "spa":  100,
+                "spd":  125,
+                "hp":  95
+            },
+    "259":  {
+                "def":  70,
+                "spe":  50,
+                "growthRate":  "medium-slow",
+                "atk":  85,
+                "spa":  60,
+                "spd":  70,
+                "hp":  70
+            },
+    "248":  {
+                "def":  110,
+                "spe":  61,
+                "growthRate":  "slow",
+                "atk":  134,
+                "spa":  95,
+                "spd":  100,
+                "hp":  100
+            },
+    "171":  {
+                "def":  58,
+                "spe":  67,
+                "growthRate":  "slow",
+                "atk":  58,
+                "spa":  76,
+                "spd":  76,
+                "hp":  125
+            },
+    "123":  {
+                "def":  80,
+                "spe":  105,
+                "growthRate":  "medium",
+                "atk":  110,
+                "spa":  55,
+                "spd":  80,
+                "hp":  70
+            },
+    "28":  {
+               "def":  110,
+               "spe":  65,
+               "growthRate":  "medium",
+               "atk":  100,
+               "spa":  45,
+               "spd":  55,
+               "hp":  75
+           },
+    "207":  {
+                "def":  105,
+                "spe":  85,
+                "growthRate":  "medium-slow",
+                "atk":  75,
+                "spa":  35,
+                "spd":  65,
+                "hp":  65
+            },
+    "335":  {
+                "def":  60,
+                "spe":  90,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  115,
+                "spa":  60,
+                "spd":  60,
+                "hp":  73
+            },
+    "366":  {
+                "def":  85,
+                "spe":  32,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  64,
+                "spa":  74,
+                "spd":  55,
+                "hp":  35
+            },
+    "317":  {
+                "def":  83,
+                "spe":  55,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  73,
+                "spa":  73,
+                "spd":  83,
+                "hp":  100
+            },
+    "52":  {
+               "def":  35,
+               "spe":  90,
+               "growthRate":  "medium",
+               "atk":  45,
+               "spa":  40,
+               "spd":  40,
+               "hp":  40
+           },
+    "261":  {
+                "def":  35,
+                "spe":  35,
+                "growthRate":  "medium",
+                "atk":  55,
+                "spa":  30,
+                "spd":  30,
+                "hp":  35
+            },
+    "349":  {
+                "def":  20,
+                "spe":  80,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  15,
+                "spa":  10,
+                "spd":  55,
+                "hp":  20
+            },
+    "257":  {
+                "def":  70,
+                "spe":  80,
+                "growthRate":  "medium-slow",
+                "atk":  120,
+                "spa":  110,
+                "spd":  70,
+                "hp":  80
+            },
+    "358":  {
+                "def":  80,
+                "spe":  65,
+                "growthRate":  "fast",
+                "atk":  50,
+                "spa":  95,
+                "spd":  90,
+                "hp":  75
+            },
+    "15":  {
+               "def":  40,
+               "spe":  75,
+               "growthRate":  "medium",
+               "atk":  90,
+               "spa":  45,
+               "spd":  80,
+               "hp":  65
+           },
+    "68":  {
+               "def":  80,
+               "spe":  55,
+               "growthRate":  "medium-slow",
+               "atk":  130,
+               "spa":  65,
+               "spd":  85,
+               "hp":  90
+           },
+    "235":  {
+                "def":  35,
+                "spe":  75,
+                "growthRate":  "fast",
+                "atk":  20,
+                "spa":  20,
+                "spd":  45,
+                "hp":  55
+            },
+    "37":  {
+               "def":  40,
+               "spe":  65,
+               "growthRate":  "medium",
+               "atk":  41,
+               "spa":  50,
+               "spd":  65,
+               "hp":  38
+           },
+    "92":  {
+               "def":  30,
+               "spe":  80,
+               "growthRate":  "medium-slow",
+               "atk":  35,
+               "spa":  100,
+               "spd":  35,
+               "hp":  30
+           },
+    "26":  {
+               "def":  55,
+               "spe":  110,
+               "growthRate":  "medium",
+               "atk":  90,
+               "spa":  90,
+               "spd":  80,
+               "hp":  60
+           },
+    "244":  {
+                "def":  85,
+                "spe":  100,
+                "growthRate":  "slow",
+                "atk":  115,
+                "spa":  90,
+                "spd":  75,
+                "hp":  115
+            },
+    "38":  {
+               "def":  75,
+               "spe":  100,
+               "growthRate":  "medium",
+               "atk":  76,
+               "spa":  81,
+               "spd":  100,
+               "hp":  73
+           },
+    "29":  {
+               "def":  52,
+               "spe":  41,
+               "growthRate":  "medium-slow",
+               "atk":  47,
+               "spa":  40,
+               "spd":  40,
+               "hp":  55
+           },
+    "285":  {
+                "def":  60,
+                "spe":  35,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  40,
+                "spa":  40,
+                "spd":  60,
+                "hp":  60
+            },
+    "309":  {
+                "def":  40,
+                "spe":  65,
+                "growthRate":  "slow",
+                "atk":  45,
+                "spa":  65,
+                "spd":  40,
+                "hp":  40
+            },
+    "113":  {
+                "def":  5,
+                "spe":  50,
+                "growthRate":  "fast",
+                "atk":  5,
+                "spa":  35,
+                "spd":  105,
+                "hp":  250
+            },
+    "7":  {
+              "def":  65,
+              "spe":  43,
+              "growthRate":  "medium-slow",
+              "atk":  48,
+              "spa":  50,
+              "spd":  64,
+              "hp":  44
+          },
+    "365":  {
+                "def":  90,
+                "spe":  65,
+                "growthRate":  "medium-slow",
+                "atk":  80,
+                "spa":  95,
+                "spd":  90,
+                "hp":  110
+            },
+    "5":  {
+              "def":  58,
+              "spe":  80,
+              "growthRate":  "medium-slow",
+              "atk":  64,
+              "spa":  80,
+              "spd":  65,
+              "hp":  58
+          },
+    "347":  {
+                "def":  50,
+                "spe":  75,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  95,
+                "spa":  40,
+                "spd":  50,
+                "hp":  45
+            },
+    "356":  {
+                "def":  130,
+                "spe":  25,
+                "growthRate":  "fast",
+                "atk":  70,
+                "spa":  60,
+                "spd":  130,
+                "hp":  40
+            },
+    "42":  {
+               "def":  70,
+               "spe":  90,
+               "growthRate":  "medium",
+               "atk":  80,
+               "spa":  65,
+               "spd":  75,
+               "hp":  75
+           },
+    "359":  {
+                "def":  60,
+                "spe":  75,
+                "growthRate":  "medium-slow",
+                "atk":  130,
+                "spa":  75,
+                "spd":  60,
+                "hp":  65
+            },
+    "133":  {
+                "def":  50,
+                "spe":  55,
+                "growthRate":  "medium",
+                "atk":  55,
+                "spa":  45,
+                "spd":  65,
+                "hp":  55
+            },
+    "36":  {
+               "def":  73,
+               "spe":  60,
+               "growthRate":  "fast",
+               "atk":  70,
+               "spa":  95,
+               "spd":  90,
+               "hp":  95
+           },
+    "91":  {
+               "def":  180,
+               "spe":  70,
+               "growthRate":  "slow",
+               "atk":  95,
+               "spa":  85,
+               "spd":  45,
+               "hp":  50
+           },
+    "27":  {
+               "def":  85,
+               "spe":  40,
+               "growthRate":  "medium",
+               "atk":  75,
+               "spa":  20,
+               "spd":  30,
+               "hp":  50
+           },
+    "307":  {
+                "def":  55,
+                "spe":  60,
+                "growthRate":  "medium",
+                "atk":  40,
+                "spa":  40,
+                "spd":  55,
+                "hp":  30
+            },
+    "115":  {
+                "def":  80,
+                "spe":  90,
+                "growthRate":  "medium",
+                "atk":  95,
+                "spa":  40,
+                "spd":  80,
+                "hp":  105
+            },
+    "9":  {
+              "def":  100,
+              "spe":  78,
+              "growthRate":  "medium-slow",
+              "atk":  83,
+              "spa":  85,
+              "spd":  105,
+              "hp":  79
+          },
+    "70":  {
+               "def":  50,
+               "spe":  55,
+               "growthRate":  "medium-slow",
+               "atk":  90,
+               "spa":  85,
+               "spd":  45,
+               "hp":  65
+           },
+    "4":  {
+              "def":  43,
+              "spe":  65,
+              "growthRate":  "medium-slow",
+              "atk":  52,
+              "spa":  60,
+              "spd":  50,
+              "hp":  39
+          },
+    "361":  {
+                "def":  50,
+                "spe":  50,
+                "growthRate":  "medium",
+                "atk":  50,
+                "spa":  50,
+                "spd":  50,
+                "hp":  50
+            },
+    "140":  {
+                "def":  90,
+                "spe":  55,
+                "growthRate":  "medium",
+                "atk":  80,
+                "spa":  55,
+                "spd":  45,
+                "hp":  30
+            },
+    "357":  {
+                "def":  83,
+                "spe":  51,
+                "growthRate":  "slow",
+                "atk":  68,
+                "spa":  72,
+                "spd":  87,
+                "hp":  99
+            },
+    "237":  {
+                "def":  95,
+                "spe":  70,
+                "growthRate":  "medium",
+                "atk":  95,
+                "spa":  35,
+                "spd":  110,
+                "hp":  50
+            },
+    "281":  {
+                "def":  35,
+                "spe":  50,
+                "growthRate":  "slow",
+                "atk":  35,
+                "spa":  65,
+                "spd":  55,
+                "hp":  38
+            },
+    "226":  {
+                "def":  70,
+                "spe":  70,
+                "growthRate":  "slow",
+                "atk":  40,
+                "spa":  80,
+                "spd":  140,
+                "hp":  85
+            },
+    "215":  {
+                "def":  55,
+                "spe":  115,
+                "growthRate":  "medium-slow",
+                "atk":  95,
+                "spa":  35,
+                "spd":  75,
+                "hp":  55
+            },
+    "129":  {
+                "def":  55,
+                "spe":  80,
+                "growthRate":  "slow",
+                "atk":  10,
+                "spa":  15,
+                "spd":  20,
+                "hp":  20
+            },
+    "145":  {
+                "def":  85,
+                "spe":  100,
+                "growthRate":  "slow",
+                "atk":  90,
+                "spa":  125,
+                "spd":  90,
+                "hp":  90
+            },
+    "138":  {
+                "def":  100,
+                "spe":  35,
+                "growthRate":  "medium",
+                "atk":  40,
+                "spa":  90,
+                "spd":  55,
+                "hp":  35
+            },
+    "193":  {
+                "def":  45,
+                "spe":  95,
+                "growthRate":  "medium",
+                "atk":  65,
+                "spa":  75,
+                "spd":  45,
+                "hp":  65
+            },
+    "168":  {
+                "def":  70,
+                "spe":  40,
+                "growthRate":  "fast",
+                "atk":  90,
+                "spa":  60,
+                "spd":  70,
+                "hp":  70
+            },
+    "179":  {
+                "def":  40,
+                "spe":  35,
+                "growthRate":  "medium-slow",
+                "atk":  40,
+                "spa":  65,
+                "spd":  45,
+                "hp":  55
+            },
+    "242":  {
+                "def":  10,
+                "spe":  55,
+                "growthRate":  "fast",
+                "atk":  10,
+                "spa":  75,
+                "spd":  135,
+                "hp":  255
+            },
+    "186":  {
+                "def":  75,
+                "spe":  70,
+                "growthRate":  "medium-slow",
+                "atk":  75,
+                "spa":  90,
+                "spd":  100,
+                "hp":  90
+            },
+    "105":  {
+                "def":  110,
+                "spe":  45,
+                "growthRate":  "medium",
+                "atk":  80,
+                "spa":  50,
+                "spd":  80,
+                "hp":  60
+            },
+    "95":  {
+               "def":  160,
+               "spe":  70,
+               "growthRate":  "medium",
+               "atk":  45,
+               "spa":  30,
+               "spd":  45,
+               "hp":  35
+           },
+    "327":  {
+                "def":  60,
+                "spe":  60,
+                "growthRate":  "fast",
+                "atk":  60,
+                "spa":  60,
+                "spd":  60,
+                "hp":  60
+            },
+    "84":  {
+               "def":  45,
+               "spe":  75,
+               "growthRate":  "medium",
+               "atk":  85,
+               "spa":  35,
+               "spd":  35,
+               "hp":  35
+           },
+    "108":  {
+                "def":  75,
+                "spe":  30,
+                "growthRate":  "medium",
+                "atk":  55,
+                "spa":  60,
+                "spd":  75,
+                "hp":  90
+            },
+    "228":  {
+                "def":  30,
+                "spe":  65,
+                "growthRate":  "slow",
+                "atk":  60,
+                "spa":  80,
+                "spd":  50,
+                "hp":  45
+            },
+    "25":  {
+               "def":  40,
+               "spe":  90,
+               "growthRate":  "medium",
+               "atk":  55,
+               "spa":  50,
+               "spd":  50,
+               "hp":  35
+           },
+    "227":  {
+                "def":  140,
+                "spe":  70,
+                "growthRate":  "slow",
+                "atk":  80,
+                "spa":  40,
+                "spd":  70,
+                "hp":  65
+            },
+    "214":  {
+                "def":  75,
+                "spe":  85,
+                "growthRate":  "slow",
+                "atk":  125,
+                "spa":  40,
+                "spd":  95,
+                "hp":  80
+            },
+    "278":  {
+                "def":  30,
+                "spe":  85,
+                "growthRate":  "medium",
+                "atk":  30,
+                "spa":  55,
+                "spd":  30,
+                "hp":  40
+            },
+    "56":  {
+               "def":  35,
+               "spe":  70,
+               "growthRate":  "medium",
+               "atk":  80,
+               "spa":  35,
+               "spd":  45,
+               "hp":  40
+           },
+    "269":  {
+                "def":  70,
+                "spe":  65,
+                "growthRate":  "medium",
+                "atk":  50,
+                "spa":  50,
+                "spd":  90,
+                "hp":  60
+            },
+    "47":  {
+               "def":  80,
+               "spe":  30,
+               "growthRate":  "medium",
+               "atk":  95,
+               "spa":  60,
+               "spd":  80,
+               "hp":  60
+           },
+    "74":  {
+               "def":  100,
+               "spe":  20,
+               "growthRate":  "medium-slow",
+               "atk":  80,
+               "spa":  30,
+               "spd":  30,
+               "hp":  40
+           },
+    "144":  {
+                "def":  100,
+                "spe":  85,
+                "growthRate":  "slow",
+                "atk":  85,
+                "spa":  95,
+                "spd":  125,
+                "hp":  90
+            },
+    "155":  {
+                "def":  43,
+                "spe":  65,
+                "growthRate":  "medium-slow",
+                "atk":  52,
+                "spa":  60,
+                "spd":  50,
+                "hp":  39
+            },
+    "166":  {
+                "def":  50,
+                "spe":  85,
+                "growthRate":  "fast",
+                "atk":  35,
+                "spa":  55,
+                "spd":  110,
+                "hp":  55
+            },
+    "177":  {
+                "def":  45,
+                "spe":  70,
+                "growthRate":  "medium",
+                "atk":  50,
+                "spa":  70,
+                "spd":  45,
+                "hp":  40
+            },
+    "188":  {
+                "def":  50,
+                "spe":  80,
+                "growthRate":  "medium-slow",
+                "atk":  45,
+                "spa":  45,
+                "spd":  65,
+                "hp":  55
+            },
+    "30":  {
+               "def":  67,
+               "spe":  56,
+               "growthRate":  "medium-slow",
+               "atk":  62,
+               "spa":  55,
+               "spd":  55,
+               "hp":  70
+           },
+    "205":  {
+                "def":  140,
+                "spe":  40,
+                "growthRate":  "medium",
+                "atk":  90,
+                "spa":  60,
+                "spd":  60,
+                "hp":  75
+            },
+    "185":  {
+                "def":  115,
+                "spe":  30,
+                "growthRate":  "medium",
+                "atk":  100,
+                "spa":  30,
+                "spd":  65,
+                "hp":  70
+            },
+    "384":  {
+                "def":  90,
+                "spe":  95,
+                "growthRate":  "slow",
+                "atk":  150,
+                "spa":  150,
+                "spd":  90,
+                "hp":  105
+            },
+    "194":  {
+                "def":  45,
+                "spe":  15,
+                "growthRate":  "medium",
+                "atk":  45,
+                "spa":  25,
+                "spd":  25,
+                "hp":  55
+            },
+    "102":  {
+                "def":  80,
+                "spe":  40,
+                "growthRate":  "slow",
+                "atk":  40,
+                "spa":  60,
+                "spd":  45,
+                "hp":  60
+            },
+    "10":  {
+               "def":  35,
+               "spe":  45,
+               "growthRate":  "medium",
+               "atk":  30,
+               "spa":  20,
+               "spd":  20,
+               "hp":  45
+           },
+    "142":  {
+                "def":  65,
+                "spe":  130,
+                "growthRate":  "slow",
+                "atk":  105,
+                "spa":  60,
+                "spd":  75,
+                "hp":  80
+            },
+    "326":  {
+                "def":  65,
+                "spe":  80,
+                "growthRate":  "fast",
+                "atk":  45,
+                "spa":  90,
+                "spd":  110,
+                "hp":  80
+            },
+    "85":  {
+               "def":  70,
+               "spe":  110,
+               "growthRate":  "medium",
+               "atk":  110,
+               "spa":  60,
+               "spd":  60,
+               "hp":  60
+           },
+    "337":  {
+                "def":  65,
+                "spe":  70,
+                "growthRate":  "fast",
+                "atk":  55,
+                "spa":  95,
+                "spd":  85,
+                "hp":  90
+            },
+    "229":  {
+                "def":  50,
+                "spe":  95,
+                "growthRate":  "slow",
+                "atk":  90,
+                "spa":  110,
+                "spd":  80,
+                "hp":  75
+            },
+    "239":  {
+                "def":  37,
+                "spe":  95,
+                "growthRate":  "medium",
+                "atk":  63,
+                "spa":  65,
+                "spd":  55,
+                "hp":  45
+            },
+    "315":  {
+                "def":  45,
+                "spe":  65,
+                "growthRate":  "medium-slow",
+                "atk":  60,
+                "spa":  100,
+                "spd":  80,
+                "hp":  50
+            },
+    "58":  {
+               "def":  45,
+               "spe":  60,
+               "growthRate":  "slow",
+               "atk":  70,
+               "spa":  70,
+               "spd":  50,
+               "hp":  55
+           },
+    "272":  {
+                "def":  70,
+                "spe":  70,
+                "growthRate":  "medium-slow",
+                "atk":  70,
+                "spa":  90,
+                "spd":  100,
+                "hp":  80
+            },
+    "49":  {
+               "def":  60,
+               "spe":  90,
+               "growthRate":  "medium",
+               "atk":  65,
+               "spa":  90,
+               "spd":  75,
+               "hp":  70
+           },
+    "277":  {
+                "def":  60,
+                "spe":  125,
+                "growthRate":  "medium-slow",
+                "atk":  85,
+                "spa":  75,
+                "spd":  50,
+                "hp":  60
+            },
+    "266":  {
+                "def":  55,
+                "spe":  15,
+                "growthRate":  "medium",
+                "atk":  35,
+                "spa":  25,
+                "spd":  25,
+                "hp":  50
+            },
+    "44":  {
+               "def":  70,
+               "spe":  40,
+               "growthRate":  "medium-slow",
+               "atk":  65,
+               "spa":  85,
+               "spd":  75,
+               "hp":  60
+           },
+    "255":  {
+                "def":  40,
+                "spe":  45,
+                "growthRate":  "medium-slow",
+                "atk":  60,
+                "spa":  70,
+                "spd":  50,
+                "hp":  45
+            },
+    "77":  {
+               "def":  55,
+               "spe":  90,
+               "growthRate":  "medium",
+               "atk":  85,
+               "spa":  65,
+               "spd":  65,
+               "hp":  50
+           },
+    "17":  {
+               "def":  55,
+               "spe":  71,
+               "growthRate":  "medium-slow",
+               "atk":  60,
+               "spa":  50,
+               "spd":  50,
+               "hp":  63
+           },
+    "66":  {
+               "def":  50,
+               "spe":  35,
+               "growthRate":  "medium-slow",
+               "atk":  80,
+               "spa":  35,
+               "spd":  35,
+               "hp":  70
+           },
+    "161":  {
+                "def":  34,
+                "spe":  20,
+                "growthRate":  "medium",
+                "atk":  46,
+                "spa":  35,
+                "spd":  45,
+                "hp":  35
+            },
+    "204":  {
+                "def":  90,
+                "spe":  15,
+                "growthRate":  "medium",
+                "atk":  65,
+                "spa":  35,
+                "spd":  35,
+                "hp":  50
+            },
+    "21":  {
+               "def":  30,
+               "spe":  70,
+               "growthRate":  "medium",
+               "atk":  60,
+               "spa":  31,
+               "spd":  31,
+               "hp":  40
+           },
+    "383":  {
+                "def":  140,
+                "spe":  90,
+                "growthRate":  "slow",
+                "atk":  150,
+                "spa":  100,
+                "spd":  90,
+                "hp":  100
+            },
+    "1":  {
+              "def":  49,
+              "spe":  45,
+              "growthRate":  "medium-slow",
+              "atk":  49,
+              "spa":  65,
+              "spd":  65,
+              "hp":  45
+          },
+    "339":  {
+                "def":  43,
+                "spe":  60,
+                "growthRate":  "medium",
+                "atk":  48,
+                "spa":  46,
+                "spd":  41,
+                "hp":  50
+            },
+    "130":  {
+                "def":  79,
+                "spe":  81,
+                "growthRate":  "slow",
+                "atk":  125,
+                "spa":  60,
+                "spd":  100,
+                "hp":  95
+            },
+    "367":  {
+                "def":  105,
+                "spe":  52,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  104,
+                "spa":  94,
+                "spd":  75,
+                "hp":  55
+            },
+    "316":  {
+                "def":  53,
+                "spe":  40,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  43,
+                "spa":  43,
+                "spd":  53,
+                "hp":  70
+            },
+    "376":  {
+                "def":  130,
+                "spe":  70,
+                "growthRate":  "slow",
+                "atk":  135,
+                "spa":  95,
+                "spd":  90,
+                "hp":  80
+            },
+    "271":  {
+                "def":  50,
+                "spe":  50,
+                "growthRate":  "medium-slow",
+                "atk":  50,
+                "spa":  60,
+                "spd":  70,
+                "hp":  60
+            },
+    "345":  {
+                "def":  77,
+                "spe":  23,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  41,
+                "spa":  61,
+                "spd":  87,
+                "hp":  66
+            },
+    "253":  {
+                "def":  45,
+                "spe":  95,
+                "growthRate":  "medium-slow",
+                "atk":  65,
+                "spa":  85,
+                "spd":  65,
+                "hp":  50
+            },
+    "11":  {
+               "def":  55,
+               "spe":  30,
+               "growthRate":  "medium",
+               "atk":  20,
+               "spa":  25,
+               "spd":  25,
+               "hp":  50
+           },
+    "16":  {
+               "def":  40,
+               "spe":  56,
+               "growthRate":  "medium-slow",
+               "atk":  45,
+               "spa":  35,
+               "spd":  35,
+               "hp":  40
+           },
+    "121":  {
+                "def":  85,
+                "spe":  115,
+                "growthRate":  "slow",
+                "atk":  75,
+                "spa":  100,
+                "spd":  85,
+                "hp":  60
+            },
+    "34":  {
+               "def":  77,
+               "spe":  85,
+               "growthRate":  "medium-slow",
+               "atk":  102,
+               "spa":  85,
+               "spd":  75,
+               "hp":  81
+           },
+    "220":  {
+                "def":  40,
+                "spe":  50,
+                "growthRate":  "slow",
+                "atk":  50,
+                "spa":  30,
+                "spd":  30,
+                "hp":  50
+            },
+    "298":  {
+                "def":  40,
+                "spe":  20,
+                "growthRate":  "fast",
+                "atk":  20,
+                "spa":  20,
+                "spd":  40,
+                "hp":  50
+            },
+    "82":  {
+               "def":  95,
+               "spe":  70,
+               "growthRate":  "medium",
+               "atk":  60,
+               "spa":  120,
+               "spd":  70,
+               "hp":  50
+           },
+    "289":  {
+                "def":  100,
+                "spe":  100,
+                "growthRate":  "slow",
+                "atk":  160,
+                "spa":  95,
+                "spd":  65,
+                "hp":  150
+            },
+    "305":  {
+                "def":  140,
+                "spe":  40,
+                "growthRate":  "slow",
+                "atk":  90,
+                "spa":  50,
+                "spd":  50,
+                "hp":  60
+            },
+    "202":  {
+                "def":  58,
+                "spe":  33,
+                "growthRate":  "medium",
+                "atk":  33,
+                "spa":  33,
+                "spd":  58,
+                "hp":  190
+            },
+    "381":  {
+                "def":  80,
+                "spe":  110,
+                "growthRate":  "slow",
+                "atk":  90,
+                "spa":  130,
+                "spd":  110,
+                "hp":  80
+            },
+    "308":  {
+                "def":  75,
+                "spe":  80,
+                "growthRate":  "medium",
+                "atk":  60,
+                "spa":  60,
+                "spd":  75,
+                "hp":  60
+            },
+    "112":  {
+                "def":  120,
+                "spe":  40,
+                "growthRate":  "slow",
+                "atk":  130,
+                "spa":  45,
+                "spd":  45,
+                "hp":  105
+            },
+    "39":  {
+               "def":  20,
+               "spe":  20,
+               "growthRate":  "fast",
+               "atk":  45,
+               "spa":  45,
+               "spd":  25,
+               "hp":  115
+           },
+    "93":  {
+               "def":  45,
+               "spe":  95,
+               "growthRate":  "medium-slow",
+               "atk":  50,
+               "spa":  115,
+               "spd":  55,
+               "hp":  45
+           },
+    "6":  {
+              "def":  78,
+              "spe":  100,
+              "growthRate":  "medium-slow",
+              "atk":  84,
+              "spa":  109,
+              "spd":  85,
+              "hp":  78
+          },
+    "172":  {
+                "def":  15,
+                "spe":  60,
+                "growthRate":  "medium",
+                "atk":  40,
+                "spa":  35,
+                "spd":  35,
+                "hp":  20
+            },
+    "160":  {
+                "def":  100,
+                "spe":  78,
+                "growthRate":  "medium-slow",
+                "atk":  105,
+                "spa":  79,
+                "spd":  83,
+                "hp":  85
+            },
+    "377":  {
+                "def":  200,
+                "spe":  50,
+                "growthRate":  "slow",
+                "atk":  100,
+                "spa":  50,
+                "spd":  100,
+                "hp":  80
+            },
+    "344":  {
+                "def":  105,
+                "spe":  75,
+                "growthRate":  "medium",
+                "atk":  70,
+                "spa":  70,
+                "spd":  120,
+                "hp":  60
+            },
+    "355":  {
+                "def":  90,
+                "spe":  25,
+                "growthRate":  "fast",
+                "atk":  40,
+                "spa":  30,
+                "spd":  90,
+                "hp":  20
+            },
+    "252":  {
+                "def":  35,
+                "spe":  70,
+                "growthRate":  "medium-slow",
+                "atk":  45,
+                "spa":  65,
+                "spd":  55,
+                "hp":  40
+            },
+    "243":  {
+                "def":  75,
+                "spe":  115,
+                "growthRate":  "slow",
+                "atk":  85,
+                "spa":  115,
+                "spd":  100,
+                "hp":  90
+            },
+    "32":  {
+               "def":  40,
+               "spe":  50,
+               "growthRate":  "medium-slow",
+               "atk":  57,
+               "spa":  40,
+               "spd":  40,
+               "hp":  46
+           },
+    "231":  {
+                "def":  60,
+                "spe":  40,
+                "growthRate":  "medium",
+                "atk":  60,
+                "spa":  40,
+                "spd":  40,
+                "hp":  90
+            },
+    "23":  {
+               "def":  44,
+               "spe":  55,
+               "growthRate":  "medium",
+               "atk":  60,
+               "spa":  40,
+               "spd":  54,
+               "hp":  35
+           },
+    "303":  {
+                "def":  85,
+                "spe":  50,
+                "growthRate":  "fast",
+                "atk":  85,
+                "spa":  55,
+                "spd":  55,
+                "hp":  50
+            },
+    "385":  {
+                "def":  100,
+                "spe":  100,
+                "growthRate":  "slow",
+                "atk":  100,
+                "spa":  100,
+                "spd":  100,
+                "hp":  100
+            },
+    "83":  {
+               "def":  55,
+               "spe":  60,
+               "growthRate":  "medium",
+               "atk":  90,
+               "spa":  58,
+               "spd":  62,
+               "hp":  52
+           },
+    "191":  {
+                "def":  30,
+                "spe":  30,
+                "growthRate":  "medium-slow",
+                "atk":  30,
+                "spa":  30,
+                "spd":  30,
+                "hp":  30
+            },
+    "306":  {
+                "def":  180,
+                "spe":  50,
+                "growthRate":  "slow",
+                "atk":  110,
+                "spa":  60,
+                "spd":  60,
+                "hp":  70
+            },
+    "270":  {
+                "def":  30,
+                "spe":  30,
+                "growthRate":  "medium-slow",
+                "atk":  30,
+                "spa":  40,
+                "spd":  50,
+                "hp":  40
+            },
+    "114":  {
+                "def":  115,
+                "spe":  60,
+                "growthRate":  "medium",
+                "atk":  55,
+                "spa":  100,
+                "spd":  40,
+                "hp":  65
+            },
+    "127":  {
+                "def":  100,
+                "spe":  85,
+                "growthRate":  "slow",
+                "atk":  125,
+                "spa":  55,
+                "spd":  70,
+                "hp":  65
+            },
+    "136":  {
+                "def":  60,
+                "spe":  65,
+                "growthRate":  "medium",
+                "atk":  130,
+                "spa":  95,
+                "spd":  110,
+                "hp":  65
+            },
+    "131":  {
+                "def":  80,
+                "spe":  60,
+                "growthRate":  "slow",
+                "atk":  85,
+                "spa":  85,
+                "spd":  95,
+                "hp":  130
+            },
+    "241":  {
+                "def":  105,
+                "spe":  100,
+                "growthRate":  "slow",
+                "atk":  80,
+                "spa":  40,
+                "spd":  70,
+                "hp":  95
+            },
+    "371":  {
+                "def":  60,
+                "spe":  50,
+                "growthRate":  "slow",
+                "atk":  75,
+                "spa":  40,
+                "spd":  30,
+                "hp":  45
+            },
+    "342":  {
+                "def":  85,
+                "spe":  55,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  120,
+                "spa":  90,
+                "spd":  55,
+                "hp":  63
+            },
+    "170":  {
+                "def":  38,
+                "spe":  67,
+                "growthRate":  "slow",
+                "atk":  38,
+                "spa":  56,
+                "spd":  56,
+                "hp":  75
+            },
+    "353":  {
+                "def":  35,
+                "spe":  45,
+                "growthRate":  "fast",
+                "atk":  75,
+                "spa":  63,
+                "spd":  33,
+                "hp":  44
+            },
+    "97":  {
+               "def":  70,
+               "spe":  67,
+               "growthRate":  "medium",
+               "atk":  73,
+               "spa":  73,
+               "spd":  115,
+               "hp":  85
+           },
+    "24":  {
+               "def":  69,
+               "spe":  80,
+               "growthRate":  "medium",
+               "atk":  95,
+               "spa":  65,
+               "spd":  79,
+               "hp":  60
+           },
+    "291":  {
+                "def":  45,
+                "spe":  160,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  90,
+                "spa":  50,
+                "spd":  50,
+                "hp":  61
+            },
+    "221":  {
+                "def":  80,
+                "spe":  50,
+                "growthRate":  "slow",
+                "atk":  100,
+                "spa":  60,
+                "spd":  60,
+                "hp":  100
+            },
+    "212":  {
+                "def":  100,
+                "spe":  65,
+                "growthRate":  "medium",
+                "atk":  130,
+                "spa":  55,
+                "spd":  80,
+                "hp":  70
+            },
+    "41":  {
+               "def":  35,
+               "spe":  55,
+               "growthRate":  "medium",
+               "atk":  45,
+               "spa":  30,
+               "spd":  40,
+               "hp":  40
+           },
+    "260":  {
+                "def":  90,
+                "spe":  60,
+                "growthRate":  "medium-slow",
+                "atk":  110,
+                "spa":  85,
+                "spd":  90,
+                "hp":  100
+            },
+    "126":  {
+                "def":  57,
+                "spe":  93,
+                "growthRate":  "medium",
+                "atk":  95,
+                "spa":  100,
+                "spd":  85,
+                "hp":  65
+            },
+    "146":  {
+                "def":  90,
+                "spe":  90,
+                "growthRate":  "slow",
+                "atk":  100,
+                "spa":  125,
+                "spd":  85,
+                "hp":  90
+            },
+    "137":  {
+                "def":  70,
+                "spe":  40,
+                "growthRate":  "medium",
+                "atk":  60,
+                "spa":  85,
+                "spd":  75,
+                "hp":  65
+            },
+    "157":  {
+                "def":  78,
+                "spe":  100,
+                "growthRate":  "medium-slow",
+                "atk":  84,
+                "spa":  109,
+                "spd":  85,
+                "hp":  78
+            },
+    "19":  {
+               "def":  35,
+               "spe":  72,
+               "growthRate":  "medium",
+               "atk":  56,
+               "spa":  25,
+               "spd":  35,
+               "hp":  30
+           },
+    "164":  {
+                "def":  50,
+                "spe":  70,
+                "growthRate":  "medium",
+                "atk":  50,
+                "spa":  86,
+                "spd":  96,
+                "hp":  100
+            },
+    "169":  {
+                "def":  80,
+                "spe":  130,
+                "growthRate":  "medium",
+                "atk":  90,
+                "spa":  70,
+                "spd":  80,
+                "hp":  85
+            },
+    "178":  {
+                "def":  70,
+                "spe":  95,
+                "growthRate":  "medium",
+                "atk":  75,
+                "spa":  95,
+                "spd":  70,
+                "hp":  65
+            },
+    "187":  {
+                "def":  40,
+                "spe":  50,
+                "growthRate":  "medium-slow",
+                "atk":  35,
+                "spa":  35,
+                "spd":  55,
+                "hp":  35
+            },
+    "196":  {
+                "def":  60,
+                "spe":  110,
+                "growthRate":  "medium",
+                "atk":  65,
+                "spa":  130,
+                "spd":  95,
+                "hp":  65
+            },
+    "104":  {
+                "def":  95,
+                "spe":  35,
+                "growthRate":  "medium",
+                "atk":  50,
+                "spa":  40,
+                "spd":  50,
+                "hp":  50
+            },
+    "332":  {
+                "def":  60,
+                "spe":  55,
+                "growthRate":  "medium-slow",
+                "atk":  115,
+                "spa":  115,
+                "spd":  60,
+                "hp":  70
+            },
+    "96":  {
+               "def":  45,
+               "spe":  42,
+               "growthRate":  "medium",
+               "atk":  48,
+               "spa":  43,
+               "spd":  90,
+               "hp":  60
+           },
+    "331":  {
+                "def":  40,
+                "spe":  35,
+                "growthRate":  "medium-slow",
+                "atk":  85,
+                "spa":  85,
+                "spd":  40,
+                "hp":  50
+            },
+    "87":  {
+               "def":  80,
+               "spe":  70,
+               "growthRate":  "medium",
+               "atk":  70,
+               "spa":  70,
+               "spd":  95,
+               "hp":  90
+           },
+    "313":  {
+                "def":  75,
+                "spe":  85,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  73,
+                "spa":  47,
+                "spd":  85,
+                "hp":  65
+            },
+    "218":  {
+                "def":  40,
+                "spe":  20,
+                "growthRate":  "medium",
+                "atk":  40,
+                "spa":  70,
+                "spd":  40,
+                "hp":  40
+            },
+    "370":  {
+                "def":  55,
+                "spe":  97,
+                "growthRate":  "fast",
+                "atk":  30,
+                "spa":  40,
+                "spd":  65,
+                "hp":  43
+            },
+    "89":  {
+               "def":  75,
+               "spe":  50,
+               "growthRate":  "medium",
+               "atk":  105,
+               "spa":  65,
+               "spd":  100,
+               "hp":  105
+           },
+    "279":  {
+                "def":  100,
+                "spe":  65,
+                "growthRate":  "medium",
+                "atk":  50,
+                "spa":  95,
+                "spd":  70,
+                "hp":  60
+            },
+    "57":  {
+               "def":  60,
+               "spe":  95,
+               "growthRate":  "medium",
+               "atk":  105,
+               "spa":  60,
+               "spd":  70,
+               "hp":  65
+           },
+    "268":  {
+                "def":  55,
+                "spe":  15,
+                "growthRate":  "medium",
+                "atk":  35,
+                "spa":  25,
+                "spd":  25,
+                "hp":  50
+            },
+    "46":  {
+               "def":  55,
+               "spe":  25,
+               "growthRate":  "medium",
+               "atk":  70,
+               "spa":  45,
+               "spd":  55,
+               "hp":  35
+           },
+    "75":  {
+               "def":  115,
+               "spe":  35,
+               "growthRate":  "medium-slow",
+               "atk":  95,
+               "spa":  45,
+               "spd":  45,
+               "hp":  55
+           },
+    "64":  {
+               "def":  30,
+               "spe":  105,
+               "growthRate":  "medium-slow",
+               "atk":  35,
+               "spa":  120,
+               "spd":  70,
+               "hp":  40
+           },
+    "154":  {
+                "def":  100,
+                "spe":  80,
+                "growthRate":  "medium-slow",
+                "atk":  82,
+                "spa":  83,
+                "spd":  100,
+                "hp":  80
+            },
+    "167":  {
+                "def":  40,
+                "spe":  30,
+                "growthRate":  "fast",
+                "atk":  60,
+                "spa":  40,
+                "spd":  40,
+                "hp":  40
+            },
+    "176":  {
+                "def":  85,
+                "spe":  40,
+                "growthRate":  "fast",
+                "atk":  40,
+                "spa":  80,
+                "spd":  105,
+                "hp":  55
+            },
+    "189":  {
+                "def":  70,
+                "spe":  110,
+                "growthRate":  "medium-slow",
+                "atk":  55,
+                "spa":  55,
+                "spd":  95,
+                "hp":  75
+            },
+    "198":  {
+                "def":  42,
+                "spe":  91,
+                "growthRate":  "medium-slow",
+                "atk":  85,
+                "spa":  85,
+                "spd":  42,
+                "hp":  60
+            },
+    "14":  {
+               "def":  50,
+               "spe":  35,
+               "growthRate":  "medium",
+               "atk":  25,
+               "spa":  25,
+               "spd":  25,
+               "hp":  45
+           },
+    "197":  {
+                "def":  110,
+                "spe":  65,
+                "growthRate":  "medium",
+                "atk":  65,
+                "spa":  60,
+                "spd":  130,
+                "hp":  95
+            },
+    "336":  {
+                "def":  60,
+                "spe":  65,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  100,
+                "spa":  100,
+                "spd":  60,
+                "hp":  73
+            },
+    "369":  {
+                "def":  130,
+                "spe":  55,
+                "growthRate":  "slow",
+                "atk":  90,
+                "spa":  45,
+                "spd":  65,
+                "hp":  100
+            },
+    "314":  {
+                "def":  75,
+                "spe":  85,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  47,
+                "spa":  73,
+                "spd":  85,
+                "hp":  65
+            },
+    "59":  {
+               "def":  80,
+               "spe":  95,
+               "growthRate":  "slow",
+               "atk":  110,
+               "spa":  100,
+               "spd":  80,
+               "hp":  90
+           },
+    "273":  {
+                "def":  50,
+                "spe":  30,
+                "growthRate":  "medium-slow",
+                "atk":  40,
+                "spa":  30,
+                "spd":  30,
+                "hp":  40
+            },
+    "48":  {
+               "def":  50,
+               "spe":  45,
+               "growthRate":  "medium",
+               "atk":  55,
+               "spa":  40,
+               "spd":  55,
+               "hp":  60
+           },
+    "262":  {
+                "def":  70,
+                "spe":  70,
+                "growthRate":  "medium",
+                "atk":  90,
+                "spa":  60,
+                "spd":  60,
+                "hp":  70
+            },
+    "251":  {
+                "def":  100,
+                "spe":  100,
+                "growthRate":  "medium-slow",
+                "atk":  100,
+                "spa":  100,
+                "spd":  100,
+                "hp":  100
+            },
+    "18":  {
+               "def":  75,
+               "spe":  101,
+               "growthRate":  "medium-slow",
+               "atk":  80,
+               "spa":  70,
+               "spd":  70,
+               "hp":  83
+           },
+    "65":  {
+               "def":  45,
+               "spe":  120,
+               "growthRate":  "medium-slow",
+               "atk":  50,
+               "spa":  135,
+               "spd":  95,
+               "hp":  55
+           },
+    "296":  {
+                "def":  30,
+                "spe":  25,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  60,
+                "spa":  20,
+                "spd":  30,
+                "hp":  72
+            },
+    "287":  {
+                "def":  60,
+                "spe":  30,
+                "growthRate":  "slow",
+                "atk":  60,
+                "spa":  35,
+                "spd":  35,
+                "hp":  60
+            },
+    "295":  {
+                "def":  63,
+                "spe":  68,
+                "growthRate":  "medium-slow",
+                "atk":  91,
+                "spa":  91,
+                "spd":  73,
+                "hp":  104
+            },
+    "199":  {
+                "def":  80,
+                "spe":  30,
+                "growthRate":  "medium",
+                "atk":  75,
+                "spa":  100,
+                "spd":  110,
+                "hp":  95
+            },
+    "100":  {
+                "def":  50,
+                "spe":  100,
+                "growthRate":  "medium",
+                "atk":  30,
+                "spa":  55,
+                "spd":  55,
+                "hp":  40
+            },
+    "329":  {
+                "def":  50,
+                "spe":  70,
+                "growthRate":  "medium-slow",
+                "atk":  70,
+                "spa":  50,
+                "spd":  50,
+                "hp":  50
+            },
+    "338":  {
+                "def":  85,
+                "spe":  70,
+                "growthRate":  "fast",
+                "atk":  95,
+                "spa":  55,
+                "spd":  65,
+                "hp":  90
+            },
+    "120":  {
+                "def":  55,
+                "spe":  85,
+                "growthRate":  "slow",
+                "atk":  45,
+                "spa":  70,
+                "spd":  55,
+                "hp":  30
+            },
+    "368":  {
+                "def":  105,
+                "spe":  52,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  84,
+                "spa":  114,
+                "spd":  75,
+                "hp":  55
+            },
+    "379":  {
+                "def":  150,
+                "spe":  50,
+                "growthRate":  "slow",
+                "atk":  75,
+                "spa":  75,
+                "spd":  150,
+                "hp":  80
+            },
+    "263":  {
+                "def":  41,
+                "spe":  60,
+                "growthRate":  "medium",
+                "atk":  30,
+                "spa":  30,
+                "spd":  41,
+                "hp":  38
+            },
+    "12":  {
+               "def":  50,
+               "spe":  70,
+               "growthRate":  "medium",
+               "atk":  45,
+               "spa":  90,
+               "spd":  80,
+               "hp":  60
+           },
+    "80":  {
+               "def":  110,
+               "spe":  30,
+               "growthRate":  "medium",
+               "atk":  75,
+               "spa":  100,
+               "spd":  80,
+               "hp":  95
+           },
+    "183":  {
+                "def":  50,
+                "spe":  40,
+                "growthRate":  "fast",
+                "atk":  20,
+                "spa":  20,
+                "spd":  50,
+                "hp":  70
+            },
+    "230":  {
+                "def":  95,
+                "spe":  85,
+                "growthRate":  "medium",
+                "atk":  95,
+                "spa":  95,
+                "spd":  95,
+                "hp":  75
+            },
+    "35":  {
+               "def":  48,
+               "spe":  35,
+               "growthRate":  "fast",
+               "atk":  45,
+               "spa":  60,
+               "spd":  65,
+               "hp":  70
+           },
+    "182":  {
+                "def":  95,
+                "spe":  50,
+                "growthRate":  "medium-slow",
+                "atk":  80,
+                "spa":  90,
+                "spd":  100,
+                "hp":  75
+            },
+    "200":  {
+                "def":  60,
+                "spe":  85,
+                "growthRate":  "fast",
+                "atk":  60,
+                "spa":  85,
+                "spd":  85,
+                "hp":  60
+            },
+    "288":  {
+                "def":  80,
+                "spe":  90,
+                "growthRate":  "slow",
+                "atk":  80,
+                "spa":  55,
+                "spd":  55,
+                "hp":  80
+            },
+    "304":  {
+                "def":  100,
+                "spe":  30,
+                "growthRate":  "slow",
+                "atk":  70,
+                "spa":  40,
+                "spd":  40,
+                "hp":  50
+            },
+    "203":  {
+                "def":  65,
+                "spe":  85,
+                "growthRate":  "medium",
+                "atk":  80,
+                "spa":  90,
+                "spd":  65,
+                "hp":  70
+            },
+    "50":  {
+               "def":  25,
+               "spe":  95,
+               "growthRate":  "medium",
+               "atk":  55,
+               "spa":  35,
+               "spd":  45,
+               "hp":  10
+           },
+    "380":  {
+                "def":  90,
+                "spe":  110,
+                "growthRate":  "slow",
+                "atk":  80,
+                "spa":  110,
+                "spd":  130,
+                "hp":  80
+            },
+    "116":  {
+                "def":  70,
+                "spe":  60,
+                "growthRate":  "medium",
+                "atk":  40,
+                "spa":  70,
+                "spd":  25,
+                "hp":  30
+            },
+    "362":  {
+                "def":  80,
+                "spe":  80,
+                "growthRate":  "medium",
+                "atk":  80,
+                "spa":  80,
+                "spd":  80,
+                "hp":  80
+            },
+    "373":  {
+                "def":  80,
+                "spe":  100,
+                "growthRate":  "slow",
+                "atk":  135,
+                "spa":  110,
+                "spd":  80,
+                "hp":  95
+            },
+    "246":  {
+                "def":  50,
+                "spe":  41,
+                "growthRate":  "slow",
+                "atk":  64,
+                "spa":  45,
+                "spd":  50,
+                "hp":  50
+            },
+    "351":  {
+                "def":  70,
+                "spe":  70,
+                "growthRate":  "medium",
+                "atk":  70,
+                "spa":  70,
+                "spd":  70,
+                "hp":  70
+            },
+    "190":  {
+                "def":  55,
+                "spe":  85,
+                "growthRate":  "fast",
+                "atk":  70,
+                "spa":  40,
+                "spd":  55,
+                "hp":  55
+            },
+    "354":  {
+                "def":  65,
+                "spe":  65,
+                "growthRate":  "fast",
+                "atk":  115,
+                "spa":  83,
+                "spd":  63,
+                "hp":  64
+            },
+    "320":  {
+                "def":  35,
+                "spe":  60,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  70,
+                "spa":  70,
+                "spd":  35,
+                "hp":  130
+            },
+    "33":  {
+               "def":  57,
+               "spe":  65,
+               "growthRate":  "medium-slow",
+               "atk":  72,
+               "spa":  55,
+               "spd":  55,
+               "hp":  61
+           },
+    "232":  {
+                "def":  120,
+                "spe":  50,
+                "growthRate":  "medium",
+                "atk":  120,
+                "spa":  60,
+                "spd":  60,
+                "hp":  90
+            },
+    "22":  {
+               "def":  65,
+               "spe":  100,
+               "growthRate":  "medium",
+               "atk":  90,
+               "spa":  61,
+               "spd":  61,
+               "hp":  65
+           },
+    "223":  {
+                "def":  35,
+                "spe":  65,
+                "growthRate":  "medium",
+                "atk":  65,
+                "spa":  65,
+                "spd":  35,
+                "hp":  35
+            },
+    "302":  {
+                "def":  75,
+                "spe":  50,
+                "growthRate":  "medium-slow",
+                "atk":  75,
+                "spa":  65,
+                "spd":  65,
+                "hp":  50
+            },
+    "118":  {
+                "def":  60,
+                "spe":  63,
+                "growthRate":  "medium",
+                "atk":  67,
+                "spa":  35,
+                "spd":  50,
+                "hp":  45
+            },
+    "330":  {
+                "def":  80,
+                "spe":  100,
+                "growthRate":  "medium-slow",
+                "atk":  100,
+                "spa":  80,
+                "spd":  80,
+                "hp":  80
+            },
+    "40":  {
+               "def":  45,
+               "spe":  45,
+               "growthRate":  "fast",
+               "atk":  70,
+               "spa":  85,
+               "spd":  50,
+               "hp":  140
+           },
+    "117":  {
+                "def":  95,
+                "spe":  85,
+                "growthRate":  "medium",
+                "atk":  65,
+                "spa":  95,
+                "spd":  45,
+                "hp":  55
+            },
+    "124":  {
+                "def":  35,
+                "spe":  95,
+                "growthRate":  "medium",
+                "atk":  50,
+                "spa":  115,
+                "spd":  95,
+                "hp":  65
+            },
+    "148":  {
+                "def":  65,
+                "spe":  70,
+                "growthRate":  "slow",
+                "atk":  84,
+                "spa":  70,
+                "spd":  70,
+                "hp":  61
+            },
+    "135":  {
+                "def":  60,
+                "spe":  130,
+                "growthRate":  "medium",
+                "atk":  65,
+                "spa":  110,
+                "spd":  95,
+                "hp":  65
+            },
+    "290":  {
+                "def":  90,
+                "spe":  40,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  45,
+                "spa":  30,
+                "spd":  30,
+                "hp":  31
+            },
+    "181":  {
+                "def":  85,
+                "spe":  55,
+                "growthRate":  "medium-slow",
+                "atk":  75,
+                "spa":  115,
+                "spd":  90,
+                "hp":  90
+            },
+    "343":  {
+                "def":  55,
+                "spe":  55,
+                "growthRate":  "medium",
+                "atk":  40,
+                "spa":  40,
+                "spd":  70,
+                "hp":  40
+            },
+    "352":  {
+                "def":  70,
+                "spe":  40,
+                "growthRate":  "medium-slow",
+                "atk":  90,
+                "spa":  60,
+                "spd":  120,
+                "hp":  60
+            },
+    "106":  {
+                "def":  53,
+                "spe":  87,
+                "growthRate":  "medium",
+                "atk":  120,
+                "spa":  35,
+                "spd":  110,
+                "hp":  50
+            },
+    "322":  {
+                "def":  40,
+                "spe":  35,
+                "growthRate":  "medium",
+                "atk":  60,
+                "spa":  65,
+                "spd":  45,
+                "hp":  60
+            },
+    "98":  {
+               "def":  90,
+               "spe":  50,
+               "growthRate":  "medium",
+               "atk":  105,
+               "spa":  25,
+               "spd":  25,
+               "hp":  30
+           },
+    "333":  {
+                "def":  60,
+                "spe":  50,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  40,
+                "spa":  40,
+                "spd":  75,
+                "hp":  45
+            },
+    "234":  {
+                "def":  62,
+                "spe":  85,
+                "growthRate":  "slow",
+                "atk":  95,
+                "spa":  85,
+                "spd":  65,
+                "hp":  73
+            },
+    "225":  {
+                "def":  45,
+                "spe":  75,
+                "growthRate":  "fast",
+                "atk":  55,
+                "spa":  65,
+                "spd":  45,
+                "hp":  45
+            },
+    "216":  {
+                "def":  50,
+                "spe":  40,
+                "growthRate":  "medium",
+                "atk":  80,
+                "spa":  50,
+                "spd":  50,
+                "hp":  60
+            },
+    "300":  {
+                "def":  45,
+                "spe":  50,
+                "growthRate":  "fast",
+                "atk":  45,
+                "spa":  35,
+                "spd":  35,
+                "hp":  50
+            },
+    "213":  {
+                "def":  230,
+                "spe":  5,
+                "growthRate":  "medium-slow",
+                "atk":  10,
+                "spa":  10,
+                "spd":  230,
+                "hp":  20
+            },
+    "119":  {
+                "def":  65,
+                "spe":  68,
+                "growthRate":  "medium",
+                "atk":  92,
+                "spa":  65,
+                "spd":  80,
+                "hp":  80
+            },
+    "73":  {
+               "def":  65,
+               "spe":  100,
+               "growthRate":  "slow",
+               "atk":  70,
+               "spa":  80,
+               "spd":  120,
+               "hp":  80
+           },
+    "62":  {
+               "def":  95,
+               "spe":  70,
+               "growthRate":  "medium-slow",
+               "atk":  95,
+               "spa":  70,
+               "spd":  90,
+               "hp":  90
+           },
+    "147":  {
+                "def":  45,
+                "spe":  50,
+                "growthRate":  "slow",
+                "atk":  64,
+                "spa":  50,
+                "spd":  50,
+                "hp":  41
+            },
+    "360":  {
+                "def":  48,
+                "spe":  23,
+                "growthRate":  "medium",
+                "atk":  23,
+                "spa":  23,
+                "spd":  48,
+                "hp":  95
+            },
+    "156":  {
+                "def":  58,
+                "spe":  80,
+                "growthRate":  "medium-slow",
+                "atk":  64,
+                "spa":  80,
+                "spd":  65,
+                "hp":  58
+            },
+    "132":  {
+                "def":  48,
+                "spe":  48,
+                "growthRate":  "medium",
+                "atk":  48,
+                "spa":  48,
+                "spd":  48,
+                "hp":  48
+            },
+    "165":  {
+                "def":  30,
+                "spe":  55,
+                "growthRate":  "fast",
+                "atk":  20,
+                "spa":  40,
+                "spd":  80,
+                "hp":  40
+            },
+    "174":  {
+                "def":  15,
+                "spe":  15,
+                "growthRate":  "fast",
+                "atk":  30,
+                "spa":  40,
+                "spd":  20,
+                "hp":  90
+            },
+    "208":  {
+                "def":  200,
+                "spe":  30,
+                "growthRate":  "medium",
+                "atk":  85,
+                "spa":  55,
+                "spd":  65,
+                "hp":  75
+            },
+    "280":  {
+                "def":  25,
+                "spe":  40,
+                "growthRate":  "slow",
+                "atk":  25,
+                "spa":  45,
+                "spd":  35,
+                "hp":  28
+            },
+    "324":  {
+                "def":  140,
+                "spe":  20,
+                "growthRate":  "medium",
+                "atk":  85,
+                "spa":  85,
+                "spd":  70,
+                "hp":  70
+            },
+    "107":  {
+                "def":  79,
+                "spe":  76,
+                "growthRate":  "medium",
+                "atk":  105,
+                "spa":  35,
+                "spd":  110,
+                "hp":  50
+            },
+    "321":  {
+                "def":  45,
+                "spe":  60,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  90,
+                "spa":  90,
+                "spd":  45,
+                "hp":  170
+            },
+    "86":  {
+               "def":  55,
+               "spe":  45,
+               "growthRate":  "medium",
+               "atk":  45,
+               "spa":  45,
+               "spd":  70,
+               "hp":  65
+           },
+    "312":  {
+                "def":  50,
+                "spe":  95,
+                "growthRate":  "medium",
+                "atk":  40,
+                "spa":  75,
+                "spd":  85,
+                "hp":  60
+            },
+    "219":  {
+                "def":  120,
+                "spe":  30,
+                "growthRate":  "medium",
+                "atk":  50,
+                "spa":  90,
+                "spd":  80,
+                "hp":  60
+            },
+    "275":  {
+                "def":  60,
+                "spe":  80,
+                "growthRate":  "medium-slow",
+                "atk":  100,
+                "spa":  90,
+                "spd":  60,
+                "hp":  90
+            },
+    "264":  {
+                "def":  61,
+                "spe":  100,
+                "growthRate":  "medium",
+                "atk":  70,
+                "spa":  50,
+                "spd":  61,
+                "hp":  78
+            },
+    "79":  {
+               "def":  65,
+               "spe":  15,
+               "growthRate":  "medium",
+               "atk":  65,
+               "spa":  40,
+               "spd":  40,
+               "hp":  90
+           },
+    "72":  {
+               "def":  35,
+               "spe":  70,
+               "growthRate":  "slow",
+               "atk":  40,
+               "spa":  50,
+               "spd":  100,
+               "hp":  40
+           },
+    "141":  {
+                "def":  105,
+                "spe":  80,
+                "growthRate":  "medium",
+                "atk":  115,
+                "spa":  65,
+                "spd":  70,
+                "hp":  60
+            },
+    "63":  {
+               "def":  15,
+               "spe":  90,
+               "growthRate":  "medium-slow",
+               "atk":  20,
+               "spa":  105,
+               "spd":  55,
+               "hp":  25
+           },
+    "249":  {
+                "def":  130,
+                "spe":  110,
+                "growthRate":  "slow",
+                "atk":  90,
+                "spa":  90,
+                "spd":  154,
+                "hp":  106
+            },
+    "163":  {
+                "def":  30,
+                "spe":  50,
+                "growthRate":  "medium",
+                "atk":  30,
+                "spa":  36,
+                "spd":  56,
+                "hp":  60
+            },
+    "258":  {
+                "def":  50,
+                "spe":  40,
+                "growthRate":  "medium-slow",
+                "atk":  70,
+                "spa":  50,
+                "spd":  50,
+                "hp":  50
+            },
+    "206":  {
+                "def":  70,
+                "spe":  45,
+                "growthRate":  "medium",
+                "atk":  70,
+                "spa":  65,
+                "spd":  65,
+                "hp":  100
+            },
+    "175":  {
+                "def":  65,
+                "spe":  20,
+                "growthRate":  "fast",
+                "atk":  20,
+                "spa":  40,
+                "spd":  65,
+                "hp":  35
+            },
+    "139":  {
+                "def":  125,
+                "spe":  55,
+                "growthRate":  "medium",
+                "atk":  60,
+                "spa":  115,
+                "spd":  70,
+                "hp":  70
+            },
+    "110":  {
+                "def":  120,
+                "spe":  60,
+                "growthRate":  "medium",
+                "atk":  90,
+                "spa":  85,
+                "spd":  70,
+                "hp":  65
+            },
+    "101":  {
+                "def":  70,
+                "spe":  150,
+                "growthRate":  "medium",
+                "atk":  50,
+                "spa":  80,
+                "spd":  80,
+                "hp":  60
+            },
+    "2":  {
+              "def":  63,
+              "spe":  60,
+              "growthRate":  "medium-slow",
+              "atk":  62,
+              "spa":  80,
+              "spd":  80,
+              "hp":  60
+          },
+    "318":  {
+                "def":  20,
+                "spe":  65,
+                "growthRate":  "slow",
+                "atk":  90,
+                "spa":  65,
+                "spd":  20,
+                "hp":  45
+            },
+    "274":  {
+                "def":  40,
+                "spe":  60,
+                "growthRate":  "medium-slow",
+                "atk":  70,
+                "spa":  60,
+                "spd":  40,
+                "hp":  70
+            },
+    "265":  {
+                "def":  35,
+                "spe":  20,
+                "growthRate":  "medium",
+                "atk":  45,
+                "spa":  20,
+                "spd":  30,
+                "hp":  45
+            },
+    "348":  {
+                "def":  100,
+                "spe":  45,
+                "growthRate":  "slow-then-very-fast",
+                "atk":  125,
+                "spa":  70,
+                "spd":  80,
+                "hp":  75
+            },
+    "256":  {
+                "def":  60,
+                "spe":  55,
+                "growthRate":  "medium-slow",
+                "atk":  85,
+                "spa":  85,
+                "spd":  60,
+                "hp":  60
+            },
+    "78":  {
+               "def":  70,
+               "spe":  105,
+               "growthRate":  "medium",
+               "atk":  100,
+               "spa":  80,
+               "spd":  80,
+               "hp":  65
+           },
+    "247":  {
+                "def":  70,
+                "spe":  51,
+                "growthRate":  "slow",
+                "atk":  84,
+                "spa":  65,
+                "spd":  70,
+                "hp":  70
+            },
+    "69":  {
+               "def":  35,
+               "spe":  40,
+               "growthRate":  "medium-slow",
+               "atk":  75,
+               "spa":  70,
+               "spd":  30,
+               "hp":  50
+           },
+    "299":  {
+                "def":  135,
+                "spe":  30,
+                "growthRate":  "medium",
+                "atk":  45,
+                "spa":  45,
+                "spd":  90,
+                "hp":  30
+            },
+    "151":  {
+                "def":  100,
+                "spe":  100,
+                "growthRate":  "medium-slow",
+                "atk":  100,
+                "spa":  100,
+                "spd":  100,
+                "hp":  100
+            },
+    "301":  {
+                "def":  65,
+                "spe":  90,
+                "growthRate":  "fast",
+                "atk":  65,
+                "spa":  55,
+                "spd":  55,
+                "hp":  70
+            },
+    "162":  {
+                "def":  64,
+                "spe":  90,
+                "growthRate":  "medium",
+                "atk":  76,
+                "spa":  45,
+                "spd":  55,
+                "hp":  85
+            },
+    "173":  {
+                "def":  28,
+                "spe":  15,
+                "growthRate":  "fast",
+                "atk":  25,
+                "spa":  45,
+                "spd":  55,
+                "hp":  50
+            },
+    "297":  {
+                "def":  60,
+                "spe":  50,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  120,
+                "spa":  40,
+                "spd":  60,
+                "hp":  144
+            },
+    "210":  {
+                "def":  75,
+                "spe":  45,
+                "growthRate":  "fast",
+                "atk":  120,
+                "spa":  60,
+                "spd":  60,
+                "hp":  90
+            },
+    "286":  {
+                "def":  80,
+                "spe":  70,
+                "growthRate":  "fast-then-very-slow",
+                "atk":  130,
+                "spa":  60,
+                "spd":  60,
+                "hp":  60
+            },
+    "201":  {
+                "def":  48,
+                "spe":  48,
+                "growthRate":  "medium",
+                "atk":  72,
+                "spa":  72,
+                "spd":  48,
+                "hp":  48
+            },
+    "153":  {
+                "def":  80,
+                "spe":  60,
+                "growthRate":  "medium-slow",
+                "atk":  62,
+                "spa":  63,
+                "spd":  80,
+                "hp":  60
+            }
+}

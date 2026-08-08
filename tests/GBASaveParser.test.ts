@@ -159,18 +159,32 @@ describe('GBASaveParser Team Extraction', () => {
     view.setUint32(pkmnOffset, pid, true);
     view.setUint32(pkmnOffset + 4, otid, true);
     
+    // Set Nickname ("Pikachu" padded with 0xFF)
+    const nicknameBytes = [0xCB, 0xDD, 0xDF, 0xD5, 0xD7, 0xDC, 0xE9, 0xFF, 0xFF, 0xFF];
+    for (let i = 0; i < 10; i++) {
+      view.setUint8(pkmnOffset + 8 + i, nicknameBytes[i]);
+    }
+
     // Set level (offset 84)
     view.setUint8(pkmnOffset + 84, 15);
     
-    // Set Species ID in Growth block
+    // Set unencrypted stats
+    view.setUint16(pkmnOffset + 86, 35, true); // HP
+    view.setUint16(pkmnOffset + 88, 35, true); // Max HP
+    view.setUint16(pkmnOffset + 90, 25, true); // Attack
+    
     const key = pid ^ otid;
+    
+    // Set Species ID in Growth block (index 0 for pid=0)
     const speciesId = 25; // Pikachu
     const item = 0;
     const growthWord1 = speciesId | (item << 16);
-    const encryptedGrowthWord1 = (growthWord1 ^ key) >>> 0;
+    view.setUint32(pkmnOffset + 32, (growthWord1 ^ key) >>> 0, true);
     
-    // Since PID=0, Growth block is at index 0 (offset 32)
-    view.setUint32(pkmnOffset + 32, encryptedGrowthWord1, true);
+    // Set Attacks block (index 1 for pid=0)
+    // Moves: Tackle (33)
+    const attacksWord1 = 33 | (0 << 16);
+    view.setUint32(pkmnOffset + 32 + 12, (attacksWord1 ^ key) >>> 0, true);
 
     const parser = new GBASaveParser();
     const team = parser.parseTeam(buffer);
@@ -178,7 +192,11 @@ describe('GBASaveParser Team Extraction', () => {
     expect(team.length).toBe(1);
     expect(team[0].level).toBe(15);
     expect(team[0].speciesId).toBe(25);
-    expect(team[0].nickname).toBe('Unknown');
+    expect(team[0].nickname).toBe('Pikachu');
+    expect(team[0].hp).toBe(35);
+    expect(team[0].maxHp).toBe(35);
+    expect(team[0].attack).toBe(25);
+    expect(team[0].moves?.[0]).toBe(33);
   });
 });
 

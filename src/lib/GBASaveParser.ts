@@ -76,16 +76,16 @@ export class GBASaveParser {
     // Check FRLG team count first
     if (section1Offset + FRLG_TEAM_OFFSET + 4 <= buffer.byteLength) {
       const frlgCount = view.getUint32(section1Offset + FRLG_TEAM_OFFSET, true);
-      if (frlgCount <= 6) {
+      if (frlgCount >= 1 && frlgCount <= 6) {
         teamOffset = FRLG_TEAM_OFFSET;
         partyCount = frlgCount;
       }
     }
 
-    // If FRLG check failed (> 6), check RSE team count
+    // If FRLG check failed (not between 1 and 6), check RSE team count
     if (teamOffset === -1 && section1Offset + RSE_TEAM_OFFSET + 4 <= buffer.byteLength) {
       const rseCount = view.getUint32(section1Offset + RSE_TEAM_OFFSET, true);
-      if (rseCount <= 6) {
+      if (rseCount >= 1 && rseCount <= 6) {
         teamOffset = RSE_TEAM_OFFSET;
         partyCount = rseCount;
       }

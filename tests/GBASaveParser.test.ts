@@ -24,3 +24,39 @@ describe('GBASaveParser', () => {
     expect(result.trainerName).toBe('Player');
   });
 });
+
+describe('GBASaveParser Save Slot Detection', () => {
+  it('should identify the correct active save offset', () => {
+    // Create a mock 64KB buffer
+    const buffer = new ArrayBuffer(65536);
+    const view = new DataView(buffer);
+    
+    // Save A: Section 0 at 0x0000, Save Index at 0x0FFC = 5
+    view.setUint32(0x0FFC, 5, true); // Little endian
+    
+    // Save B: Section 0 at 0xE000, Save Index at 0xEFFC = 10 (Most recent)
+    view.setUint32(0xE000 + 0x0FFC, 10, true);
+    
+    const parser = new GBASaveParser();
+    const offset = parser.findActiveSaveOffset(buffer);
+    
+    expect(offset).toBe(0xE000);
+  });
+
+  it('should return 0x0000 when Save A has a higher save index', () => {
+    const buffer = new ArrayBuffer(65536);
+    const view = new DataView(buffer);
+    
+    // Save A: Section 0 at 0x0000, Save Index at 0x0FFC = 15
+    view.setUint32(0x0FFC, 15, true);
+    
+    // Save B: Section 0 at 0xE000, Save Index at 0xEFFC = 10
+    view.setUint32(0xE000 + 0x0FFC, 10, true);
+    
+    const parser = new GBASaveParser();
+    const offset = parser.findActiveSaveOffset(buffer);
+    
+    expect(offset).toBe(0x0000);
+  });
+});
+

@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import { GBASaveParser } from '@/lib/GBASaveParser';
 
 describe('GBASaveParser', () => {
-  it('should initialize and throw on invalid size', () => {
+  it('should initialize and throw on invalid size over 128KB', () => {
     const parser = new GBASaveParser();
-    const badBuffer = new ArrayBuffer(100);
+    const badBuffer = new ArrayBuffer(131073);
     expect(() => parser.parse(badBuffer)).toThrow('Invalid save file size');
   });
 

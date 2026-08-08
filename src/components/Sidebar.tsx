@@ -76,20 +76,16 @@ export default function Sidebar({ currentView, onViewChange, currentGame }: Side
         </div>
         
         {currentGame && (
-          <div>
-            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 mt-6">
-              Level Caps: {currentGame}
+          <div className="mt-6 px-4">
+            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+              Level Caps
             </h3>
             {(() => {
               const gameData = levelCapsData.find(g => {
-                const target = g.game.toLowerCase();
-                const current = currentGame.toLowerCase();
-                if (target === current) return true;
-                
-                const searchParts = current.replace('pokemon', '').trim().split(/[\s\-]+/);
-                if (searchParts.length === 0 || searchParts[0] === '') return false;
-                
-                return searchParts.every(part => target.includes(part));
+                if (currentGame === 'FRLG' && g.game === 'Pokemon Fire Red/Leaf Green') return true;
+                if (currentGame === 'Emerald' && g.game === 'Pokemon Emerald') return true;
+                if (currentGame === 'RubySapphire' && g.game === 'Pokemon Ruby/Sapphire') return true;
+                return false;
               });
               
               if (!gameData || gameData.caps.length === 0) {
@@ -97,14 +93,17 @@ export default function Sidebar({ currentView, onViewChange, currentGame }: Side
               }
               
               return (
-                <ul className="space-y-1">
-                  {gameData.caps.map((cap, i) => (
-                    <li key={i} className="text-xs flex justify-between items-center px-3 py-2 bg-gray-800 rounded-md shadow-sm border border-gray-700">
-                      <span className="text-gray-300 truncate mr-2 font-medium" title={cap.name}>{cap.name}</span>
-                      <span className="text-blue-400 font-bold bg-blue-900/30 px-2 py-0.5 rounded text-[11px]">Lv. {cap.level}</span>
-                    </li>
+                <div className="space-y-2">
+                  <div className="text-[10px] text-gray-400 font-medium mb-1 px-1">
+                    {gameData.game}
+                  </div>
+                  {gameData.caps.map((cap, idx) => (
+                    <div key={idx} className="flex justify-between items-center text-sm px-3 py-2 bg-gray-800 rounded-md border border-gray-700">
+                      <span className="text-gray-300 truncate pr-2">{cap.name}</span>
+                      <span className="font-bold text-blue-400 shrink-0">Lv. {cap.level}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               );
             })()}
           </div>

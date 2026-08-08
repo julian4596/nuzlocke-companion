@@ -10,6 +10,7 @@ export const MAX_SAVE_SIZE = 2097152;
 
 export interface SaveData {
   trainerName: string;
+  gameVersion: string;
 }
 
 export interface Pokemon {
@@ -63,9 +64,40 @@ export class GBASaveParser {
     }
   }
 
+  public detectGameVersion(buffer: ArrayBuffer, activeOffset: number): string {
+    const view = new DataView(buffer);
+    let section0Offset = -1;
+    
+    for (let i = 0; i < 14; i++) {
+      const sectionStart = activeOffset + (i * SECTION_SIZE);
+      if (sectionStart + SECTION_ID_OFFSET + 2 > buffer.byteLength) break;
+      const sectionId = view.getUint16(sectionStart + SECTION_ID_OFFSET, true);
+      if (sectionId === 0) {
+        section0Offset = sectionStart;
+        break;
+      }
+    }
+
+    if (section0Offset === -1) return 'Unknown';
+
+    const gameCode = view.getUint32(section0Offset + 0x00AC, true);
+    if (gameCode === 1) {
+      return 'FRLG';
+    }
+
+    const securityKeyCopy = view.getUint32(section0Offset + 0x01F4, true);
+    if (gameCode === securityKeyCopy && gameCode !== 0) {
+      return 'Emerald';
+    }
+
+    return 'RubySapphire';
+  }
+
   parse(buffer: ArrayBuffer): SaveData {
     this.validateSize(buffer);
-    return { trainerName: 'Player' }; // Stub for now
+    const activeOffset = this.findActiveSaveOffset(buffer);
+    const gameVersion = this.detectGameVersion(buffer, activeOffset);
+    return { trainerName: 'Player', gameVersion };
   }
 
   public findActiveSaveOffset(buffer: ArrayBuffer): number {

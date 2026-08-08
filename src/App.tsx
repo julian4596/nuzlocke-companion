@@ -19,11 +19,10 @@ export default function App() {
 
   const handleFileLoad = (buffer: ArrayBuffer, fileName: string) => {
     try {
-      const gameName = fileName.replace(/\.sav$/i, '').replace(/\.dsv$/i, '');
-      setCurrentGame(gameName);
-
       const parser = new GBASaveParser();
-      parser.validateSize(buffer);
+      const parsedData = parser.parse(buffer);
+      setCurrentGame(parsedData.gameVersion);
+
       const parsedTeam = parser.parseTeam(buffer);
       const parsedBoxes = parser.parseBoxes(buffer);
       
@@ -76,17 +75,12 @@ export default function App() {
     if (currentView === 'trainers') {
       let gameTrainers: Trainer[] = [];
       if (currentGame) {
-        const current = currentGame.toLowerCase();
-        const searchParts = current.replace('pokemon', '').trim().split(/[\s\-]+/);
-        if (searchParts.length > 0 && searchParts[0] !== '') {
-          const matchingKey = Object.keys(trainersData).find(key => {
-            const target = key.toLowerCase();
-            if (target === current) return true;
-            return searchParts.every(part => target.includes(part));
-          });
-          if (matchingKey) {
-            gameTrainers = trainersData[matchingKey];
-          }
+        if (currentGame === 'FRLG') {
+          gameTrainers = trainersData['FRLG Charizard'] || [];
+        } else if (currentGame === 'Emerald') {
+          gameTrainers = trainersData['Emerald Swampert'] || [];
+        } else if (currentGame === 'RubySapphire') {
+          gameTrainers = trainersData['RubySapphire Swampert'] || [];
         }
       }
       return <TrainersView trainers={gameTrainers} />;

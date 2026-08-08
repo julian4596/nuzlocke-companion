@@ -37,7 +37,8 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {team.map((pkmn, i) => (
               <div key={i} className="bg-gray-800 p-4 rounded-lg border border-gray-700 shadow">
-                <p className="text-lg">Slot {i + 1}</p>
+                <p className="text-lg">Slot {i + 1} - {pkmn.nickname} (Lv. {pkmn.level})</p>
+                <p className="text-sm text-gray-400">Species ID: {pkmn.speciesId}</p>
                 <p className="text-sm text-gray-400">PID: {pkmn.pid}</p>
                 <p className="text-sm text-gray-400">OTID: {pkmn.otid}</p>
               </div>

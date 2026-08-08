@@ -102,7 +102,20 @@ export class GBASaveParser {
       }
       const pid = view.getUint32(pkmnOffset, true);
       const otid = view.getUint32(pkmnOffset + 4, true);
-      team.push({ pid, otid });
+      
+      const level = view.getUint8(pkmnOffset + 84);
+      const nickname = 'Unknown';
+
+      const key = pid ^ otid;
+      const dataOffset = pkmnOffset + 32;
+      const growthIndex = [0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3][pid % 24];
+      const growthOffset = dataOffset + growthIndex * 12;
+      
+      const encryptedWord = view.getUint32(growthOffset, true);
+      const decryptedWord = (encryptedWord ^ key) >>> 0;
+      const speciesId = decryptedWord & 0xFFFF;
+
+      team.push({ pid, otid, speciesId, level, nickname });
     }
     
     return team;

@@ -142,6 +142,44 @@ describe('GBASaveParser Team Extraction', () => {
     const parser = new GBASaveParser();
     expect(parser.findActiveSaveOffset(new ArrayBuffer(10))).toBe(0x0000);
   });
+
+  it('should extract Level and Decrypt Species ID', () => {
+    const buffer = new ArrayBuffer(65536);
+    const view = new DataView(buffer);
+    
+    // Mock Save A as active
+    view.setUint32(SAVE_INDEX_OFFSET, 10, true);
+    view.setUint16(SECTION_SIZE + SECTION_ID_OFFSET, 1, true); 
+    view.setUint32(SECTION_SIZE + FRLG_TEAM_OFFSET, 1, true); 
+    
+    const pkmnOffset = SECTION_SIZE + FRLG_TEAM_OFFSET + 4;
+    
+    const pid = 0; // pid % 24 = 0 (GAEM)
+    const otid = 0x87654321;
+    view.setUint32(pkmnOffset, pid, true);
+    view.setUint32(pkmnOffset + 4, otid, true);
+    
+    // Set level (offset 84)
+    view.setUint8(pkmnOffset + 84, 15);
+    
+    // Set Species ID in Growth block
+    const key = pid ^ otid;
+    const speciesId = 25; // Pikachu
+    const item = 0;
+    const growthWord1 = speciesId | (item << 16);
+    const encryptedGrowthWord1 = (growthWord1 ^ key) >>> 0;
+    
+    // Since PID=0, Growth block is at index 0 (offset 32)
+    view.setUint32(pkmnOffset + 32, encryptedGrowthWord1, true);
+
+    const parser = new GBASaveParser();
+    const team = parser.parseTeam(buffer);
+    
+    expect(team.length).toBe(1);
+    expect(team[0].level).toBe(15);
+    expect(team[0].speciesId).toBe(25);
+    expect(team[0].nickname).toBe('Unknown');
+  });
 });
 
 

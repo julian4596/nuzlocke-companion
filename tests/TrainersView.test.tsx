@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import TrainersView, { TrainerCapGroup, Trainer } from '@/components/TrainersView';
 
 describe('TrainersView Component', () => {
@@ -40,7 +40,11 @@ describe('TrainersView Component', () => {
     render(<TrainersView trainers={mockGroups} />);
 
     // Verify Cap Header
-    expect(screen.getByText(/Brock/i)).toBeDefined();
+    const header = screen.getByText(/Brock/i);
+    expect(header).toBeDefined();
+
+    // Expand the group
+    fireEvent.click(header);
 
     // Verify Trainer details
     expect(screen.getByText('Lab Rival(Bulbasaur)')).toBeDefined();
@@ -72,6 +76,9 @@ describe('TrainersView Component', () => {
     ];
 
     render(<TrainersView trainers={mockFlatTrainers} />);
+
+    // Expand the fallback group
+    fireEvent.click(screen.getByText(/All Trainers/i));
 
     expect(screen.getByText('Youngster Joey')).toBeDefined();
     expect(screen.getByText('Rattata')).toBeDefined();

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 export interface TrainerPokemon {
   species: string;
   level: string;
@@ -28,11 +30,13 @@ interface Props {
   trainers: (TrainerCapGroup | Trainer)[];
 }
 
-function isCapGroup(item: any): item is TrainerCapGroup {
-  return item && typeof item === 'object' && 'cap' in item && Array.isArray(item.trainers);
+function isCapGroup(item: unknown): item is TrainerCapGroup {
+  return item !== null && typeof item === 'object' && 'cap' in item && Array.isArray((item as TrainerCapGroup).trainers);
 }
 
 export default function TrainersView({ trainers }: Props) {
+  const [expandedGroups, setExpandedGroups] = useState<Set<number>>(new Set());
+
   if (!trainers || trainers.length === 0) {
     return <div className="text-gray-400">No trainers found for this game.</div>;
   }
@@ -41,17 +45,36 @@ export default function TrainersView({ trainers }: Props) {
     ? (trainers as TrainerCapGroup[])
     : [{ cap: 'All Trainers', trainers: trainers as Trainer[] }];
 
+  const toggleGroup = (index: number) => {
+    setExpandedGroups(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
+
   return (
     <div>
       <h2 className="text-2xl font-semibold mb-6 text-white">Trainers Guide</h2>
       <div className="space-y-8">
-        {groups.map((group, groupIndex) => (
-          <div key={groupIndex} className="space-y-4">
-            <h3 className="text-xl font-bold text-yellow-400 pb-2 border-b border-gray-700">
-              Cap: {group.cap} {group.level ? `(Lv. ${group.level})` : ''}
-            </h3>
+        {groups.map((group, groupIndex) => {
+          const isExpanded = expandedGroups.has(groupIndex);
+          return (
+            <div key={groupIndex} className="space-y-4">
+              <button 
+                onClick={() => toggleGroup(groupIndex)}
+                className="w-full text-left flex items-center justify-between text-xl font-bold text-yellow-400 pb-2 border-b border-gray-700 hover:text-yellow-300 transition-colors cursor-pointer"
+              >
+                <span>Cap: {group.cap} {group.level ? `(Lv. ${group.level})` : ''}</span>
+                <span className="text-sm">{isExpanded ? '▲ Hide' : '▼ Show'}</span>
+              </button>
 
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+              {isExpanded && (
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
               {group.trainers.map((trainer, index) => (
                 <div key={index} className="bg-gray-800 rounded-lg p-5 border border-gray-700 shadow-md">
                   <div className="flex justify-between items-start mb-4 border-b border-gray-700 pb-3">
@@ -99,9 +122,11 @@ export default function TrainersView({ trainers }: Props) {
                   </div>
                 </div>
               ))}
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

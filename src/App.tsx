@@ -11,8 +11,13 @@ export default function App() {
       const parser = new GBASaveParser();
       parser.validateSize(buffer);
       const parsedTeam = parser.parseTeam(buffer);
-      setTeam(parsedTeam);
-      setError(null);
+      if (parsedTeam.length === 0) {
+        setError("No valid team data found. Make sure this is a valid Gen 3 GBA save file.");
+        setTeam([]);
+      } else {
+        setTeam(parsedTeam);
+        setError(null);
+      }
     } catch (e: any) {
       setError(e.message);
       setTeam([]);

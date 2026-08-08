@@ -26,11 +26,13 @@ export class GBASaveParser {
       return 0x0000;
     }
     const view = new DataView(buffer);
-    const saveAIndex = view.getUint32(0x0FFC, true);
+    let saveAIndex = view.getUint32(0x0FFC, true);
+    if (saveAIndex === 0xFFFFFFFF) saveAIndex = -1;
 
     let saveBIndex = -1;
-    if (buffer.byteLength >= 0xE000 + 0x0FFC + 4) {
-      saveBIndex = view.getUint32(0xE000 + 0x0FFC, true);
+    if (buffer.byteLength >= 114688) {
+      const idx = view.getUint32(0xE000 + 0x0FFC, true);
+      if (idx !== 0xFFFFFFFF) saveBIndex = idx;
     }
 
     return saveBIndex > saveAIndex ? 0xE000 : 0x0000;

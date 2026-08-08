@@ -85,6 +85,18 @@ describe('GBASaveParser Team Extraction', () => {
     expect(team.length).toBe(1);
     expect(team[0].pid).toBe(0x12345678);
   });
+
+  it('should return an empty array without throwing RangeError when buffer is smaller than 65536 bytes', () => {
+    const parser = new GBASaveParser();
+    expect(parser.parseTeam(new ArrayBuffer(0))).toEqual([]);
+    expect(parser.parseTeam(new ArrayBuffer(100))).toEqual([]);
+    expect(parser.parseTeam(new ArrayBuffer(4096))).toEqual([]);
+  });
+
+  it('should return 0x0000 without throwing RangeError when buffer is smaller than 0x1000 bytes', () => {
+    const parser = new GBASaveParser();
+    expect(parser.findActiveSaveOffset(new ArrayBuffer(10))).toBe(0x0000);
+  });
 });
 
 

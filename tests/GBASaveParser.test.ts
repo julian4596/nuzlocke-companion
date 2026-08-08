@@ -86,6 +86,42 @@ describe('GBASaveParser Team Extraction', () => {
     expect(team[0].pid).toBe(0x12345678);
   });
 
+  it('should parse a pokemon team from RSE offset (0x0034)', () => {
+    const buffer = new ArrayBuffer(65536);
+    const view = new DataView(buffer);
+    
+    // Mock Save A as active
+    view.setUint32(0x0FFC, 10, true);
+    
+    // Section 1 (Team/Items) ID at 0x1000 + 0x0FF4
+    view.setUint16(0x1000 + 0x0FF4, 1, true); // Section ID 1
+    
+    // Set FRLG offset to invalid count (> 6)
+    view.setUint32(0x1000 + 0x0234, 0xFFFFFFFF, true);
+    
+    // Set RSE Party Count at 0x0034
+    view.setUint32(0x1000 + 0x0034, 2, true);
+    
+    // Set Pokemon 1 PID and OTID at 0x1000 + 0x0038
+    const pkmn1Offset = 0x1000 + 0x0038;
+    view.setUint32(pkmn1Offset, 0xAABBCCDD, true);
+    view.setUint32(pkmn1Offset + 4, 0x11223344, true);
+
+    // Set Pokemon 2 PID and OTID at 0x1000 + 0x0038 + 100
+    const pkmn2Offset = pkmn1Offset + 100;
+    view.setUint32(pkmn2Offset, 0x55667788, true);
+    view.setUint32(pkmn2Offset + 4, 0x99AABBCC, true);
+    
+    const parser = new GBASaveParser();
+    const team = parser.parseTeam(buffer);
+    
+    expect(team.length).toBe(2);
+    expect(team[0].pid).toBe(0xAABBCCDD);
+    expect(team[0].otid).toBe(0x11223344);
+    expect(team[1].pid).toBe(0x55667788);
+    expect(team[1].otid).toBe(0x99AABBCC);
+  });
+
   it('should return an empty array without throwing RangeError when buffer is smaller than 65536 bytes', () => {
     const parser = new GBASaveParser();
     expect(parser.parseTeam(new ArrayBuffer(0))).toEqual([]);
@@ -98,5 +134,6 @@ describe('GBASaveParser Team Extraction', () => {
     expect(parser.findActiveSaveOffset(new ArrayBuffer(10))).toBe(0x0000);
   });
 });
+
 
 

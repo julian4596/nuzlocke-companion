@@ -1,3 +1,11 @@
+export const SECTION_SIZE = 4096;
+export const SAVE_B_OFFSET = 0xE000;
+export const SECTION_ID_OFFSET = 0x0FF4;
+export const SAVE_INDEX_OFFSET = 0x0FFC;
+export const FRLG_TEAM_OFFSET = 0x0234;
+export const RSE_TEAM_OFFSET = 0x0034;
+export const MAX_SAVE_SIZE = 2097152;
+
 export interface SaveData {
   trainerName: string;
 }
@@ -7,11 +15,12 @@ export interface Pokemon {
   otid: number;
   speciesId?: number;
   level?: number;
+  nickname?: string;
 }
 
 export class GBASaveParser {
   validateSize(buffer: ArrayBuffer): void {
-    if (buffer.byteLength > 2097152) { // 2MB max
+    if (buffer.byteLength > MAX_SAVE_SIZE) {
       throw new Error('Invalid save file size. Expected maximum 2MB GBA save.');
     }
   }
@@ -22,20 +31,20 @@ export class GBASaveParser {
   }
 
   public findActiveSaveOffset(buffer: ArrayBuffer): number {
-    if (buffer.byteLength < 0x0FFC + 4) {
+    if (buffer.byteLength < SAVE_INDEX_OFFSET + 4) {
       return 0x0000;
     }
     const view = new DataView(buffer);
-    let saveAIndex = view.getUint32(0x0FFC, true);
+    let saveAIndex = view.getUint32(SAVE_INDEX_OFFSET, true);
     if (saveAIndex === 0xFFFFFFFF) saveAIndex = -1;
 
     let saveBIndex = -1;
-    if (buffer.byteLength >= 114688) {
-      const idx = view.getUint32(0xE000 + 0x0FFC, true);
+    if (buffer.byteLength >= SAVE_B_OFFSET + SAVE_INDEX_OFFSET + 4) {
+      const idx = view.getUint32(SAVE_B_OFFSET + SAVE_INDEX_OFFSET, true);
       if (idx !== 0xFFFFFFFF) saveBIndex = idx;
     }
 
-    return saveBIndex > saveAIndex ? 0xE000 : 0x0000;
+    return saveBIndex > saveAIndex ? SAVE_B_OFFSET : 0x0000;
   }
 
   public parseTeam(buffer: ArrayBuffer): Pokemon[] {
@@ -48,11 +57,11 @@ export class GBASaveParser {
     // Find Section 1 (Team/Items)
     let section1Offset = -1;
     for (let i = 0; i < 14; i++) {
-      const sectionStart = activeOffset + (i * 4096);
-      if (sectionStart + 0x0FF4 + 2 > buffer.byteLength) {
+      const sectionStart = activeOffset + (i * SECTION_SIZE);
+      if (sectionStart + SECTION_ID_OFFSET + 2 > buffer.byteLength) {
         break;
       }
-      const sectionId = view.getUint16(sectionStart + 0x0FF4, true);
+      const sectionId = view.getUint16(sectionStart + SECTION_ID_OFFSET, true);
       if (sectionId === 1) {
         section1Offset = sectionStart;
         break;
@@ -60,27 +69,45 @@ export class GBASaveParser {
     }
     
     if (section1Offset === -1) return [];
-    
-    // FireRed/LeafGreen Party offset in Section 1 is 0x0234 (Count) and 0x0238 (Data)
-    // Note: Emerald is 0x0234 as well. Ruby/Sapphire is 0x0234.
-    if (section1Offset + 0x0234 + 4 > buffer.byteLength) return [];
-    const partyCount = view.getUint32(section1Offset + 0x0234, true);
-    const safeCount = Math.min(partyCount, 6);
-    
+
+    let teamOffset = -1;
+    let partyCount = 0;
+
+    // Check FRLG team count first
+    if (section1Offset + FRLG_TEAM_OFFSET + 4 <= buffer.byteLength) {
+      const frlgCount = view.getUint32(section1Offset + FRLG_TEAM_OFFSET, true);
+      if (frlgCount <= 6) {
+        teamOffset = FRLG_TEAM_OFFSET;
+        partyCount = frlgCount;
+      }
+    }
+
+    // If FRLG check failed (> 6), check RSE team count
+    if (teamOffset === -1 && section1Offset + RSE_TEAM_OFFSET + 4 <= buffer.byteLength) {
+      const rseCount = view.getUint32(section1Offset + RSE_TEAM_OFFSET, true);
+      if (rseCount <= 6) {
+        teamOffset = RSE_TEAM_OFFSET;
+        partyCount = rseCount;
+      }
+    }
+
+    if (teamOffset === -1) return [];
+
+    const teamDataOffset = section1Offset + teamOffset + 4;
     const team: Pokemon[] = [];
-    for (let i = 0; i < safeCount; i++) {
-      const pkmnOffset = section1Offset + 0x0238 + (i * 100);
+    for (let i = 0; i < partyCount; i++) {
+      const pkmnOffset = teamDataOffset + (i * 100);
       if (pkmnOffset + 8 > buffer.byteLength) {
         break;
       }
       const pid = view.getUint32(pkmnOffset, true);
       const otid = view.getUint32(pkmnOffset + 4, true);
-      // Decryption and species mapping will be added in the next task
       team.push({ pid, otid });
     }
     
     return team;
   }
 }
+
 
 

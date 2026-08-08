@@ -100,19 +100,16 @@ def parse_trainers(md_path='docs/trainers_data.md', caps_path='src/data/levelCap
     for t in trainers:
         groups[current_cap_idx]['trainers'].append(t)
         
-        if current_cap_idx < len(transition_bosses):
+        if current_cap_idx < len(groups) - 1 and current_cap_idx < len(transition_bosses):
             boss_trigger = transition_bosses[current_cap_idx]
-            if boss_trigger in t['name']:
+            if t['name'] == boss_trigger:
                 current_cap_idx += 1
 
     # Load existing trainers.json if present
     data = {}
     if os.path.exists(output_path):
         with open(output_path, 'r', encoding='utf-8') as f:
-            try:
-                data = json.load(f)
-            except Exception:
-                data = {}
+            data = json.load(f)
 
     data['FRLG Venusaur'] = groups
 

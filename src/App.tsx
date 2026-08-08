@@ -4,10 +4,10 @@ import { GBASaveParser, Pokemon } from '@/lib/GBASaveParser';
 import PokemonCard from '@/components/PokemonCard';
 import Sidebar from '@/components/Sidebar';
 import BoxView from '@/components/BoxView';
-import TrainersView, { Trainer } from '@/components/TrainersView';
+import TrainersView, { Trainer, TrainerCapGroup } from '@/components/TrainersView';
 import trainersDataRaw from '@/data/trainers.json';
 
-const trainersData = trainersDataRaw as Record<string, Trainer[]>;
+const trainersData = trainersDataRaw as Record<string, (TrainerCapGroup | Trainer)[]>;
 
 export default function App() {
   const [team, setTeam] = useState<Pokemon[]>([]);
@@ -17,7 +17,7 @@ export default function App() {
   const [saveLoaded, setSaveLoaded] = useState<boolean>(false);
   const [currentGame, setCurrentGame] = useState<string | null>(null);
 
-  const handleFileLoad = (buffer: ArrayBuffer, fileName: string) => {
+  const handleFileLoad = (buffer: ArrayBuffer) => {
     try {
       const parser = new GBASaveParser();
       const parsedData = parser.parse(buffer);
@@ -73,10 +73,10 @@ export default function App() {
     }
 
     if (currentView === 'trainers') {
-      let gameTrainers: Trainer[] = [];
+      let gameTrainers: (TrainerCapGroup | Trainer)[] = [];
       if (currentGame) {
         if (currentGame === 'FRLG') {
-          gameTrainers = trainersData['FRLG Charizard'] || [];
+          gameTrainers = trainersData['FRLG Venusaur'] || [];
         } else if (currentGame === 'Emerald') {
           gameTrainers = trainersData['Emerald Swampert'] || [];
         } else if (currentGame === 'RubySapphire') {

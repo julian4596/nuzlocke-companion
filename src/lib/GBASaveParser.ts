@@ -11,8 +11,8 @@ export interface Pokemon {
 
 export class GBASaveParser {
   validateSize(buffer: ArrayBuffer): void {
-    if (buffer.byteLength > 131072) {
-      throw new Error('Invalid save file size. Expected maximum 128KB GBA save.');
+    if (buffer.byteLength > 2097152) { // 2MB max
+      throw new Error('Invalid save file size. Expected maximum 2MB GBA save.');
     }
   }
 

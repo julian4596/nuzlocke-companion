@@ -160,7 +160,7 @@ describe('GBASaveParser Team Extraction', () => {
     view.setUint32(pkmnOffset + 4, otid, true);
     
     // Set Nickname ("Pikachu" padded with 0xFF)
-    const nicknameBytes = [0xCB, 0xDD, 0xDF, 0xD5, 0xD7, 0xDC, 0xE9, 0xFF, 0xFF, 0xFF];
+    const nicknameBytes = [0xCA, 0xDD, 0xDF, 0xD5, 0xD7, 0xDC, 0xE9, 0xFF, 0xFF, 0xFF];
     for (let i = 0; i < 10; i++) {
       view.setUint8(pkmnOffset + 8 + i, nicknameBytes[i]);
     }

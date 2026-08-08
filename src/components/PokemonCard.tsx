@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Pokemon } from '@/lib/GBASaveParser';
 import pokemonData from '@/data/pokemon.json';
 import movesData from '@/data/moves.json';

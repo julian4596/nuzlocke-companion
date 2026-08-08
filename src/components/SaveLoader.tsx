@@ -13,13 +13,11 @@ export default function SaveLoader({ onFileLoad }: Props) {
       const buffer = event.target?.result as ArrayBuffer;
       if (buffer) {
         onFileLoad(buffer);
-        e.target.value = ''; // Reset input value to allow reloading the same file
       }
     };
     reader.onerror = () => {
       console.error('Error reading save file');
       alert('Failed to read the save file. Please try again.');
-      e.target.value = '';
     };
     reader.readAsArrayBuffer(file);
   };
@@ -34,6 +32,7 @@ export default function SaveLoader({ onFileLoad }: Props) {
         type="file" 
         accept=".sav,.dsv" 
         aria-label="Upload Save File"
+        onClick={(e) => { (e.target as HTMLInputElement).value = ''; }}
         onChange={handleFileChange}
         className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer" 
       />

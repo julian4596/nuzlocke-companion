@@ -11,6 +11,7 @@ export interface Pokemon {
   experience?: number;
   nature?: number;
   nickname?: string;
+  isShiny?: boolean;
   abilityBit?: number;
   hp?: number;
   maxHp?: number;

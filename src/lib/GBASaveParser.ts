@@ -1,5 +1,6 @@
 import { decodeGBAString } from './GBACharMap';
 import { SaveData, Pokemon } from './types';
+import { BaseSaveParser } from './BaseSaveParser';
 
 export const SECTION_SIZE = 4096;
 export const SAVE_B_OFFSET = 0xE000;
@@ -19,7 +20,7 @@ export const LEVEL_OFFSET = 84;
 export const SUBSTRUCTURE_START_OFFSET = 32;
 export const SUBSTRUCTURE_SIZE = 12;
 
-export class GBASaveParser {
+export class GBASaveParser extends BaseSaveParser {
   public validateSize(buffer: ArrayBuffer): void {
     if (buffer.byteLength > MAX_SAVE_SIZE) {
       throw new Error('Invalid save file size. Expected maximum 2MB GBA save.');

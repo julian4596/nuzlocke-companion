@@ -129,4 +129,33 @@ describe('SaveManager and Gen5SaveParser', () => {
     const team = parser.parseTeam(buffer);
     expect(team[0].isShiny).toBe(true);
   });
+
+  it('should parse boxes correctly', () => {
+    const parser = new Gen5SaveParser();
+    const buffer = new ArrayBuffer(524288);
+    const view = new DataView(buffer);
+    
+    // Box 1, Slot 1 (offset 0x400)
+    const pkmnOffset = 0x400;
+    
+    // PID: 1, Permutation 0: ABCD
+    view.setUint32(pkmnOffset, 1, true);
+    view.setUint16(pkmnOffset + 6, 0, true);
+    
+    let seed = 0;
+    const prngWords = [];
+    for (let i = 0; i < 64; i++) {
+      seed = (Math.imul(seed, 0x41C64E6D) + 0x6073) >>> 0;
+      prngWords.push(seed >>> 16);
+    }
+    
+    view.setUint16(pkmnOffset + 0x08, 151 ^ prngWords[0], true); // Species: Mew
+    view.setUint16(pkmnOffset + 0x0C, 999 ^ prngWords[2], true); // OTID
+    
+    const boxes = parser.parseBoxes(buffer);
+    expect(boxes.length).toBe(24);
+    expect(boxes[0].length).toBeGreaterThan(0);
+    expect(boxes[0][0].speciesId).toBe(151);
+    expect(boxes[0][0].otid).toBe(999);
+  });
 });

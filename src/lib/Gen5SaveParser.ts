@@ -27,16 +27,25 @@ export class Gen5SaveParser extends BaseSaveParser {
   private detectGameVersion(buffer: ArrayBuffer): string {
     const activeSlot = this.getActiveSaveSlot(buffer);
     const view = new DataView(buffer);
-    // B2W2 Party offset is 0x18E00. BW Party offset is 0x18E08.
+    
     const countB2W2 = view.getUint32(activeSlot + 0x18E00, true);
     const countBW = view.getUint32(activeSlot + 0x18E08, true);
     
-    // Check which one is a valid party count (1-6). 
-    // If both could be valid, maybe one of them has a larger trailing gap.
-    // BW count is strictly 0x18E08. So if countBW is valid but countB2W2 is not, it's BW.
-    if (countB2W2 >= 1 && countB2W2 <= 6 && (countBW < 1 || countBW > 6)) {
-      return 'Black 2/White 2';
+    const validB2W2 = countB2W2 >= 1 && countB2W2 <= 6;
+    const validBW = countBW >= 1 && countBW <= 6;
+
+    if (validB2W2 && !validBW) return 'Black 2/White 2';
+    if (validBW && !validB2W2) return 'Black/White';
+    
+    // Tiebreaker: Validate Trainer Name string (B2W2 vs BW offsets)
+    // A valid trainer name usually has alphanumeric characters.
+    const nameB2W2 = this.decodeString(buffer, activeSlot + 0x19400, 8);
+    
+    // If the B2W2 string contains valid ASCII and is null-terminated properly
+    if (nameB2W2.length > 0 && nameB2W2.length <= 8 && /^[\x20-\x7E]+$/.test(nameB2W2)) {
+        return 'Black 2/White 2';
     }
+    
     return 'Black/White';
   }
 

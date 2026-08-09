@@ -26,9 +26,11 @@ A factory class `SaveManager` will serve as the entry point for parsing any save
 
 ## 5. Gen 5 Parser (`src/lib/Gen5SaveParser.ts`)
 A new parser class extending `BaseSaveParser` will handle Generation 5 specific formats.
-- **Game Detection:** Checks memory signatures at known offset locations to differentiate between Black/White and Black 2/White 2 (as offsets differ slightly between them).
-- **Data Decryption:** Implements the Gen 5 LCRNG (Linear Congruential Random Number Generator) algorithm to decrypt the Pokemon data blocks.
-- **Data Extraction:** Parses the active save slot to extract the trainer name, party Pokémon (up to 6), and PC boxes (up to 24 boxes of 30).
+- **Game Detection:** Determine the active save slot (Block 1 at `0x0`, Block 2 at `0x24000`). Select the one with the higher save index/valid checksum. To differentiate BW from B2W2, use the offsets below:
+  - **BW Offsets:** Party Pokémon at `0x18E08`, Trainer Data at `0x19404`, Boxed Pokémon at `0x400`.
+  - **B2W2 Offsets:** Party Pokémon at `0x18E00`, Trainer Data at `0x19400`, Boxed Pokémon at `0x400`.
+- **Data Decryption:** Gen 5 uses a PRNG to encrypt Pokemon data blocks. The LCRNG algorithm is: `seed = (seed * 0x41C64E6D + 0x6073) & 0xFFFFFFFF`. The initial seed for decrypting a Pokemon is its checksum.
+- **Data Extraction:** Parse the active save slot to extract the trainer name, party Pokémon (up to 6, 220-byte structures), and PC boxes (up to 24 boxes of 30, 136-byte structures). Pokémon data uses block shuffling based on `((PID & 0x3E000) >> 13) % 24`.
 
 ## 6. App.tsx Integration
 `handleFileLoad` in `App.tsx` will be refactored to use the new `SaveManager`:

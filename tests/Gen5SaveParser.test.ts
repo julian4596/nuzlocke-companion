@@ -57,4 +57,76 @@ describe('SaveManager and Gen5SaveParser', () => {
     expect(result.trainerName).toBe('PLAYER');
     expect(result.gameVersion).toBe('Black/White');
   });
+  it('should decrypt Pokemon data correctly using LCRNG and block un-shuffling', () => {
+    const parser = new Gen5SaveParser();
+    const buffer = new ArrayBuffer(524288);
+    const view = new DataView(buffer);
+    
+    view.setUint32(0x18E08, 1, true); // 1 Pokemon in party (BW offset)
+    
+    const pkmnOffset = 0x18E08 + 4;
+    
+    // PID: 0x00000001
+    // shiftIndex = ((1 & 0x3E000) >>> 13) % 24 = 0
+    // Permutation 0: ABCD
+    view.setUint32(pkmnOffset, 1, true);
+    
+    // Checksum = 0
+    view.setUint16(pkmnOffset + 6, 0, true);
+    
+    let seed = 0;
+    const prngWords = [];
+    for (let i = 0; i < 64; i++) {
+      seed = (Math.imul(seed, 0x41C64E6D) + 0x6073) >>> 0;
+      prngWords.push(seed >>> 16);
+    }
+    
+    view.setUint16(pkmnOffset + 0x08, 25 ^ prngWords[0], true); // Species
+    view.setUint16(pkmnOffset + 0x0C, 12345 ^ prngWords[2], true); // OTID
+    view.setUint16(pkmnOffset + 0x0E, 54321 ^ prngWords[3], true); // OTSID
+    view.setUint16(pkmnOffset + 0x28, 33 ^ prngWords[16], true); // Move 1
+    
+    view.setUint16(pkmnOffset + 0x48, 'P'.charCodeAt(0) ^ prngWords[32], true);
+    view.setUint16(pkmnOffset + 0x4A, 'I'.charCodeAt(0) ^ prngWords[33], true);
+    view.setUint16(pkmnOffset + 0x4C, 'K'.charCodeAt(0) ^ prngWords[34], true);
+    view.setUint16(pkmnOffset + 0x4E, 'A'.charCodeAt(0) ^ prngWords[35], true);
+    view.setUint16(pkmnOffset + 0x50, 0xFFFF ^ prngWords[36], true);
+    
+    view.setUint8(pkmnOffset + 0x8C, 5); // Level
+    
+    const team = parser.parseTeam(buffer);
+    expect(team.length).toBe(1);
+    expect(team[0].speciesId).toBe(25);
+    expect(team[0].otid).toBe(12345);
+    expect(team[0].moves?.[0]).toBe(33);
+    expect(team[0].nickname).toBe('PIKA');
+    expect(team[0].level).toBe(5);
+    expect(team[0].isShiny).toBe(false);
+  });
+
+  it('should correctly identify a shiny Pokemon', () => {
+    const parser = new Gen5SaveParser();
+    const buffer = new ArrayBuffer(524288);
+    const view = new DataView(buffer);
+    
+    view.setUint32(0x18E08, 1, true); 
+    const pkmnOffset = 0x18E08 + 4;
+    
+    // PID=1, otid=1, otsid=1 -> shiny
+    view.setUint32(pkmnOffset, 1, true);
+    view.setUint16(pkmnOffset + 6, 0, true);
+    
+    let seed = 0;
+    const prngWords = [];
+    for (let i = 0; i < 64; i++) {
+      seed = (Math.imul(seed, 0x41C64E6D) + 0x6073) >>> 0;
+      prngWords.push(seed >>> 16);
+    }
+    
+    view.setUint16(pkmnOffset + 0x0C, 1 ^ prngWords[2], true);
+    view.setUint16(pkmnOffset + 0x0E, 1 ^ prngWords[3], true);
+    
+    const team = parser.parseTeam(buffer);
+    expect(team[0].isShiny).toBe(true);
+  });
 });

@@ -28,9 +28,13 @@ export class Gen5SaveParser extends BaseSaveParser {
     const activeSlot = this.getActiveSaveSlot(buffer);
     const view = new DataView(buffer);
     // B2W2 Party offset is 0x18E00. BW Party offset is 0x18E08.
-    // The uint32 at the party offset is the number of pokemon in the party (0-6).
     const countB2W2 = view.getUint32(activeSlot + 0x18E00, true);
-    if (countB2W2 >= 1 && countB2W2 <= 6) {
+    const countBW = view.getUint32(activeSlot + 0x18E08, true);
+    
+    // Check which one is a valid party count (1-6). 
+    // If both could be valid, maybe one of them has a larger trailing gap.
+    // BW count is strictly 0x18E08. So if countBW is valid but countB2W2 is not, it's BW.
+    if (countB2W2 >= 1 && countB2W2 <= 6 && (countBW < 1 || countBW > 6)) {
       return 'Black 2/White 2';
     }
     return 'Black/White';
@@ -110,8 +114,9 @@ export class Gen5SaveParser extends BaseSaveParser {
       nickname,
       moves,
       level,
+      isShiny,
       // Not mapping everything, but this fulfills the current spec
-    } as Pokemon;
+    } as Pokemon & { isShiny?: boolean };
   }
 
   parse(buffer: ArrayBuffer): SaveData {

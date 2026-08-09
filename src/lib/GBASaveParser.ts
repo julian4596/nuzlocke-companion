@@ -1,4 +1,6 @@
 import { decodeGBAString } from './GBACharMap';
+import { SaveData, Pokemon } from './types';
+import { BaseSaveParser } from './BaseSaveParser';
 
 export const SECTION_SIZE = 4096;
 export const SAVE_B_OFFSET = 0xE000;
@@ -8,46 +10,7 @@ export const FRLG_TEAM_OFFSET = 0x0234;
 export const RSE_TEAM_OFFSET = 0x0034;
 export const MAX_SAVE_SIZE = 2097152;
 
-export interface SaveData {
-  trainerName: string;
-  gameVersion: string;
-}
 
-export interface Pokemon {
-  pid: number;
-  otid: number;
-  speciesId?: number;
-  level?: number;
-  experience?: number;
-  nature?: number;
-  nickname?: string;
-  abilityBit?: number;
-  hp?: number;
-  maxHp?: number;
-  attack?: number;
-  defense?: number;
-  speed?: number;
-  spAttack?: number;
-  spDefense?: number;
-  moves?: number[];
-  pp?: number[];
-  ivs?: {
-    hp: number;
-    attack: number;
-    defense: number;
-    speed: number;
-    spAttack: number;
-    spDefense: number;
-  };
-  evs?: {
-    hp: number;
-    attack: number;
-    defense: number;
-    speed: number;
-    spAttack: number;
-    spDefense: number;
-  };
-}
 
 const GROWTH_SUBSTRUCTURE_INDEX = [0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3];
 const ATTACKS_SUBSTRUCTURE_INDEX =[1, 1, 2, 3, 2, 3, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2];
@@ -57,7 +20,7 @@ export const LEVEL_OFFSET = 84;
 export const SUBSTRUCTURE_START_OFFSET = 32;
 export const SUBSTRUCTURE_SIZE = 12;
 
-export class GBASaveParser {
+export class GBASaveParser extends BaseSaveParser {
   public validateSize(buffer: ArrayBuffer): void {
     if (buffer.byteLength > MAX_SAVE_SIZE) {
       throw new Error('Invalid save file size. Expected maximum 2MB GBA save.');

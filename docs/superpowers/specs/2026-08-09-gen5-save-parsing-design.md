@@ -29,8 +29,15 @@ A new parser class extending `BaseSaveParser` will handle Generation 5 specific 
 - **Game Detection:** Determine the active save slot (Block 1 at `0x0`, Block 2 at `0x24000`). Select the one with the higher save index/valid checksum. To differentiate BW from B2W2, use the offsets below:
   - **BW Offsets:** Party Pokémon at `0x18E08`, Trainer Data at `0x19404`, Boxed Pokémon at `0x400`.
   - **B2W2 Offsets:** Party Pokémon at `0x18E00`, Trainer Data at `0x19400`, Boxed Pokémon at `0x400`.
-- **Data Decryption:** Gen 5 uses a PRNG to encrypt Pokemon data blocks. The LCRNG algorithm is: `seed = (seed * 0x41C64E6D + 0x6073) & 0xFFFFFFFF`. The initial seed for decrypting a Pokemon is its checksum.
+- **Data Decryption:** Gen 5 uses a PRNG to encrypt Pokemon data blocks. The LCRNG algorithm is: `seed = (seed * 0x41C64E6D + 0x6073) & 0xFFFFFFFF`. The initial seed for decrypting a Pokemon is its checksum (read from 0x06).
 - **Data Extraction:** Parse the active save slot to extract the trainer name, party Pokémon (up to 6, 220-byte structures), and PC boxes (up to 24 boxes of 30, 136-byte structures). Pokémon data uses block shuffling based on `((PID & 0x3E000) >> 13) % 24`.
+  - **Block Permutations:** 0=ABCD, 1=ABDC, 2=ACBD, 3=ACDB, 4=ADBC, 5=ADCB, 6=BACD, 7=BADC, 8=BCAD, 9=BCDA, 10=BDAC, 11=BDCA, 12=CABD, 13=CADB, 14=CBAD, 15=CBDA, 16=CDAB, 17=CDBA, 18=DABC, 19=DACB, 20=DBAC, 21=DBCA, 22=DCAB, 23=DCBA.
+  - **Decrypted Offsets:**
+    - Block A (0x08-0x27): Species (0x08, 16-bit), OT ID (0x0C, 16-bit), OT SID (0x0E, 16-bit).
+    - Block B (0x28-0x47): Moves (0x28, 4x 16-bit).
+    - Block C (0x48-0x67): Nickname (0x48, 22 bytes, 11 UTF-16LE characters).
+    - Party Stats (0x88-0xDB): Level (0x8C, 8-bit). For Box Pokémon without Party Stats, calculate Level from EXP (or default to 0 for this task if EXP table isn't available).
+    - Shiny calculation: `isShiny = (OTID ^ OTSID ^ (PID & 0xFFFF) ^ (PID >>> 16)) < 8`
 
 ## 6. App.tsx Integration
 `handleFileLoad` in `App.tsx` will be refactored to use the new `SaveManager`:

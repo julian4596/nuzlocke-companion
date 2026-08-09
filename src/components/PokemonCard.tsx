@@ -1,4 +1,4 @@
-import { Pokemon } from '@/lib/GBASaveParser';
+import { Pokemon } from '@/lib/types';
 import pokemonData from '@/data/pokemon.json';
 import movesData from '@/data/moves.json';
 import abilitiesData from '@/data/abilities.json';
@@ -99,12 +99,12 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
       <div className="border-t border-gray-700 pt-3 mt-auto">
         <p className="text-xs text-gray-500 mb-2 uppercase font-semibold">Moves</p>
         <div className="flex flex-wrap gap-2">
-          {pkmn.moves?.filter(m => m > 0).map((moveId, idx) => (
+          {pkmn.moves?.filter((m: number) => m > 0).map((moveId: number, idx: number) => (
             <span key={idx} className="bg-blue-900 text-blue-200 text-xs px-2 py-1 rounded truncate max-w-full">
               {getMoveName(moveId)}
             </span>
           ))}
-          {(!pkmn.moves || pkmn.moves.filter(m => m > 0).length === 0) && (
+          {(!pkmn.moves || pkmn.moves.filter((m: number) => m > 0).length === 0) && (
             <span className="text-gray-500 text-xs italic">No moves known</span>
           )}
         </div>

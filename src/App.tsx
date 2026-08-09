@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SaveLoader from '@/components/SaveLoader';
-import { GBASaveParser, Pokemon } from '@/lib/GBASaveParser';
+import { GBASaveParser } from '@/lib/GBASaveParser';
+import { Pokemon } from '@/lib/types';
 import PokemonCard from '@/components/PokemonCard';
 import Sidebar from '@/components/Sidebar';
 import BoxView from '@/components/BoxView';

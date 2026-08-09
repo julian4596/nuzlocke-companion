@@ -1,4 +1,4 @@
-import { Pokemon } from '@/lib/GBASaveParser';
+import { Pokemon } from '@/lib/types';
 import PokemonCard from './PokemonCard';
 
 interface BoxViewProps {

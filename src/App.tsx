@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SaveLoader from '@/components/SaveLoader';
-import { GBASaveParser, Pokemon } from '@/lib/GBASaveParser';
+import { SaveManager } from '@/lib/SaveManager';
+import { Pokemon } from '@/lib/types';
 import PokemonCard from '@/components/PokemonCard';
 import Sidebar from '@/components/Sidebar';
 import BoxView from '@/components/BoxView';
@@ -19,7 +20,7 @@ export default function App() {
 
   const handleFileLoad = (buffer: ArrayBuffer) => {
     try {
-      const parser = new GBASaveParser();
+      const parser = SaveManager.getParser(buffer);
       const parsedData = parser.parse(buffer);
       setCurrentGame(parsedData.gameVersion);
 

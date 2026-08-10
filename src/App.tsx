@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import SaveLoader from '@/components/SaveLoader';
+import { useState, useEffect } from 'react';
 import { SaveManager } from '@/lib/SaveManager';
-import { Pokemon } from '@/lib/types';
+import { Pokemon, SavedRun } from '@/lib/types';
+import { getRuns, saveRun } from '@/lib/db';
 import PokemonCard from '@/components/PokemonCard';
 import Sidebar from '@/components/Sidebar';
 import BoxView from '@/components/BoxView';
 import TrainersView, { Trainer, TrainerCapGroup } from '@/components/TrainersView';
+import StartScreen from '@/components/StartScreen';
+import LoadGameScreen from '@/components/LoadGameScreen';
 import trainersDataRaw from '@/data/trainers.json';
 
 const trainersData = trainersDataRaw as Record<string, (TrainerCapGroup | Trainer)[]>;
@@ -15,36 +17,57 @@ export default function App() {
   const [boxes, setBoxes] = useState<Pokemon[][]>([]);
   const [error, setError] = useState<string | null>(null);
   const [currentView, setCurrentView] = useState<string>('party');
-  const [saveLoaded, setSaveLoaded] = useState<boolean>(false);
+  
   const [currentGame, setCurrentGame] = useState<string | null>(null);
 
-  const handleFileLoad = (buffer: ArrayBuffer) => {
+  // New state for routing
+  const [topView, setTopView] = useState<'start' | 'load' | 'app'>('start');
+  const [runs, setRuns] = useState<SavedRun[]>([]);
+  const [mostRecentRun, setMostRecentRun] = useState<SavedRun | null>(null);
+  
+  // Load runs on mount
+  useEffect(() => {
+    const fetchRuns = async () => {
+      const savedRuns = await getRuns();
+      setRuns(savedRuns);
+      if (savedRuns.length > 0) {
+        const sorted = [...savedRuns].sort((a, b) => b.lastPlayed - a.lastPlayed);
+        setMostRecentRun(sorted[0]);
+      } else {
+        setMostRecentRun(null);
+      }
+    };
+    fetchRuns();
+  }, [topView]); // Re-fetch when view changes back to start/load
+
+  const handleLoadRun = async (run: SavedRun) => {
     try {
-      const parser = SaveManager.getParser(buffer);
-      const parsedData = parser.parse(buffer);
+      const parser = SaveManager.getParser(run.saveBuffer);
+      const parsedData = parser.parse(run.saveBuffer);
       setCurrentGame(parsedData.gameVersion);
 
-      const parsedTeam = parser.parseTeam(buffer);
-      const parsedBoxes = parser.parseBoxes(buffer);
+      const parsedTeam = parser.parseTeam(run.saveBuffer);
+      const parsedBoxes = parser.parseBoxes(run.saveBuffer);
       
       if (parsedTeam.length === 0) {
-        setError(`No valid team data found in this ${parsedData.gameVersion} save file. The file may be empty or from an unsupported game.`);
-        setTeam([]);
-        setBoxes([]);
-        setSaveLoaded(false);
-        setCurrentGame(null);
-      } else {
-        setTeam(parsedTeam);
-        setBoxes(parsedBoxes);
-        setError(null);
-        setSaveLoaded(true);
-        setCurrentView('party');
+        setError(`No valid team data found. The file may be empty or from an unsupported game.`);
+        return;
       }
+      
+      setTeam(parsedTeam);
+      setBoxes(parsedBoxes);
+      setError(null);
+      
+      // Update last played
+      run.lastPlayed = Date.now();
+      await saveRun(run);
+      
+      setCurrentView('party');
+      setTopView('app');
     } catch (e: any) {
       setError(e.message);
       setTeam([]);
       setBoxes([]);
-      setSaveLoaded(false);
       setCurrentGame(null);
     }
   };
@@ -90,13 +113,25 @@ export default function App() {
     return null;
   };
 
-  if (!saveLoaded) {
+  if (topView === 'start') {
     return (
-      <div className="min-h-screen bg-gray-900 text-white p-8">
-        <h1 className="text-3xl font-bold mb-8">Nuzlocke Companion</h1>
-        <SaveLoader onFileLoad={handleFileLoad} />
-        {error && <div className="text-red-500 mt-4">{error}</div>}
+      <div className="min-h-screen bg-gray-900 text-white">
+        <StartScreen 
+          mostRecentRun={mostRecentRun} 
+          onContinue={() => mostRecentRun && handleLoadRun(mostRecentRun)} 
+          onLoadGameClick={() => setTopView('load')}
+        />
+        {error && <div className="absolute top-4 right-4 bg-red-900 text-red-100 px-4 py-2 rounded shadow-lg">{error}</div>}
       </div>
+    );
+  }
+
+  if (topView === 'load') {
+    return (
+      <LoadGameScreen 
+        onBack={() => setTopView('start')} 
+        onLoadRun={(run) => handleLoadRun(run)}
+      />
     );
   }
 
@@ -112,4 +147,3 @@ export default function App() {
     </div>
   );
 }
-

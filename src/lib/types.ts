@@ -44,8 +44,6 @@ export interface Pokemon {
 export interface SavedRun {
   id: string;
   name: string;
-  startDate: string;
-  endDate: string;
   gameVersion: string;
   badges: number;
   deaths: number;

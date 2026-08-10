@@ -48,7 +48,7 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
     URL.revokeObjectURL(url);
   };
 
-  const handleImport = async (name: string, startDate: string, endDate: string, buffer: ArrayBuffer) => {
+  const handleImport = async (name: string, buffer: ArrayBuffer) => {
     try {
       const parser = SaveManager.getParser(buffer);
       const data = parser.parse(buffer);
@@ -57,8 +57,6 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
       const newRun: SavedRun = {
         id: crypto.randomUUID(),
         name,
-        startDate,
-        endDate,
         gameVersion: data.gameVersion || 'Unknown',
         badges: (data as any).badges || 0,
         deaths: (data as any).deaths || 0,
@@ -101,7 +99,7 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
                 <div className="flex-1 mb-4 md:mb-0">
                   <h2 className="text-xl font-bold mb-1">{run.name}</h2>
                   <div className="text-sm text-neutral-400 mb-3">
-                    {run.startDate} - {run.endDate} • {run.gameVersion}
+                    {run.gameVersion}
                   </div>
                   
                   <div className="flex items-center gap-6 mb-4">

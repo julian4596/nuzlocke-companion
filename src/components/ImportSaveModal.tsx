@@ -5,23 +5,19 @@ import SaveLoader from './SaveLoader';
 export default function ImportSaveModal(props: { 
   isOpen: boolean; 
   onClose: () => void; 
-  onImport: (name: string, startDate: string, endDate: string, buffer: ArrayBuffer) => void 
+  onImport: (name: string, buffer: ArrayBuffer) => void 
 }) {
   const [name, setName] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
   const [saveBuffer, setSaveBuffer] = useState<ArrayBuffer | null>(null);
 
   if (!props.isOpen) return null;
 
   const handleImport = (e: React.FormEvent) => {
     e.preventDefault();
-    if (saveBuffer && name && startDate && endDate) {
-      props.onImport(name, startDate, endDate, saveBuffer);
+    if (saveBuffer && name) {
+      props.onImport(name, saveBuffer);
       // Reset state for next time
       setName('');
-      setStartDate('');
-      setEndDate('');
       setSaveBuffer(null);
     }
   };
@@ -29,8 +25,6 @@ export default function ImportSaveModal(props: {
   const handleClose = () => {
     // Reset state when closing
     setName('');
-    setStartDate('');
-    setEndDate('');
     setSaveBuffer(null);
     props.onClose();
   };
@@ -72,32 +66,7 @@ export default function ImportSaveModal(props: {
                 />
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-1">
-                    Start Date
-                  </label>
-                  <input
-                    type="date"
-                    required
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-1">
-                    End Date
-                  </label>
-                  <input
-                    type="date"
-                    required
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-              </div>
+
               
               <div className="pt-4 flex justify-end gap-3">
                 <button
@@ -109,7 +78,7 @@ export default function ImportSaveModal(props: {
                 </button>
                 <button
                   type="submit"
-                  disabled={!name || !startDate || !endDate}
+                  disabled={!name}
                   className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   Save Run

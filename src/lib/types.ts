@@ -40,3 +40,16 @@ export interface Pokemon {
     spDefense: number;
   };
 }
+
+export interface SavedRun {
+  id: string;
+  name: string;
+  startDate: string;
+  endDate: string;
+  gameVersion: string;
+  badges: number;
+  deaths: number;
+  teamSprites: number[];
+  saveBuffer: ArrayBuffer;
+  lastPlayed: number;
+}

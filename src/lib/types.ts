@@ -13,6 +13,7 @@ export interface Pokemon {
   nickname?: string;
   isShiny?: boolean;
   abilityBit?: number;
+  abilityId?: number;
   hp?: number;
   maxHp?: number;
   attack?: number;

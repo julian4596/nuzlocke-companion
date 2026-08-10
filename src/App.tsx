@@ -28,7 +28,7 @@ export default function App() {
       const parsedBoxes = parser.parseBoxes(buffer);
       
       if (parsedTeam.length === 0) {
-        setError("No valid team data found. Make sure this is a valid Gen 3 GBA save file.");
+        setError(`No valid team data found in this ${parsedData.gameVersion} save file. The file may be empty or from an unsupported game.`);
         setTeam([]);
         setBoxes([]);
         setSaveLoaded(false);

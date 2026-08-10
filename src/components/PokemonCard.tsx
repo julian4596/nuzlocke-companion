@@ -2,6 +2,7 @@ import { Pokemon } from '@/lib/types';
 import pokemonData from '@/data/pokemon.json';
 import movesData from '@/data/moves.json';
 import abilitiesData from '@/data/abilities.json';
+import abilityIdsData from '@/data/ability_ids.json';
 import { calculateStats } from '@/lib/StatCalculator';
 
 interface PokemonCardProps {
@@ -21,7 +22,11 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
     return name || `Move ${id}`;
   };
 
-  const getAbilityName = (id?: number, abilityBit?: number) => {
+  const getAbilityName = (id?: number, abilityBit?: number, abilityId?: number) => {
+    if (abilityId !== undefined) {
+      const name = (abilityIdsData as Record<string, string>)[abilityId.toString()];
+      if (name) return name;
+    }
     if (!id || abilityBit === undefined) return 'Unknown';
     const abilities = (abilitiesData as Record<string, string[]>)[id.toString()];
     if (!abilities) return 'Unknown';
@@ -31,6 +36,32 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
   const dynamicStats = (isBox && pkmn.speciesId && pkmn.experience !== undefined && pkmn.nature !== undefined && pkmn.ivs && pkmn.evs)
     ? calculateStats(pkmn.speciesId, pkmn.experience, pkmn.nature, pkmn.ivs, pkmn.evs)
     : null;
+
+  const displayStats = (isBox && dynamicStats) 
+    ? {
+        level: dynamicStats.level,
+        hp: dynamicStats.maxHp,
+        maxHp: dynamicStats.maxHp,
+        atk: dynamicStats.atk,
+        def: dynamicStats.def,
+        spa: dynamicStats.spa,
+        spd: dynamicStats.spd,
+        spe: dynamicStats.spe,
+        nature: dynamicStats.nature
+      }
+    : (!isBox && pkmn.attack !== undefined)
+      ? {
+          level: pkmn.level,
+          hp: pkmn.hp,
+          maxHp: pkmn.maxHp,
+          atk: pkmn.attack,
+          def: pkmn.defense,
+          spa: pkmn.spAttack,
+          spd: pkmn.spDefense,
+          spe: pkmn.speed,
+          nature: null
+        }
+      : null;
 
   return (
     <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 shadow flex flex-col h-full">
@@ -45,54 +76,54 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
           <h3 className="text-xl font-bold flex flex-col xl:flex-row xl:justify-between truncate">
             <span className="truncate">
               {pkmn.nickname} 
-              {!isBox && pkmn.level !== undefined ? ` (Lv. ${pkmn.level})` : ''}
-              {isBox && dynamicStats ? ` (Lv. ${dynamicStats.level})` : ''}
+              {displayStats?.level !== undefined ? ` (Lv. ${displayStats.level})` : ''}
             </span>
             <span className="text-gray-400 text-sm xl:ml-2">#{pkmn.speciesId} {getSpeciesName(pkmn.speciesId)}</span>
           </h3>
           <p className="text-sm text-gray-400 mt-1 truncate">
-            Ability: <span className="text-blue-300 font-medium">{getAbilityName(pkmn.speciesId, pkmn.abilityBit)}</span>
+            Ability: <span className="text-blue-300 font-medium">{getAbilityName(pkmn.speciesId, pkmn.abilityBit, pkmn.abilityId)}</span>
           </p>
         </div>
       </div>
       
-      {!isBox && pkmn.hp !== undefined && pkmn.maxHp !== undefined && (
+      {displayStats && (
         <div className="mb-4">
-          <div className="flex justify-between text-sm text-gray-300">
-            <span>HP:</span>
-            <span>{pkmn.hp} / {pkmn.maxHp}</span>
+          <div className="flex justify-between text-sm text-gray-300 mb-1">
+            <span>{displayStats.nature ? `Nature: ${displayStats.nature}` : 'HP:'}</span>
+            <span className={displayStats.nature ? "text-green-400" : ""}>
+              {displayStats.hp !== undefined ? `${displayStats.hp} / ${displayStats.maxHp}` : `Max HP: ${displayStats.maxHp}`}
+            </span>
           </div>
-          <div className="w-full bg-gray-700 rounded-full h-2.5 mt-1">
-            <div className="bg-green-500 h-2.5 rounded-full" style={{ width: `${Math.min(100, Math.max(0, (pkmn.hp / pkmn.maxHp) * 100))}%` }}></div>
-          </div>
-        </div>
-      )}
-
-      {isBox && dynamicStats && (
-        <div className="mb-4">
-          <div className="flex justify-between text-sm text-gray-300 mb-2">
-            <span>Nature: <span className="text-white">{dynamicStats.nature}</span></span>
-            <span>Max HP: <span className="text-green-400">{dynamicStats.maxHp}</span></span>
-          </div>
-          <div className="grid grid-cols-2 gap-2 text-sm text-gray-400 mb-2 p-2 bg-gray-900 rounded-lg">
-            <div>Atk: <span className="text-white">{dynamicStats.atk}</span></div>
-            <div>Def: <span className="text-white">{dynamicStats.def}</span></div>
-            <div>SpA: <span className="text-white">{dynamicStats.spa}</span></div>
-            <div>SpD: <span className="text-white">{dynamicStats.spd}</span></div>
-            <div>Spe: <span className="text-white">{dynamicStats.spe}</span></div>
+          {displayStats.hp !== undefined && !displayStats.nature && (
+            <div className="w-full bg-gray-700 rounded-full h-2.5 mb-3">
+              <div 
+                className="bg-green-500 h-2.5 rounded-full" 
+                style={{ width: `${Math.min(100, Math.max(0, (displayStats.hp / (displayStats.maxHp || 1)) * 100))}%` }}
+              ></div>
+            </div>
+          )}
+          <div className="grid grid-cols-2 gap-2 text-sm text-gray-400 p-2 bg-gray-900 rounded-lg mt-2">
+            <div>Atk: <span className="text-white">{displayStats.atk}</span></div>
+            <div>Def: <span className="text-white">{displayStats.def}</span></div>
+            <div>SpA: <span className="text-white">{displayStats.spa}</span></div>
+            <div>SpD: <span className="text-white">{displayStats.spd}</span></div>
+            <div>Spe: <span className="text-white">{displayStats.spe}</span></div>
             <div>PID: <span className="text-gray-500 truncate" title={pkmn.pid?.toString()}>{pkmn.pid}</span></div>
           </div>
         </div>
       )}
 
-      {!isBox && pkmn.attack !== undefined && (
-        <div className="grid grid-cols-2 gap-2 text-sm text-gray-400 mb-4 p-2 bg-gray-900 rounded-lg">
-          <div>Atk: <span className="text-white">{pkmn.attack}</span></div>
-          <div>Def: <span className="text-white">{pkmn.defense}</span></div>
-          <div>SpA: <span className="text-white">{pkmn.spAttack}</span></div>
-          <div>SpD: <span className="text-white">{pkmn.spDefense}</span></div>
-          <div>Spe: <span className="text-white">{pkmn.speed}</span></div>
-          <div>PID: <span className="text-gray-500 truncate" title={pkmn.pid?.toString()}>{pkmn.pid}</span></div>
+      {pkmn.ivs && (
+        <div className="mb-4">
+          <p className="text-xs text-gray-500 mb-1 uppercase font-semibold">IVs</p>
+          <div className="grid grid-cols-6 gap-1 text-[10px] text-center bg-gray-900 p-1.5 rounded-lg border border-gray-700">
+            <div><div className="text-gray-500">HP</div><div className={pkmn.ivs.hp === 31 ? "text-green-400 font-bold" : "text-white"}>{pkmn.ivs.hp}</div></div>
+            <div><div className="text-gray-500">Atk</div><div className={pkmn.ivs.attack === 31 ? "text-green-400 font-bold" : "text-white"}>{pkmn.ivs.attack}</div></div>
+            <div><div className="text-gray-500">Def</div><div className={pkmn.ivs.defense === 31 ? "text-green-400 font-bold" : "text-white"}>{pkmn.ivs.defense}</div></div>
+            <div><div className="text-gray-500">SpA</div><div className={pkmn.ivs.spAttack === 31 ? "text-green-400 font-bold" : "text-white"}>{pkmn.ivs.spAttack}</div></div>
+            <div><div className="text-gray-500">SpD</div><div className={pkmn.ivs.spDefense === 31 ? "text-green-400 font-bold" : "text-white"}>{pkmn.ivs.spDefense}</div></div>
+            <div><div className="text-gray-500">Spe</div><div className={pkmn.ivs.speed === 31 ? "text-green-400 font-bold" : "text-white"}>{pkmn.ivs.speed}</div></div>
+          </div>
         </div>
       )}
 

@@ -2,9 +2,10 @@ interface SidebarProps {
   currentView: string;
   onViewChange: (view: string) => void;
   currentGame?: string | null;
+  onMainMenu?: () => void;
 }
 
-export default function Sidebar({ currentView, onViewChange }: SidebarProps) {
+export default function Sidebar({ currentView, onViewChange, onMainMenu }: SidebarProps) {
   return (
     <div className="w-64 bg-gray-900 border-r border-gray-800 h-screen overflow-y-auto flex-shrink-0">
       <div className="p-4 border-b border-gray-800">
@@ -68,6 +69,17 @@ export default function Sidebar({ currentView, onViewChange }: SidebarProps) {
           </button>
         </div>
       </div>
+      
+      {onMainMenu && (
+        <div className="p-4 border-t border-gray-800 mt-auto absolute bottom-0 w-64 bg-gray-900">
+          <button
+            onClick={onMainMenu}
+            className="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white transition-colors flex items-center gap-2"
+          >
+            ← Main Menu
+          </button>
+        </div>
+      )}
     </div>
   );
 }

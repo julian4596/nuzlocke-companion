@@ -71,13 +71,7 @@ export default function StartScreen({
           </button>
         )}
 
-        <button
-          disabled
-          className="w-full flex items-center gap-3 bg-slate-900/50 text-slate-500 border border-slate-800/50 rounded-2xl p-5 font-semibold cursor-not-allowed text-left transition-colors"
-        >
-          <Plus size={20} className="text-slate-600" />
-          <span className="text-lg">New Game</span>
-        </button>
+
 
         <button
           onClick={onLoadGameClick}

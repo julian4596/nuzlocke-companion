@@ -33,6 +33,17 @@ export default function App() {
       if (savedRuns.length > 0) {
         const sorted = [...savedRuns].sort((a, b) => b.lastPlayed - a.lastPlayed);
         setMostRecentRun(sorted[0]);
+        
+        // Check if we have an active run to restore
+        if (topView === 'start') {
+          const activeRunId = localStorage.getItem('activeRunId');
+          if (activeRunId) {
+            const activeRun = savedRuns.find(r => r.id === activeRunId);
+            if (activeRun) {
+              handleLoadRun(activeRun);
+            }
+          }
+        }
       } else {
         setMostRecentRun(null);
       }
@@ -62,6 +73,7 @@ export default function App() {
       run.lastPlayed = Date.now();
       await saveRun(run);
       
+      localStorage.setItem('activeRunId', run.id);
       setCurrentView('party');
       setTopView('app');
     } catch (e: any) {
@@ -137,9 +149,17 @@ export default function App() {
 
   return (
     <div className="flex h-screen bg-gray-900 overflow-hidden text-gray-200">
-      <Sidebar currentView={currentView} onViewChange={setCurrentView} currentGame={currentGame} />
+      <Sidebar 
+        currentView={currentView} 
+        onViewChange={setCurrentView} 
+        currentGame={currentGame} 
+        onMainMenu={() => {
+          localStorage.removeItem('activeRunId');
+          setTopView('start');
+        }}
+      />
       
-      <main className="flex-1 overflow-y-auto p-8 bg-gray-900">
+      <main className="flex-1 overflow-y-auto p-8 bg-gray-900 ml-64">
         <div className="max-w-7xl mx-auto">
           {renderContent()}
         </div>

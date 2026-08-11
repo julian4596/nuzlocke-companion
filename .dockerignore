@@ -1,0 +1,10 @@
+node_modules
+dist
+test-results
+playwright-report
+.git
+.agents
+.worktrees
+.superpowers
+.env
+.DS_Store

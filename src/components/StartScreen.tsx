@@ -1,6 +1,5 @@
-import React from 'react';
 import { SavedRun } from '../lib/types';
-import { Play, FolderOpen, Plus } from 'lucide-react';
+import { Play, FolderOpen } from 'lucide-react';
 
 interface StartScreenProps {
   mostRecentRun: SavedRun | null;

@@ -22,14 +22,12 @@ export default function App() {
 
   // New state for routing
   const [topView, setTopView] = useState<'start' | 'load' | 'app'>('start');
-  const [runs, setRuns] = useState<SavedRun[]>([]);
   const [mostRecentRun, setMostRecentRun] = useState<SavedRun | null>(null);
   
   // Load runs on mount
   useEffect(() => {
     const fetchRuns = async () => {
       const savedRuns = await getRuns();
-      setRuns(savedRuns);
       if (savedRuns.length > 0) {
         const sorted = [...savedRuns].sort((a, b) => b.lastPlayed - a.lastPlayed);
         setMostRecentRun(sorted[0]);

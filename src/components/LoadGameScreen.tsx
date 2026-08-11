@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Trash2, Download, Play, Plus } from 'lucide-react';
 import { SavedRun } from '../lib/types';
 import { getRuns, saveRun, deleteRun } from '../lib/db';

@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    network_mode: "host"
+    ports:
+      - "80:80"
+      - "5173:5173"
     restart: always
     container_name: nuzlocke-companion-app

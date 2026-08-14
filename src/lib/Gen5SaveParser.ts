@@ -14,19 +14,27 @@ export class Gen5SaveParser extends BaseSaveParser {
   private detectGameVersion(buffer: ArrayBuffer): 'Black/White' | 'Black 2/White 2' {
     const view = new DataView(buffer);
     
-    // Check block indices
+    // Check block indices. A valid save index is a small counter, not a huge garbage value.
     const indexBW1 = view.getUint32(0x23FFC, true);
     const indexBW2 = view.getUint32(0x24000 + 0x23FFC, true);
     const indexB2W2_1 = view.getUint32(0x25FFC, true);
     const indexB2W2_2 = view.getUint32(0x26000 + 0x25FFC, true);
 
-    const hasBWIndex = indexBW1 !== 0xFFFFFFFF || indexBW2 !== 0xFFFFFFFF;
-    const hasB2W2Index = indexB2W2_1 !== 0xFFFFFFFF || indexB2W2_2 !== 0xFFFFFFFF;
+    // If a value is ridiculously large (e.g., > 100000), it's likely garbage data, not a save counter.
+    const isValidCounter = (val: number) => val !== 0xFFFFFFFF && val < 1000000;
+
+    const hasBWIndex = isValidCounter(indexBW1) || isValidCounter(indexBW2);
+    const hasB2W2Index = isValidCounter(indexB2W2_1) || isValidCounter(indexB2W2_2);
 
     if (hasB2W2Index && !hasBWIndex) return 'Black 2/White 2';
     if (hasBWIndex && !hasB2W2Index) return 'Black/White';
     
-    // If ambiguous, default to BW
+    // If both look like valid counters (rare, but possible if they transitioned saves),
+    // we can check a known offset difference or just default to B2W2 if B2W2 is present, 
+    // but a safer bet is checking the signature at 0x25FFC. If B2W2 index is valid and BW index is valid,
+    // usually the one with the higher counter is the correct game, but typically they don't overlap.
+    if (hasB2W2Index) return 'Black 2/White 2';
+    
     return 'Black/White';
   }
 

@@ -55,7 +55,7 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
       const team = parser.parseTeam(buffer);
       
       const newRun: SavedRun = {
-        id: crypto.randomUUID(),
+        id: typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).substring(2),
         name,
         gameVersion: data.gameVersion || 'Unknown',
         badges: (data as any).badges || 0,

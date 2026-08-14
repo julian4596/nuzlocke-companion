@@ -85,6 +85,13 @@ export default function GraveyardView({ boxes, activeRun, onUpdateRun }: Graveya
 
   const graveyardData = (activeRun.graveyardBoxes || []).map(idx => boxes[idx] || []).flat();
 
+  console.log('--- GRAVEYARD DEBUG ---');
+  console.log('activeRun.graveyardBoxes:', activeRun.graveyardBoxes);
+  console.log('graveyardData.length:', graveyardData.length);
+  console.log('boxes array length:', boxes.length);
+  console.log('First selected box contents:', activeRun.graveyardBoxes?.[0] !== undefined ? boxes[activeRun.graveyardBoxes[0]] : 'None');
+  console.log('-----------------------');
+
   return (
     <div>
       <div className="flex justify-between items-center mb-6">

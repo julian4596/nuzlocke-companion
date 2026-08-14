@@ -97,13 +97,13 @@ export default function App() {
     }
 
     if (currentView === 'boxes') {
-      const allBoxData = boxes.slice(0, 13).flat();
-      return <BoxView title="PC Storage (Boxes 1-13)" boxData={allBoxData} />;
+      const allBoxData = boxes.slice(0, boxes.length - 1).flat();
+      return <BoxView title={`PC Storage (Boxes 1-${boxes.length - 1})`} boxData={allBoxData} />;
     }
 
     if (currentView === 'graveyard') {
-      const graveyardData = boxes[13] || [];
-      return <BoxView title="💀 Graveyard (Box 14)" boxData={graveyardData} />;
+      const graveyardData = boxes[boxes.length - 1] || [];
+      return <BoxView title={`💀 Graveyard (Box ${boxes.length})`} boxData={graveyardData} />;
     }
 
     if (currentView === 'trainers') {

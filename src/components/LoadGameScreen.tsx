@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Trash2, Download, Play, Plus } from 'lucide-react';
 import { SavedRun } from '../lib/types';
-import { getRuns, saveRun, deleteRun } from '../lib/db';
+import { getRuns, saveRun, deleteRun, updateRun } from '../lib/db';
 import { SaveManager } from '../lib/SaveManager';
 import ImportSaveModal from './ImportSaveModal';
 
@@ -34,6 +34,12 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
       await deleteRun(id);
       await loadRuns();
     }
+  };
+
+  const handleUpdateBadges = async (id: string, newBadges: number) => {
+    if (newBadges < 0) return;
+    await updateRun(id, { badges: newBadges });
+    await loadRuns();
   };
 
   const handleDownload = (run: SavedRun) => {
@@ -95,8 +101,11 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
             </div>
           ) : (
             runs.map(run => (
-              <div key={run.id} className="bg-neutral-800 rounded-lg p-6 flex flex-col md:flex-row items-start md:items-center justify-between border border-neutral-700 hover:border-neutral-600 transition-colors">
-                <div className="flex-1 mb-4 md:mb-0">
+              <div key={run.id} className="bg-neutral-800 rounded-lg flex flex-col md:flex-row items-stretch border border-neutral-700 hover:border-neutral-600 transition-colors overflow-hidden">
+                <div 
+                  className="flex-1 p-6 cursor-pointer hover:bg-neutral-700/30 transition-colors"
+                  onClick={() => onLoadRun(run)}
+                >
                   <h2 className="text-xl font-bold mb-1">{run.name}</h2>
                   <div className="text-sm text-neutral-400 mb-3">
                     {run.gameVersion}
@@ -106,6 +115,29 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
                     <div className="flex items-center gap-2">
                       <span className="text-neutral-400">Badges:</span>
                       <span className="font-semibold">{run.badges}</span>
+                      <div className="flex gap-1 ml-2">
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleUpdateBadges(run.id, run.badges - 1);
+                          }}
+                          className="w-6 h-6 flex items-center justify-center bg-neutral-700 hover:bg-neutral-600 rounded text-neutral-300"
+                          disabled={run.badges <= 0}
+                          title="Decrease Badges"
+                        >
+                          -
+                        </button>
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleUpdateBadges(run.id, run.badges + 1);
+                          }}
+                          className="w-6 h-6 flex items-center justify-center bg-neutral-700 hover:bg-neutral-600 rounded text-neutral-300"
+                          title="Increase Badges"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="text-neutral-400">Deaths:</span>
@@ -135,7 +167,7 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 md:ml-6">
+                <div className="flex flex-row md:flex-col items-center justify-center gap-3 p-4 bg-neutral-900/50 md:border-l md:border-t-0 border-t border-neutral-700">
                   <button 
                     onClick={() => handleDelete(run.id)}
                     className="p-3 text-neutral-400 hover:text-red-400 hover:bg-neutral-700 rounded-full transition-colors"
@@ -149,13 +181,6 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
                     title="Download Save"
                   >
                     <Download size={24} />
-                  </button>
-                  <button 
-                    onClick={() => onLoadRun(run)}
-                    className="p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors"
-                    title="Load Game"
-                  >
-                    <Play size={24} fill="currentColor" />
                   </button>
                 </div>
               </div>

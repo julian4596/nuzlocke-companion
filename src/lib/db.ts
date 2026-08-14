@@ -26,3 +26,12 @@ export async function deleteRun(id: string): Promise<void> {
   runs = runs.filter(r => r.id !== id);
   await set(STORE_KEY, runs);
 }
+
+export async function updateRun(id: string, updates: Partial<SavedRun>): Promise<void> {
+  const runs = await getRuns();
+  const index = runs.findIndex(r => r.id === id);
+  if (index >= 0) {
+    runs[index] = { ...runs[index], ...updates };
+    await set(STORE_KEY, runs);
+  }
+}

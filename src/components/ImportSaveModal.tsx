@@ -5,20 +5,22 @@ import SaveLoader from './SaveLoader';
 export default function ImportSaveModal(props: { 
   isOpen: boolean; 
   onClose: () => void; 
-  onImport: (name: string, buffer: ArrayBuffer) => void 
+  onImport: (name: string, buffer: ArrayBuffer, fileHandle?: any) => void 
 }) {
   const [name, setName] = useState('');
   const [saveBuffer, setSaveBuffer] = useState<ArrayBuffer | null>(null);
+  const [fileHandle, setFileHandle] = useState<any>(null);
 
   if (!props.isOpen) return null;
 
   const handleImport = (e: React.FormEvent) => {
     e.preventDefault();
     if (saveBuffer && name) {
-      props.onImport(name, saveBuffer);
+      props.onImport(name, saveBuffer, fileHandle);
       // Reset state for next time
       setName('');
       setSaveBuffer(null);
+      setFileHandle(null);
     }
   };
 
@@ -26,6 +28,7 @@ export default function ImportSaveModal(props: {
     // Reset state when closing
     setName('');
     setSaveBuffer(null);
+    setFileHandle(null);
     props.onClose();
   };
 
@@ -48,7 +51,10 @@ export default function ImportSaveModal(props: {
               <p className="text-slate-300 mb-6 text-center text-sm">
                 Select your Nuzlocke companion save file to import your progress.
               </p>
-              <SaveLoader onFileLoad={(buffer) => setSaveBuffer(buffer)} />
+              <SaveLoader onFileLoad={(buffer, fileName, handle) => {
+                setSaveBuffer(buffer);
+                setFileHandle(handle);
+              }} />
             </div>
           ) : (
             <form onSubmit={handleImport} className="space-y-4">

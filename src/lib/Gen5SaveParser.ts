@@ -34,8 +34,19 @@ export class Gen5SaveParser extends BaseSaveParser {
       if (nameBW2 === nameSlot1) return 'Black/White';
     }
     
-    // If Slot 2 is empty or doesn't match (e.g. brand new save or emulator state),
-    // the parser will use Slot 1 anyway, which has identical offsets for both games.
+    // Fallback if Slot 2 string matching fails (e.g., brand new save or synthetic test buffer)
+    const view = new DataView(buffer);
+    const indexBW1 = view.getUint32(0x23FFC, true);
+    const indexB2W2_1 = view.getUint32(0x25FFC, true);
+    
+    const isValid = (val: number) => val !== 0xFFFFFFFF;
+    
+    // Check which one is a reasonable save index for a brand new save
+    const isBW_one = isValid(indexBW1) && indexBW1 < 100000;
+    const isB2W2_one = isValid(indexB2W2_1) && indexB2W2_1 < 100000;
+    
+    if (isB2W2_one && !isBW_one) return 'Black 2/White 2';
+    
     return 'Black/White';
   }
 

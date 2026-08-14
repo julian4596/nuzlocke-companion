@@ -6,9 +6,18 @@ test('uploading the Pokemon Blaze Black save file successfully parses the team',
   await page.goto('/');
 
   // Find the file input and upload the save file
+  await page.click('button:has-text("Load Game")');
+  await page.click('button:has-text("Import saved game")');
   const fileInput = page.locator('input[type="file"]');
   const filePath = path.resolve(process.cwd(), 'tests/fixtures/Pokemon Blaze Black v3.1 - Complete.sav');
   await fileInput.setInputFiles(filePath);
+  
+  // Fill in the run name and save it
+  await page.fill('input[placeholder="e.g., FireRed Hardcore Nuzlocke"]', 'Test Blaze Black Run');
+  await page.click('button:has-text("Save Run")');
+  
+  // Select the newly created run from the list
+  await page.click('h2:has-text("Test Blaze Black Run")');
 
   // The provided save file now contains a valid team of 6 Pokemon
   // The app should successfully parse it and display the team.

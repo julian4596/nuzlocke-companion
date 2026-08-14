@@ -14,27 +14,28 @@ export class Gen5SaveParser extends BaseSaveParser {
   private detectGameVersion(buffer: ArrayBuffer): 'Black/White' | 'Black 2/White 2' {
     const view = new DataView(buffer);
     
-    // Check block indices. A valid save index is a small counter, not a huge garbage value.
+    // In Gen 5, the game alternates saving between Slot 1 and Slot 2.
+    // The save counter is at the very end of the block (block size - 4).
     const indexBW1 = view.getUint32(0x23FFC, true);
     const indexBW2 = view.getUint32(0x24000 + 0x23FFC, true);
     const indexB2W2_1 = view.getUint32(0x25FFC, true);
     const indexB2W2_2 = view.getUint32(0x26000 + 0x25FFC, true);
 
-    const getValidCounter = (val: number) => (val !== 0xFFFFFFFF && val < 1000000) ? val : -1;
+    const isValid = (val: number) => val !== 0xFFFFFFFF;
     
-    const bw1 = getValidCounter(indexBW1);
-    const bw2 = getValidCounter(indexBW2);
-    const b2w2_1 = getValidCounter(indexB2W2_1);
-    const b2w2_2 = getValidCounter(indexB2W2_2);
+    // If a game has valid counters in BOTH slots, they will be adjacent numbers (difference of 1)
+    const isBW_both = isValid(indexBW1) && isValid(indexBW2) && Math.abs(indexBW1 - indexBW2) === 1;
+    const isB2W2_both = isValid(indexB2W2_1) && isValid(indexB2W2_2) && Math.abs(indexB2W2_1 - indexB2W2_2) === 1;
     
-    const maxBW = Math.max(bw1, bw2);
-    const maxB2W2 = Math.max(b2w2_1, b2w2_2);
-
-    // The correct game version will have the highest valid save counter.
-    // If it's a BW save, the B2W2 offsets likely contain 0 or garbage (which gets filtered).
-    if (maxB2W2 > maxBW) {
-      return 'Black 2/White 2';
-    }
+    if (isB2W2_both && !isBW_both) return 'Black 2/White 2';
+    if (isBW_both && !isB2W2_both) return 'Black/White';
+    
+    // If only one slot has been saved to (e.g. brand new game)
+    // Garbage data in the wrong offset will rarely have 0xFFFFFFFF perfectly in the second slot
+    const isBW_one = isValid(indexBW1) && !isValid(indexBW2) && indexBW1 < 100000;
+    const isB2W2_one = isValid(indexB2W2_1) && !isValid(indexB2W2_2) && indexB2W2_1 < 100000;
+    
+    if (isB2W2_one && !isBW_one) return 'Black 2/White 2';
     
     return 'Black/White';
   }
@@ -47,10 +48,10 @@ export class Gen5SaveParser extends BaseSaveParser {
     const index1 = view.getUint32(indexOffset, true);
     const index2 = view.getUint32(blockSize + indexOffset, true);
     
-    if (index1 === 0xFFFFFFFF && index2 !== 0xFFFFFFFF) return blockSize;
-    if (index2 === 0xFFFFFFFF && index1 !== 0xFFFFFFFF) return 0x0;
+    const valid1 = index1 !== 0xFFFFFFFF ? index1 : -1;
+    const valid2 = index2 !== 0xFFFFFFFF ? index2 : -1;
     
-    return index2 > index1 ? blockSize : 0x0;
+    return valid1 > valid2 ? 0x00000 : blockSize;
   }
 
   private decodeString(buffer: ArrayBuffer, offset: number, maxLength: number): string {

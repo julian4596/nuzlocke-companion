@@ -12,31 +12,30 @@ const PERMUTATIONS = [
 
 export class Gen5SaveParser extends BaseSaveParser {
   private detectGameVersion(buffer: ArrayBuffer): 'Black/White' | 'Black 2/White 2' {
-    const view = new DataView(buffer);
+    // The most flawless way to detect BW vs B2W2 is checking the location of Slot 2.
+    // Slot 1 is always at 0x00000.
+    // BW Slot 2 is at 0x24000. B2W2 Slot 2 is at 0x26000.
+    // We can verify Slot 2's location by checking if the Trainer Name matches Slot 1.
+    const getTrainerName = (offset: number) => {
+      try {
+        const name = this.decodeString(buffer, offset + 0x19404, 8);
+        return name.replace(/\0/g, '').replace(/\uFFFF/g, '');
+      } catch {
+        return '';
+      }
+    };
     
-    // In Gen 5, the game alternates saving between Slot 1 and Slot 2.
-    // The save counter is at the very end of the block (block size - 4).
-    const indexBW1 = view.getUint32(0x23FFC, true);
-    const indexBW2 = view.getUint32(0x24000 + 0x23FFC, true);
-    const indexB2W2_1 = view.getUint32(0x25FFC, true);
-    const indexB2W2_2 = view.getUint32(0x26000 + 0x25FFC, true);
+    const nameSlot1 = getTrainerName(0);
+    const nameBW2 = getTrainerName(0x24000);
+    const nameB2W22 = getTrainerName(0x26000);
 
-    const isValid = (val: number) => val !== 0xFFFFFFFF;
+    if (nameSlot1 && nameSlot1.length > 0) {
+      if (nameB2W22 === nameSlot1) return 'Black 2/White 2';
+      if (nameBW2 === nameSlot1) return 'Black/White';
+    }
     
-    // If a game has valid counters in BOTH slots, they will be adjacent numbers (difference of 1)
-    const isBW_both = isValid(indexBW1) && isValid(indexBW2) && Math.abs(indexBW1 - indexBW2) === 1;
-    const isB2W2_both = isValid(indexB2W2_1) && isValid(indexB2W2_2) && Math.abs(indexB2W2_1 - indexB2W2_2) === 1;
-    
-    if (isB2W2_both && !isBW_both) return 'Black 2/White 2';
-    if (isBW_both && !isB2W2_both) return 'Black/White';
-    
-    // If only one slot has been saved to (e.g. brand new game)
-    // Garbage data in the wrong offset will rarely have 0xFFFFFFFF perfectly in the second slot
-    const isBW_one = isValid(indexBW1) && !isValid(indexBW2) && indexBW1 < 100000;
-    const isB2W2_one = isValid(indexB2W2_1) && !isValid(indexB2W2_2) && indexB2W2_1 < 100000;
-    
-    if (isB2W2_one && !isBW_one) return 'Black 2/White 2';
-    
+    // If Slot 2 is empty or doesn't match (e.g. brand new save or emulator state),
+    // the parser will use Slot 1 anyway, which has identical offsets for both games.
     return 'Black/White';
   }
 
@@ -51,7 +50,9 @@ export class Gen5SaveParser extends BaseSaveParser {
     const valid1 = index1 !== 0xFFFFFFFF ? index1 : -1;
     const valid2 = index2 !== 0xFFFFFFFF ? index2 : -1;
     
-    return valid1 > valid2 ? 0x00000 : blockSize;
+    // If valid2 is strictly greater than valid1, Slot 2 is newer.
+    // If they are equal (or both -1 / missing), default to Slot 1 (0x00000).
+    return valid2 > valid1 ? blockSize : 0x00000;
   }
 
   private decodeString(buffer: ArrayBuffer, offset: number, maxLength: number): string {

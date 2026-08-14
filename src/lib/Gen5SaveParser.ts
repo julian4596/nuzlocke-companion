@@ -20,20 +20,21 @@ export class Gen5SaveParser extends BaseSaveParser {
     const indexB2W2_1 = view.getUint32(0x25FFC, true);
     const indexB2W2_2 = view.getUint32(0x26000 + 0x25FFC, true);
 
-    // If a value is ridiculously large (e.g., > 100000), it's likely garbage data, not a save counter.
-    const isValidCounter = (val: number) => val !== 0xFFFFFFFF && val < 1000000;
-
-    const hasBWIndex = isValidCounter(indexBW1) || isValidCounter(indexBW2);
-    const hasB2W2Index = isValidCounter(indexB2W2_1) || isValidCounter(indexB2W2_2);
-
-    if (hasB2W2Index && !hasBWIndex) return 'Black 2/White 2';
-    if (hasBWIndex && !hasB2W2Index) return 'Black/White';
+    const getValidCounter = (val: number) => (val !== 0xFFFFFFFF && val < 1000000) ? val : -1;
     
-    // If both look like valid counters (rare, but possible if they transitioned saves),
-    // we can check a known offset difference or just default to B2W2 if B2W2 is present, 
-    // but a safer bet is checking the signature at 0x25FFC. If B2W2 index is valid and BW index is valid,
-    // usually the one with the higher counter is the correct game, but typically they don't overlap.
-    if (hasB2W2Index) return 'Black 2/White 2';
+    const bw1 = getValidCounter(indexBW1);
+    const bw2 = getValidCounter(indexBW2);
+    const b2w2_1 = getValidCounter(indexB2W2_1);
+    const b2w2_2 = getValidCounter(indexB2W2_2);
+    
+    const maxBW = Math.max(bw1, bw2);
+    const maxB2W2 = Math.max(b2w2_1, b2w2_2);
+
+    // The correct game version will have the highest valid save counter.
+    // If it's a BW save, the B2W2 offsets likely contain 0 or garbage (which gets filtered).
+    if (maxB2W2 > maxBW) {
+      return 'Black 2/White 2';
+    }
     
     return 'Black/White';
   }

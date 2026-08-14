@@ -24,3 +24,14 @@ export function calculateHiddenPower(ivs: IVs): string {
   
   return TYPES[typeIndex];
 }
+
+export function calculateHiddenPowerPower(ivs: IVs): number {
+  const u = (ivs.hp % 4 === 2 || ivs.hp % 4 === 3) ? 1 : 0;
+  const v = (ivs.attack % 4 === 2 || ivs.attack % 4 === 3) ? 1 : 0;
+  const w = (ivs.defense % 4 === 2 || ivs.defense % 4 === 3) ? 1 : 0;
+  const x = (ivs.speed % 4 === 2 || ivs.speed % 4 === 3) ? 1 : 0;
+  const y = (ivs.spAttack % 4 === 2 || ivs.spAttack % 4 === 3) ? 1 : 0;
+  const z = (ivs.spDefense % 4 === 2 || ivs.spDefense % 4 === 3) ? 1 : 0;
+
+  return Math.floor(((u + 2*v + 4*w + 8*x + 16*y + 32*z) * 40) / 63) + 30;
+}

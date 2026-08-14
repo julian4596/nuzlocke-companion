@@ -86,6 +86,7 @@ export default function GraveyardView({ boxes, activeRun, onUpdateRun }: Graveya
   const graveyardData = (activeRun.graveyardBoxes || []).map(idx => boxes[idx] || []).flat();
 
   console.log('--- GRAVEYARD DEBUG ---');
+  console.log('Game Version:', activeRun.gameVersion);
   console.log('activeRun.graveyardBoxes:', activeRun.graveyardBoxes);
   console.log('graveyardData.length:', graveyardData.length);
   console.log('boxes array length:', boxes.length);

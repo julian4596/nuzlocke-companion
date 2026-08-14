@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Route, Switch, useLocation } from 'wouter';
 import { SaveManager } from '@/lib/SaveManager';
 import { Pokemon, SavedRun } from '@/lib/types';
@@ -22,6 +22,8 @@ export default function App() {
 
   const [mostRecentRun, setMostRecentRun] = useState<SavedRun | null>(null);
   const [location, setLocation] = useLocation();
+  const [activeRun, setActiveRun] = useState<SavedRun | null>(null);
+  const fileLastModifiedRef = useRef<number>(0);
   
   // Load runs on mount
   useEffect(() => {
@@ -77,6 +79,32 @@ export default function App() {
     checkRunData();
   }, [location, team.length]);
 
+  // Setup Polling
+  useEffect(() => {
+    if (!activeRun || !activeRun.fileHandle) return;
+
+    const interval = setInterval(async () => {
+      try {
+        const file = await activeRun.fileHandle.getFile();
+        if (fileLastModifiedRef.current === 0) {
+          fileLastModifiedRef.current = file.lastModified;
+          return;
+        }
+
+        if (file.lastModified > fileLastModifiedRef.current) {
+          fileLastModifiedRef.current = file.lastModified;
+          const buffer = await file.arrayBuffer();
+          const updatedRun = { ...activeRun, saveBuffer: buffer };
+          handleLoadRun(updatedRun);
+        }
+      } catch (err) {
+        console.error('Error polling file system handle:', err);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [activeRun]);
+
   const handleLoadRun = async (run: SavedRun) => {
     try {
       const parser = SaveManager.getParser(run.saveBuffer);
@@ -100,12 +128,14 @@ export default function App() {
       await saveRun(run);
       
       localStorage.setItem('activeRunId', run.id);
+      setActiveRun(run);
       setLocation(`/run/${run.id}/party`);
     } catch (e: any) {
       setError(e.message);
       setTeam([]);
       setBoxes([]);
       setCurrentGame(null);
+      setActiveRun(null);
     }
   };
 

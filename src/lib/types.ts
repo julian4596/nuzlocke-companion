@@ -50,4 +50,5 @@ export interface SavedRun {
   teamSprites: number[];
   saveBuffer: ArrayBuffer;
   lastPlayed: number;
+  fileHandle?: any;
 }

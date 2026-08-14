@@ -54,7 +54,7 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
     URL.revokeObjectURL(url);
   };
 
-  const handleImport = async (name: string, buffer: ArrayBuffer) => {
+  const handleImport = async (name: string, buffer: ArrayBuffer, fileHandle?: any) => {
     try {
       const parser = SaveManager.getParser(buffer);
       const data = parser.parse(buffer);
@@ -72,7 +72,8 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
         deaths: deathsCount,
         teamSprites: team.map(p => p.speciesId || 0).filter(id => id > 0),
         saveBuffer: buffer,
-        lastPlayed: Date.now()
+        lastPlayed: Date.now(),
+        fileHandle
       };
       
       await saveRun(newRun);

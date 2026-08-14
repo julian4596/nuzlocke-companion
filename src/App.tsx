@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Route, Switch, useLocation } from 'wouter';
 import { SaveManager } from '@/lib/SaveManager';
 import { Pokemon, SavedRun } from '@/lib/types';
 import { getRuns, saveRun } from '@/lib/db';
@@ -16,13 +17,11 @@ export default function App() {
   const [team, setTeam] = useState<Pokemon[]>([]);
   const [boxes, setBoxes] = useState<Pokemon[][]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [currentView, setCurrentView] = useState<string>('party');
   
   const [currentGame, setCurrentGame] = useState<string | null>(null);
 
-  // New state for routing
-  const [topView, setTopView] = useState<'start' | 'load' | 'app'>('start');
   const [mostRecentRun, setMostRecentRun] = useState<SavedRun | null>(null);
+  const [location, setLocation] = useLocation();
   
   // Load runs on mount
   useEffect(() => {
@@ -33,7 +32,7 @@ export default function App() {
         setMostRecentRun(sorted[0]);
         
         // Check if we have an active run to restore
-        if (topView === 'start') {
+        if (location === '/') {
           const activeRunId = localStorage.getItem('activeRunId');
           if (activeRunId) {
             const activeRun = savedRuns.find(r => r.id === activeRunId);
@@ -47,7 +46,36 @@ export default function App() {
       }
     };
     fetchRuns();
-  }, [topView]); // Re-fetch when view changes back to start/load
+  }, [location]); // Re-fetch when view changes back to start/load
+
+  // Handle direct navigation to a run
+  useEffect(() => {
+    const checkRunData = async () => {
+      const match = location.match(/^\/run\/([^/]+)/);
+      if (match && team.length === 0) {
+        const savedRuns = await getRuns();
+        const activeRun = savedRuns.find(r => r.id === match[1]);
+        if (activeRun) {
+          try {
+            const parser = SaveManager.getParser(activeRun.saveBuffer);
+            const parsedData = parser.parse(activeRun.saveBuffer);
+            setCurrentGame(parsedData.gameVersion);
+
+            const parsedTeam = parser.parseTeam(activeRun.saveBuffer);
+            const parsedBoxes = parser.parseBoxes(activeRun.saveBuffer);
+            
+            if (parsedTeam.length > 0) {
+              setTeam(parsedTeam);
+              setBoxes(parsedBoxes);
+            }
+          } catch (e) {
+            console.error(e);
+          }
+        }
+      }
+    };
+    checkRunData();
+  }, [location, team.length]);
 
   const handleLoadRun = async (run: SavedRun) => {
     try {
@@ -72,8 +100,7 @@ export default function App() {
       await saveRun(run);
       
       localStorage.setItem('activeRunId', run.id);
-      setCurrentView('party');
-      setTopView('app');
+      setLocation(`/run/${run.id}/party`);
     } catch (e: any) {
       setError(e.message);
       setTeam([]);
@@ -82,7 +109,7 @@ export default function App() {
     }
   };
 
-  const renderContent = () => {
+  const renderContent = (currentView: string) => {
     if (currentView === 'party') {
       return (
         <div>
@@ -123,45 +150,52 @@ export default function App() {
     return null;
   };
 
-  if (topView === 'start') {
-    return (
-      <div className="min-h-screen bg-gray-900 text-white">
-        <StartScreen 
-          mostRecentRun={mostRecentRun} 
-          onContinue={() => mostRecentRun && handleLoadRun(mostRecentRun)} 
-          onLoadGameClick={() => setTopView('load')}
-        />
-        {error && <div className="absolute top-4 right-4 bg-red-900 text-red-100 px-4 py-2 rounded shadow-lg">{error}</div>}
-      </div>
-    );
-  }
-
-  if (topView === 'load') {
-    return (
-      <LoadGameScreen 
-        onBack={() => setTopView('start')} 
-        onLoadRun={(run) => handleLoadRun(run)}
-      />
-    );
-  }
-
   return (
-    <div className="flex h-screen bg-gray-900 overflow-hidden text-gray-200">
-      <Sidebar 
-        currentView={currentView} 
-        onViewChange={setCurrentView} 
-        currentGame={currentGame} 
-        onMainMenu={() => {
-          localStorage.removeItem('activeRunId');
-          setTopView('start');
-        }}
-      />
-      
-      <main className="flex-1 overflow-y-auto p-8 bg-gray-900 ml-64">
-        <div className="max-w-7xl mx-auto">
-          {renderContent()}
+    <Switch>
+      <Route path="/">
+        <div className="min-h-screen bg-gray-900 text-white">
+          <StartScreen 
+            mostRecentRun={mostRecentRun} 
+            onContinue={() => mostRecentRun && handleLoadRun(mostRecentRun)} 
+            onLoadGameClick={() => setLocation('/load')}
+          />
+          {error && <div className="absolute top-4 right-4 bg-red-900 text-red-100 px-4 py-2 rounded shadow-lg">{error}</div>}
         </div>
-      </main>
-    </div>
+      </Route>
+      
+      <Route path="/load">
+        <LoadGameScreen 
+          onBack={() => setLocation('/')} 
+          onLoadRun={(run) => handleLoadRun(run)}
+        />
+      </Route>
+
+      <Route path="/run/:id/:view?">
+        {(params) => {
+          const runId = params.id;
+          const currentView = params.view || 'party';
+          
+          return (
+            <div className="flex h-screen bg-gray-900 overflow-hidden text-gray-200">
+              <Sidebar 
+                currentView={currentView} 
+                runId={runId!}
+                currentGame={currentGame} 
+                onMainMenu={() => {
+                  localStorage.removeItem('activeRunId');
+                  setLocation('/');
+                }}
+              />
+              
+              <main className="flex-1 overflow-y-auto p-8 bg-gray-900 ml-64">
+                <div className="max-w-7xl mx-auto">
+                  {renderContent(currentView)}
+                </div>
+              </main>
+            </div>
+          );
+        }}
+      </Route>
+    </Switch>
   );
 }

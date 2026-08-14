@@ -51,7 +51,7 @@ export default function ImportSaveModal(props: {
               <p className="text-slate-300 mb-6 text-center text-sm">
                 Select your Nuzlocke companion save file to import your progress.
               </p>
-              <SaveLoader onFileLoad={(buffer, fileName, handle) => {
+              <SaveLoader onFileLoad={(buffer, _fileName, handle) => {
                 setSaveBuffer(buffer);
                 setFileHandle(handle);
               }} />

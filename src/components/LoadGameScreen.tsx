@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Trash2, Download, Play, Plus } from 'lucide-react';
+import { Trash2, Download, Plus, Minus } from 'lucide-react';
 import { SavedRun } from '../lib/types';
 import { getRuns, saveRun, deleteRun, updateRun } from '../lib/db';
 import { SaveManager } from '../lib/SaveManager';

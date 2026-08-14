@@ -1,4 +1,4 @@
-import { expect, test, describe } from 'vitest';
+import { expect, test, describe, it } from 'vitest';
 import { calculateHiddenPower, calculateHiddenPowerPower } from './HiddenPower';
 
 describe('Hidden Power Calculation', () => {

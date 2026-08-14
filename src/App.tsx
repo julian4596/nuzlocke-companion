@@ -70,6 +70,7 @@ export default function App() {
             if (parsedTeam.length > 0) {
               setTeam(parsedTeam);
               setBoxes(parsedBoxes);
+              setActiveRun(activeRun);
             }
           } catch (e) {
             console.error(e);

@@ -4,7 +4,7 @@ import movesData from '@/data/moves.json';
 import abilitiesData from '@/data/abilities.json';
 import abilityIdsData from '@/data/ability_ids.json';
 import { calculateStats } from '@/lib/StatCalculator';
-import { calculateHiddenPower } from '@/lib/HiddenPower';
+import { calculateHiddenPower, calculateHiddenPowerPower } from '@/lib/HiddenPower';
 
 interface PokemonCardProps {
   pkmn: Pokemon;
@@ -119,7 +119,7 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
           <div className="flex items-center gap-2 mb-1">
             <p className="text-xs text-gray-500 uppercase font-semibold">IVs</p>
             <span className="bg-gray-700 text-gray-300 text-[10px] px-1.5 py-0.5 rounded">
-              HP: {calculateHiddenPower(pkmn.ivs)}
+              HP: {calculateHiddenPower(pkmn.ivs)} {calculateHiddenPowerPower(pkmn.ivs)}
             </span>
           </div>
           <div className="grid grid-cols-6 gap-1 text-[10px] text-center bg-gray-900 p-1.5 rounded-lg border border-gray-700">

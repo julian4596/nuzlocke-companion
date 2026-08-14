@@ -12,21 +12,41 @@ const PERMUTATIONS = [
 
 export class Gen5SaveParser extends BaseSaveParser {
   private detectGameVersion(buffer: ArrayBuffer): 'Black/White' | 'Black 2/White 2' {
+    // The most flawless way to detect BW vs B2W2 is checking the location of Slot 2.
+    // Slot 1 is always at 0x00000.
+    // BW Slot 2 is at 0x24000. B2W2 Slot 2 is at 0x26000.
+    // We can verify Slot 2's location by checking if the Trainer Name matches Slot 1.
+    const getTrainerName = (offset: number) => {
+      try {
+        const name = this.decodeString(buffer, offset + 0x19404, 8);
+        return name.replace(/\0/g, '').replace(/\uFFFF/g, '');
+      } catch {
+        return '';
+      }
+    };
+    
+    const nameSlot1 = getTrainerName(0);
+    const nameBW2 = getTrainerName(0x24000);
+    const nameB2W22 = getTrainerName(0x26000);
+
+    if (nameSlot1 && nameSlot1.length > 0) {
+      if (nameB2W22 === nameSlot1) return 'Black 2/White 2';
+      if (nameBW2 === nameSlot1) return 'Black/White';
+    }
+    
+    // Fallback if Slot 2 string matching fails (e.g., brand new save or synthetic test buffer)
     const view = new DataView(buffer);
-    
-    // Check block indices
     const indexBW1 = view.getUint32(0x23FFC, true);
-    const indexBW2 = view.getUint32(0x24000 + 0x23FFC, true);
     const indexB2W2_1 = view.getUint32(0x25FFC, true);
-    const indexB2W2_2 = view.getUint32(0x26000 + 0x25FFC, true);
-
-    const hasBWIndex = indexBW1 !== 0xFFFFFFFF || indexBW2 !== 0xFFFFFFFF;
-    const hasB2W2Index = indexB2W2_1 !== 0xFFFFFFFF || indexB2W2_2 !== 0xFFFFFFFF;
-
-    if (hasB2W2Index && !hasBWIndex) return 'Black 2/White 2';
-    if (hasBWIndex && !hasB2W2Index) return 'Black/White';
     
-    // If ambiguous, default to BW
+    const isValid = (val: number) => val !== 0xFFFFFFFF;
+    
+    // Check which one is a reasonable save index for a brand new save
+    const isBW_one = isValid(indexBW1) && indexBW1 < 100000;
+    const isB2W2_one = isValid(indexB2W2_1) && indexB2W2_1 < 100000;
+    
+    if (isB2W2_one && !isBW_one) return 'Black 2/White 2';
+    
     return 'Black/White';
   }
 
@@ -38,10 +58,12 @@ export class Gen5SaveParser extends BaseSaveParser {
     const index1 = view.getUint32(indexOffset, true);
     const index2 = view.getUint32(blockSize + indexOffset, true);
     
-    if (index1 === 0xFFFFFFFF && index2 !== 0xFFFFFFFF) return blockSize;
-    if (index2 === 0xFFFFFFFF && index1 !== 0xFFFFFFFF) return 0x0;
+    const valid1 = index1 !== 0xFFFFFFFF ? index1 : -1;
+    const valid2 = index2 !== 0xFFFFFFFF ? index2 : -1;
     
-    return index2 > index1 ? blockSize : 0x0;
+    // If valid2 is strictly greater than valid1, Slot 2 is newer.
+    // If they are equal (or both -1 / missing), default to Slot 1 (0x00000).
+    return valid2 > valid1 ? blockSize : 0x00000;
   }
 
   private decodeString(buffer: ArrayBuffer, offset: number, maxLength: number): string {

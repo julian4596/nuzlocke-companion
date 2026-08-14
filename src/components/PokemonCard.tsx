@@ -65,7 +65,7 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
       : null;
 
   return (
-    <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 shadow flex flex-col h-full">
+    <div className="pokemon-card bg-gray-800 p-4 rounded-lg border border-gray-700 shadow flex flex-col h-full">
       <div className="flex items-center gap-4 mb-4">
         <img 
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pkmn.speciesId}.png`} 

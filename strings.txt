@@ -1,0 +1,90 @@
+Found string "BOX 1" at 0x4
+Found string "BOX 2" at 0x2C
+Found string "BOX 3" at 0x54
+Found string "BOX 4" at 0x7C
+Found string "BOX 5" at 0xA4
+Found string "BOX 6" at 0xCC
+Found string "BOX 7" at 0xF4
+Found string "BOX 8" at 0x11C
+Found string "BOX 9" at 0x144
+Found string "BOX 10" at 0x16C
+Found string "OX 10" at 0x16E
+Found string "BOX 11" at 0x194
+Found string "OX 11" at 0x196
+Found string "BOX 12" at 0x1BC
+Found string "OX 12" at 0x1BE
+Found string "BOX 13" at 0x1E4
+Found string "OX 13" at 0x1E6
+Found string "BOX 14" at 0x20C
+Found string "OX 14" at 0x20E
+Found string "BOX 15" at 0x234
+Found string "OX 15" at 0x236
+Found string "BOX 16" at 0x25C
+Found string "OX 16" at 0x25E
+Found string "BOX 17" at 0x284
+Found string "OX 17" at 0x286
+Found string "BOX 18" at 0x2AC
+Found string "OX 18" at 0x2AE
+Found string "BOX 19" at 0x2D4
+Found string "OX 19" at 0x2D6
+Found string "BOX 20" at 0x2FC
+Found string "OX 20" at 0x2FE
+Found string "BOX 21" at 0x324
+Found string "OX 21" at 0x326
+Found string "BOX 22" at 0x34C
+Found string "OX 22" at 0x34E
+Found string "BOX 23" at 0x374
+Found string "OX 23" at 0x376
+Found string "BOX 24" at 0x39C
+Found string "OX 24" at 0x39E
+Found string "BOX 1" at 0x20D30
+Found string "Hello!" at 0x21220
+Found string "ello!" at 0x21222
+Found string "Thanks!" at 0x21232
+Found string "hanks!" at 0x21234
+Found string "anks!" at 0x21236
+Found string "BOX 1" at 0x24004
+Found string "BOX 2" at 0x2402C
+Found string "BOX 3" at 0x24054
+Found string "BOX 4" at 0x2407C
+Found string "BOX 5" at 0x240A4
+Found string "BOX 6" at 0x240CC
+Found string "BOX 7" at 0x240F4
+Found string "BOX 8" at 0x2411C
+Found string "BOX 9" at 0x24144
+Found string "BOX 10" at 0x2416C
+Found string "OX 10" at 0x2416E
+Found string "BOX 11" at 0x24194
+Found string "OX 11" at 0x24196
+Found string "BOX 12" at 0x241BC
+Found string "OX 12" at 0x241BE
+Found string "BOX 13" at 0x241E4
+Found string "OX 13" at 0x241E6
+Found string "BOX 14" at 0x2420C
+Found string "OX 14" at 0x2420E
+Found string "BOX 15" at 0x24234
+Found string "OX 15" at 0x24236
+Found string "BOX 16" at 0x2425C
+Found string "OX 16" at 0x2425E
+Found string "BOX 17" at 0x24284
+Found string "OX 17" at 0x24286
+Found string "BOX 18" at 0x242AC
+Found string "OX 18" at 0x242AE
+Found string "BOX 19" at 0x242D4
+Found string "OX 19" at 0x242D6
+Found string "BOX 20" at 0x242FC
+Found string "OX 20" at 0x242FE
+Found string "BOX 21" at 0x24324
+Found string "OX 21" at 0x24326
+Found string "BOX 22" at 0x2434C
+Found string "OX 22" at 0x2434E
+Found string "BOX 23" at 0x24374
+Found string "OX 23" at 0x24376
+Found string "BOX 24" at 0x2439C
+Found string "OX 24" at 0x2439E
+Found string "BOX 1" at 0x44D30
+Found string "Hello!" at 0x45220
+Found string "ello!" at 0x45222
+Found string "Thanks!" at 0x45232
+Found string "hanks!" at 0x45234
+Found string "anks!" at 0x45236

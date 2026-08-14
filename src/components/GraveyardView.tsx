@@ -85,6 +85,7 @@ export default function GraveyardView({ boxes, activeRun, onUpdateRun }: Graveya
 
   const graveyardData = (activeRun.graveyardBoxes || []).map(idx => boxes[idx] || []).flat();
 
+
   return (
     <div>
       <div className="flex justify-between items-center mb-6">

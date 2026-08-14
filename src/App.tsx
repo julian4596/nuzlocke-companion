@@ -67,10 +67,9 @@ export default function App() {
             const parsedTeam = parser.parseTeam(activeRun.saveBuffer);
             const parsedBoxes = parser.parseBoxes(activeRun.saveBuffer);
             
-            if (parsedTeam.length > 0) {
-              setTeam(parsedTeam);
-              setBoxes(parsedBoxes);
-            }
+            setTeam(parsedTeam);
+            setBoxes(parsedBoxes);
+            setActiveRun(activeRun);
           } catch (e) {
             console.error(e);
           }
@@ -152,6 +151,14 @@ export default function App() {
   };
 
   const renderContent = (currentView: string) => {
+    if (!activeRun) {
+      return (
+        <div className="flex items-center justify-center h-full">
+          <div className="text-xl text-gray-400">Loading run data...</div>
+        </div>
+      );
+    }
+
     if (currentView === 'party') {
       return (
         <div>

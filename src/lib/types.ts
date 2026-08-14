@@ -47,6 +47,7 @@ export interface SavedRun {
   gameVersion: string;
   badges: number;
   deaths: number;
+  graveyardBoxes?: number[];
   teamSprites: number[];
   saveBuffer: ArrayBuffer;
   lastPlayed: number;

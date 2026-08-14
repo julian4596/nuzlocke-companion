@@ -60,16 +60,12 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
       const data = parser.parse(buffer);
       const team = parser.parseTeam(buffer);
       
-      const parsedBoxes = parser.parseBoxes(buffer);
-      const graveyard = parsedBoxes[parsedBoxes.length - 1] || [];
-      const deathsCount = graveyard.filter(p => p.speciesId && p.speciesId > 0).length;
-      
       const newRun: SavedRun = {
         id: typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).substring(2),
         name,
         gameVersion: data.gameVersion || 'Unknown',
         badges: (data as any).badges || 0,
-        deaths: deathsCount,
+        deaths: 0,
         teamSprites: team.map(p => p.speciesId || 0).filter(id => id > 0),
         saveBuffer: buffer,
         lastPlayed: Date.now(),

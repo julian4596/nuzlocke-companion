@@ -6,6 +6,7 @@ import { getRuns, saveRun } from '@/lib/db';
 import PokemonCard from '@/components/PokemonCard';
 import Sidebar from '@/components/Sidebar';
 import BoxView from '@/components/BoxView';
+import GraveyardView from '@/components/GraveyardView';
 import TrainersView, { Trainer, TrainerCapGroup } from '@/components/TrainersView';
 import StartScreen from '@/components/StartScreen';
 import LoadGameScreen from '@/components/LoadGameScreen';
@@ -123,6 +124,17 @@ export default function App() {
       setBoxes(parsedBoxes);
       setError(null);
       
+      let calculatedDeaths = run.deaths;
+      if (run.graveyardBoxes && run.graveyardBoxes.length > 0) {
+        calculatedDeaths = 0;
+        for (const idx of run.graveyardBoxes) {
+          if (parsedBoxes[idx]) {
+            calculatedDeaths += parsedBoxes[idx].filter(p => p.speciesId && p.speciesId > 0).length;
+          }
+        }
+        run.deaths = calculatedDeaths;
+      }
+      
       // Update last played
       run.lastPlayed = Date.now();
       await saveRun(run);
@@ -154,13 +166,22 @@ export default function App() {
     }
 
     if (currentView === 'boxes') {
-      const allBoxData = boxes.slice(0, boxes.length - 1).flat();
-      return <BoxView title={`PC Storage (Boxes 1-${boxes.length - 1})`} boxData={allBoxData} />;
+      const excludedBoxes = activeRun?.graveyardBoxes || [];
+      const allBoxData = boxes.filter((_, i) => !excludedBoxes.includes(i)).flat();
+      return <BoxView title={`PC Storage`} boxData={allBoxData} />;
     }
 
     if (currentView === 'graveyard') {
-      const graveyardData = boxes[boxes.length - 1] || [];
-      return <BoxView title={`💀 Graveyard (Box ${boxes.length})`} boxData={graveyardData} />;
+      return (
+        <GraveyardView 
+          boxes={boxes} 
+          activeRun={activeRun!} 
+          onUpdateRun={(updatedRun) => {
+            saveRun(updatedRun);
+            setActiveRun(updatedRun);
+          }} 
+        />
+      );
     }
 
     if (currentView === 'trainers') {

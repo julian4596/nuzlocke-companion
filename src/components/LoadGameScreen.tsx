@@ -70,7 +70,7 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
       setIsModalOpen(false);
     } catch (error) {
       console.error('Failed to import save:', error);
-      alert('Failed to parse save file. Make sure it is a valid Pokemon save file.');
+      alert(`Failed to parse save file: ${error instanceof Error ? error.message : String(error)}`);
     }
   };
 

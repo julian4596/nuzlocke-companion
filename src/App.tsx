@@ -67,11 +67,9 @@ export default function App() {
             const parsedTeam = parser.parseTeam(activeRun.saveBuffer);
             const parsedBoxes = parser.parseBoxes(activeRun.saveBuffer);
             
-            if (parsedTeam.length > 0) {
-              setTeam(parsedTeam);
-              setBoxes(parsedBoxes);
-              setActiveRun(activeRun);
-            }
+            setTeam(parsedTeam);
+            setBoxes(parsedBoxes);
+            setActiveRun(activeRun);
           } catch (e) {
             console.error(e);
           }

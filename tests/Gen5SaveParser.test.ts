@@ -61,6 +61,103 @@ describe('SaveManager and Gen5SaveParser', () => {
     expect(result.gameVersion).toBe('Black/White');
   });
 
+function writeSyntheticPokemon(
+  view: DataView,
+  offset: number,
+  options: {
+    pid: number;
+    otid?: number;
+    otsid?: number;
+    speciesId?: number;
+    moves?: number[];
+    nickname?: string;
+    level?: number;
+    isParty?: boolean;
+  }
+) {
+  const { pid, otid = 0, otsid = 0, speciesId = 0, moves = [], nickname = '', level = 5, isParty = false } = options;
+  
+  view.setUint32(offset, pid, true);
+  
+  const unshuffled = new Uint8Array(128);
+  const unView = new DataView(unshuffled.buffer);
+  
+  // Block A (offset 0x00)
+  unView.setUint16(0x00, speciesId, true);
+  unView.setUint16(0x04, otid, true);
+  unView.setUint16(0x06, otsid, true);
+  
+  // Block B (offset 0x20)
+  for (let i = 0; i < 4; i++) {
+    unView.setUint16(0x20 + i * 2, moves[i] || 0, true);
+  }
+  
+  // Block C (offset 0x40)
+  for (let i = 0; i < nickname.length; i++) {
+    unView.setUint16(0x40 + i * 2, nickname.charCodeAt(i), true);
+  }
+  if (nickname.length < 11) {
+    unView.setUint16(0x40 + nickname.length * 2, 0xFFFF, true);
+  }
+  
+  // Block order
+  const shiftIndex = ((pid & 0x3E000) >>> 13) % 24;
+  const PERMUTATIONS = [
+    [0, 1, 2, 3], [0, 1, 3, 2], [0, 2, 1, 3], [0, 2, 3, 1],
+    [0, 3, 1, 2], [0, 3, 2, 1], [1, 0, 2, 3], [1, 0, 3, 2],
+    [1, 2, 0, 3], [1, 2, 3, 0], [1, 3, 0, 2], [1, 3, 2, 0],
+    [2, 0, 1, 3], [2, 0, 3, 1], [2, 1, 0, 3], [2, 1, 3, 0],
+    [2, 3, 0, 1], [2, 3, 1, 0], [3, 0, 1, 2], [3, 0, 2, 1],
+    [3, 1, 0, 2], [3, 1, 2, 0], [3, 2, 0, 1], [3, 2, 1, 0]
+  ];
+  const blockOrder = PERMUTATIONS[shiftIndex];
+  
+  // Shuffled data
+  const shuffled = new Uint8Array(128);
+  for (let i = 0; i < 4; i++) {
+    const srcOffset = blockOrder[i] * 32;
+    const destOffset = i * 32;
+    shuffled.set(unshuffled.subarray(srcOffset, srcOffset + 32), destOffset);
+  }
+  
+  const shufView = new DataView(shuffled.buffer);
+  let checksum = 0;
+  for (let i = 0; i < 128; i += 2) {
+    checksum = (checksum + shufView.getUint16(i, true)) & 0xFFFF;
+  }
+  view.setUint16(offset + 6, checksum, true);
+  
+  // Encrypt
+  let seed = checksum;
+  for (let i = 0; i < 128; i += 2) {
+    seed = (Math.imul(seed, 0x41C64E6D) + 0x6073) >>> 0;
+    const prngWord = seed >>> 16;
+    const decryptedWord = shufView.getUint16(i, true);
+    view.setUint16(offset + 8 + i, decryptedWord ^ prngWord, true);
+  }
+  
+  if (isParty) {
+    const partyData = new Uint8Array(84);
+    const partyView = new DataView(partyData.buffer);
+    partyView.setUint8(4, level);
+    partyView.setUint16(6, 20, true);
+    partyView.setUint16(8, 20, true);
+    partyView.setUint16(10, 10, true);
+    partyView.setUint16(12, 10, true);
+    partyView.setUint16(14, 10, true);
+    partyView.setUint16(16, 10, true);
+    partyView.setUint16(18, 10, true);
+    
+    let partySeed = pid;
+    for (let i = 0; i < 84; i += 2) {
+      partySeed = (Math.imul(partySeed, 0x41C64E6D) + 0x6073) >>> 0;
+      const prngWord = partySeed >>> 16;
+      const decWord = partyView.getUint16(i, true);
+      view.setUint16(offset + 136 + i, decWord ^ prngWord, true);
+    }
+  }
+}
+
   it('should decrypt Pokemon data correctly using LCRNG and block un-shuffling', () => {
     const parser = new Gen5SaveParser();
     const buffer = new ArrayBuffer(524288);
@@ -69,33 +166,16 @@ describe('SaveManager and Gen5SaveParser', () => {
     view.setUint8(0x18E04, 1); 
     const pkmnOffset = 0x18E08;
     
-    view.setUint32(pkmnOffset, 1, true);
-    
-    let seed = 0;
-    const prngWords = [];
-    for (let i = 0; i < 64; i++) {
-      seed = (Math.imul(seed, 0x41C64E6D) + 0x6073) >>> 0;
-      prngWords.push(seed >>> 16);
-    }
-    
-    view.setUint16(pkmnOffset + 0x08, 25 ^ prngWords[0], true);
-    view.setUint16(pkmnOffset + 0x0C, 12345 ^ prngWords[2], true);
-    view.setUint16(pkmnOffset + 0x0E, 54321 ^ prngWords[3], true);
-    view.setUint16(pkmnOffset + 0x28, 33 ^ prngWords[16], true);
-    
-    view.setUint16(pkmnOffset + 0x48, 'P'.charCodeAt(0) ^ prngWords[32], true);
-    view.setUint16(pkmnOffset + 0x4A, 'I'.charCodeAt(0) ^ prngWords[33], true);
-    view.setUint16(pkmnOffset + 0x4C, 'K'.charCodeAt(0) ^ prngWords[34], true);
-    view.setUint16(pkmnOffset + 0x4E, 'A'.charCodeAt(0) ^ prngWords[35], true);
-    view.setUint16(pkmnOffset + 0x50, 0xFFFF ^ prngWords[36], true);
-    
-    view.setUint8(pkmnOffset + 0x8C, 5); 
-    
-    let expectedChecksum = 0;
-    for (let i = 0; i < 64; i++) {
-        expectedChecksum = (expectedChecksum + (view.getUint16(pkmnOffset + 8 + i * 2, true) ^ prngWords[i])) & 0xFFFF;
-    }
-    view.setUint16(pkmnOffset + 6, expectedChecksum, true);
+    writeSyntheticPokemon(view, pkmnOffset, {
+      pid: 1,
+      speciesId: 25,
+      otid: 12345,
+      otsid: 54321,
+      moves: [33],
+      nickname: 'PIKA',
+      level: 5,
+      isParty: true
+    });
     
     const team = parser.parseTeam(buffer);
     expect(team.length).toBe(1);
@@ -115,25 +195,17 @@ describe('SaveManager and Gen5SaveParser', () => {
     view.setUint8(0x18E04, 1); 
     const pkmnOffset = 0x18E08;
     
-    view.setUint32(pkmnOffset, 1, true);
-    
-    let seed = 0;
-    const prngWords = [];
-    for (let i = 0; i < 64; i++) {
-      seed = (Math.imul(seed, 0x41C64E6D) + 0x6073) >>> 0;
-      prngWords.push(seed >>> 16);
-    }
-    
-    view.setUint16(pkmnOffset + 0x0C, 1 ^ prngWords[2], true);
-    view.setUint16(pkmnOffset + 0x0E, 1 ^ prngWords[3], true);
-    
-    let expectedChecksum = 0;
-    for (let i = 0; i < 64; i++) {
-        expectedChecksum = (expectedChecksum + (view.getUint16(pkmnOffset + 8 + i * 2, true) ^ prngWords[i])) & 0xFFFF;
-    }
-    view.setUint16(pkmnOffset + 6, expectedChecksum, true);
+    writeSyntheticPokemon(view, pkmnOffset, {
+      pid: 1,
+      speciesId: 25,
+      otid: 1,
+      otsid: 1,
+      level: 5,
+      isParty: true
+    });
     
     const team = parser.parseTeam(buffer);
+    expect(team.length).toBe(1);
     expect(team[0].isShiny).toBe(true);
   });
 
@@ -144,23 +216,12 @@ describe('SaveManager and Gen5SaveParser', () => {
     
     const pkmnOffset = 0x400;
     
-    view.setUint32(pkmnOffset, 1, true);
-    
-    let seed = 0;
-    const prngWords = [];
-    for (let i = 0; i < 64; i++) {
-      seed = (Math.imul(seed, 0x41C64E6D) + 0x6073) >>> 0;
-      prngWords.push(seed >>> 16);
-    }
-    
-    view.setUint16(pkmnOffset + 0x08, 151 ^ prngWords[0], true); 
-    view.setUint16(pkmnOffset + 0x0C, 999 ^ prngWords[2], true); 
-    
-    let expectedChecksum = 0;
-    for (let i = 0; i < 64; i++) {
-        expectedChecksum = (expectedChecksum + (view.getUint16(pkmnOffset + 8 + i * 2, true) ^ prngWords[i])) & 0xFFFF;
-    }
-    view.setUint16(pkmnOffset + 6, expectedChecksum, true);
+    writeSyntheticPokemon(view, pkmnOffset, {
+      pid: 1,
+      speciesId: 151,
+      otid: 999,
+      isParty: false
+    });
     
     const boxes = parser.parseBoxes(buffer);
     expect(boxes.length).toBe(24);

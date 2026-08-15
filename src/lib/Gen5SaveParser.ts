@@ -123,6 +123,16 @@ export class Gen5SaveParser extends BaseSaveParser {
     const speciesId = unView.getUint16(0x00, true); // 0x08 in save = 0x00 in block A
     const otid = unView.getUint16(0x04, true);      // 0x0C in save = 0x04 in block A
     const otsid = unView.getUint16(0x06, true);     // 0x0E in save = 0x06 in block A
+    const experience = unView.getUint32(0x08, true); // 0x10 in save = 0x08 in block A
+    const abilityId = unView.getUint8(0x0D);
+    const evs = {
+      hp: unView.getUint8(0x10),
+      attack: unView.getUint8(0x11),
+      defense: unView.getUint8(0x12),
+      speed: unView.getUint8(0x13),
+      spAttack: unView.getUint8(0x14),
+      spDefense: unView.getUint8(0x15)
+    };
     
     // Block B (offset 0x20 in unshuffledData)
     const moves = [
@@ -130,6 +140,12 @@ export class Gen5SaveParser extends BaseSaveParser {
       unView.getUint16(0x20 + 2, true),
       unView.getUint16(0x20 + 4, true),
       unView.getUint16(0x20 + 6, true)
+    ];
+    const pp = [
+      unView.getUint8(0x28),
+      unView.getUint8(0x29),
+      unView.getUint8(0x2A),
+      unView.getUint8(0x2B)
     ];
     
     const iv32 = unView.getUint32(0x30, true);
@@ -144,6 +160,10 @@ export class Gen5SaveParser extends BaseSaveParser {
     
     // Block C (offset 0x40 in unshuffledData)
     const nickname = this.decodeString(unshuffledData.buffer, 0x40, 11);
+    
+    // Block D (offset 0x60 in unshuffledData)
+    const abilityBit = unView.getUint8(0x75) & 1;
+    const nature = unView.getUint8(0x7C);
     
     let level = 0;
     let hp, maxHp, attack, defense, speed, spAttack, spDefense;
@@ -172,7 +192,6 @@ export class Gen5SaveParser extends BaseSaveParser {
     }
     
     const isShiny = (otid ^ otsid ^ (pid & 0xFFFF) ^ (pid >>> 16)) < 8;
-    const abilityId = unView.getUint8(0x0D);
     
     return {
       pid,
@@ -180,6 +199,9 @@ export class Gen5SaveParser extends BaseSaveParser {
       speciesId,
       nickname,
       moves,
+      pp,
+      experience,
+      nature,
       level,
       hp,
       maxHp,
@@ -190,8 +212,9 @@ export class Gen5SaveParser extends BaseSaveParser {
       spDefense,
       isShiny,
       abilityId,
+      abilityBit,
       ivs,
-      // Not mapping everything, but this fulfills the current spec
+      evs
     } as Pokemon & { isShiny?: boolean };
   }
 
@@ -234,12 +257,12 @@ export class Gen5SaveParser extends BaseSaveParser {
     const activeSlot = this.getActiveSaveSlot(buffer, version);
     const boxes: Pokemon[][] = Array.from({ length: 24 }, () => []);
     
-    // PC boxes start at 0x400
+    // PC boxes start at 0x400. In Gen 5, each box is 0x1000 (4096) bytes (30 slots * 136 bytes + 16 bytes padding)
     const boxesStart = activeSlot + 0x400;
     
     for (let box = 0; box < 24; box++) {
       for (let slot = 0; slot < 30; slot++) {
-        const pkmnOffset = boxesStart + box * 30 * 136 + slot * 136;
+        const pkmnOffset = boxesStart + box * 0x1000 + slot * 136;
         const pkmn = this.decryptPokemon(buffer, pkmnOffset, false);
         if (pkmn) {
           boxes[box].push(pkmn);

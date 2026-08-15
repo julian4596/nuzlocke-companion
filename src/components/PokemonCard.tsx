@@ -74,14 +74,14 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
             style={{ imageRendering: 'pixelated' }}
           />
           <div className="flex-1 min-w-0">
-            <h3 className="text-2xl font-display font-black uppercase text-text flex flex-col xl:flex-row xl:justify-between break-words">
-              <span className="break-words whitespace-normal">
+            <h3 className="text-2xl font-display font-black uppercase text-text flex flex-col xl:flex-row xl:justify-between">
+              <span className="truncate">
                 {pkmn.nickname} 
                 {displayStats?.level !== undefined ? ` (Lv. ${displayStats.level})` : ''}
               </span>
-              <span className="text-text text-sm xl:ml-2 font-mono font-bold mt-1 xl:mt-0">#{pkmn.speciesId} {getSpeciesName(pkmn.speciesId)}</span>
+              <span className="text-text text-sm xl:ml-2 font-mono font-bold mt-1 xl:mt-0 truncate">#{pkmn.speciesId} {getSpeciesName(pkmn.speciesId)}</span>
             </h3>
-            <p className="text-sm text-text font-mono mt-1 break-words whitespace-normal uppercase">
+            <p className="text-sm text-text font-mono mt-1 truncate uppercase">
               Ability: <span className="text-text font-black">{getAbilityName(pkmn.speciesId, pkmn.abilityBit, pkmn.abilityId)}</span>
             </p>
         </div>
@@ -137,7 +137,7 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
         <p className="text-sm text-text mb-2 uppercase font-mono font-bold">Moves</p>
         <div className="flex flex-wrap gap-2">
           {pkmn.moves?.filter((m: number) => m > 0).map((moveId: number, idx: number) => (
-            <span key={idx} className="bg-surface text-text font-mono font-bold uppercase border-2 border-white text-[10px] sm:text-xs px-2 py-1 shadow-[2px_2px_0_rgba(255,255,255,1)] break-words whitespace-normal max-w-full">
+            <span key={idx} className="bg-surface text-text font-mono font-bold uppercase border-2 border-white text-[10px] sm:text-xs px-2 py-1 shadow-[2px_2px_0_rgba(255,255,255,1)] truncate max-w-full">
               {getMoveName(moveId)}
             </span>
           ))}

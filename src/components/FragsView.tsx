@@ -1,16 +1,20 @@
 import { useState, useMemo } from 'react';
 import { Pokemon, SavedRun, PokemonCustomData } from '@/lib/types';
 import pokemonData from '@/data/pokemon.json';
+import locationsRaw from '@/data/locations.json';
 import { Trophy, Skull, Target } from 'lucide-react';
+
+const locationsData = locationsRaw as Record<string, Record<string, string>>;
 
 interface FragsViewProps {
   team: Pokemon[];
   boxes: Pokemon[][];
   activeRun: SavedRun;
+  currentGame?: string | null;
   onUpdateRun: (run: SavedRun) => void;
 }
 
-export default function FragsView({ team, boxes, activeRun, onUpdateRun }: FragsViewProps) {
+export default function FragsView({ team, boxes, activeRun, currentGame, onUpdateRun }: FragsViewProps) {
   const [filter, setFilter] = useState<'All' | 'Alive' | 'Dead'>('All');
 
   const allPokemon = useMemo(() => {
@@ -151,8 +155,18 @@ export default function FragsView({ team, boxes, activeRun, onUpdateRun }: Frags
               const { pkmn, status, id } = entry;
               const kos = pokemonStats[id]?.kos || 0;
               const metLocation = pokemonStats[id]?.metLocation || '';
+              
+              let locStr = `Loc ID: ${pkmn.metLocationId}`;
+              if (pkmn.metLocationId !== undefined && currentGame) {
+                const genKey = currentGame.includes('Black') || currentGame.includes('White') ? 'Gen5' : 'Gen3';
+                const mappedLoc = locationsData[genKey]?.[pkmn.metLocationId.toString()];
+                if (mappedLoc) {
+                  locStr = mappedLoc;
+                }
+              }
+
               const defaultMetLocationText = pkmn.metLocationId !== undefined && pkmn.metLocationId !== 0 
-                ? `Loc ID: ${pkmn.metLocationId} (Lv ${pkmn.metLevel || '?'})` 
+                ? `${locStr} (Lv ${pkmn.metLevel || '?'})` 
                 : 'e.g. Route 1';
               const share = totalKOs > 0 ? ((kos / totalKOs) * 100).toFixed(1) : '0.0';
 

@@ -198,6 +198,7 @@ export default function App() {
           team={team} 
           boxes={boxes} 
           activeRun={activeRun!} 
+          currentGame={currentGame}
           onUpdateRun={(updatedRun) => {
             saveRun(updatedRun);
             setActiveRun(updatedRun);

@@ -3,7 +3,7 @@ import pokemonData from '@/data/pokemon.json';
 import movesData from '@/data/moves.json';
 import abilitiesData from '@/data/abilities.json';
 import abilityIdsData from '@/data/ability_ids.json';
-import { calculateStats } from '@/lib/StatCalculator';
+import { calculateStats, NATURES } from '@/lib/StatCalculator';
 import { calculateHiddenPower, calculateHiddenPowerPower } from '@/lib/HiddenPower';
 
 interface PokemonCardProps {
@@ -60,7 +60,7 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
           spa: pkmn.spAttack,
           spd: pkmn.spDefense,
           spe: pkmn.speed,
-          nature: null
+          nature: (pkmn.nature !== undefined && NATURES[pkmn.nature]) ? NATURES[pkmn.nature].name : null
         }
       : null;
 

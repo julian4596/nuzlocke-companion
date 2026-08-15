@@ -261,10 +261,12 @@ export default function App() {
                 }}
               />
               
-              <main className="flex-1 overflow-y-auto p-4 pt-24 md:p-8 md:ml-64">
-                <div className="max-w-7xl mx-auto pb-24 md:pb-0">
+              <main className="flex-1 overflow-y-auto p-4 md:p-8 md:ml-64">
+                <div className="h-20 md:hidden shrink-0"></div>
+                <div className="max-w-7xl mx-auto">
                   {renderContent(currentView)}
                 </div>
+                <div className="h-24 md:hidden shrink-0"></div>
               </main>
             </div>
           );

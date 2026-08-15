@@ -5,7 +5,6 @@ import locationsRaw from '@/data/locations.json';
 import { Trophy, Skull, Target } from 'lucide-react';
 
 const locationsData = locationsRaw as Record<string, Record<string, string>>;
-
 interface FragsViewProps {
   team: Pokemon[];
   boxes: Pokemon[][];

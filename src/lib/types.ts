@@ -41,6 +41,12 @@ export interface Pokemon {
   };
 }
 
+export interface PokemonCustomData {
+  kos?: number;
+  metLocation?: string;
+  customStatus?: 'Alive' | 'Dead';
+}
+
 export interface SavedRun {
   id: string;
   name: string;
@@ -52,4 +58,5 @@ export interface SavedRun {
   saveBuffer: ArrayBuffer;
   lastPlayed: number;
   fileHandle?: any;
+  pokemonStats?: Record<string, PokemonCustomData>;
 }

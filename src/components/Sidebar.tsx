@@ -9,51 +9,51 @@ interface SidebarProps {
 
 export default function Sidebar({ currentView, runId, onMainMenu }: SidebarProps) {
   return (
-    <div className="w-64 border-r border-primary/10 h-screen overflow-y-auto flex-shrink-0 bg-surface">
-      <div className="p-4 border-b border-primary/10">
-        <h2 className="text-xl font-display font-bold text-primary">Nuzlocke</h2>
+    <div className="w-64 border-r-4 border-white h-screen overflow-y-auto flex-shrink-0 bg-surface">
+      <div className="p-4 border-b-4 border-white">
+        <h2 className="text-2xl font-display font-black text-primary uppercase">Nuzlocke</h2>
       </div>
       
       <div className="p-4 space-y-6">
         <div>
-          <h3 className="text-xs font-semibold text-primary/60 uppercase tracking-wider mb-2">Party</h3>
-          <Link href={`/run/${runId}/party`} className={`block w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          <h3 className="text-xs font-bold text-text uppercase tracking-widest mb-2 font-mono">Party</h3>
+          <Link href={`/run/${runId}/party`} className={`block w-full text-left px-4 py-3 text-sm font-bold uppercase transition-all ${
               currentView === 'party'
-                ? 'bg-primary/5 text-primary'
-                : 'text-text hover:bg-primary/5 hover:text-primary'
+                ? 'bg-primary text-surface border-2 border-white shadow-brutal-white translate-x-1 translate-y-1'
+                : 'bg-surface text-text border-2 border-transparent hover:border-white hover:bg-primary hover:text-surface hover:shadow-brutal-white hover:-translate-y-1 hover:-translate-x-1'
             }`}>
             Your Team
           </Link>
         </div>
 
         <div>
-          <h3 className="text-xs font-semibold text-primary/60 uppercase tracking-wider mb-2">PC Storage</h3>
-          <Link href={`/run/${runId}/boxes`} className={`block w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          <h3 className="text-xs font-bold text-text uppercase tracking-widest mb-2 font-mono">PC Storage</h3>
+          <Link href={`/run/${runId}/boxes`} className={`block w-full text-left px-4 py-3 text-sm font-bold uppercase transition-all ${
               currentView === 'boxes'
-                ? 'bg-primary/5 text-primary'
-                : 'text-text hover:bg-primary/5 hover:text-primary'
+                ? 'bg-primary text-surface border-2 border-white shadow-brutal-white translate-x-1 translate-y-1'
+                : 'bg-surface text-text border-2 border-transparent hover:border-white hover:bg-primary hover:text-surface hover:shadow-brutal-white hover:-translate-y-1 hover:-translate-x-1'
             }`}>
             PC Boxes (1-13)
           </Link>
         </div>
 
         <div>
-          <h3 className="text-xs font-semibold text-danger uppercase tracking-wider mb-2">Graveyard</h3>
-          <Link href={`/run/${runId}/graveyard`} className={`block w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors border ${
+          <h3 className="text-xs font-bold text-danger uppercase tracking-widest mb-2 font-mono">Graveyard</h3>
+          <Link href={`/run/${runId}/graveyard`} className={`block w-full text-left px-4 py-3 text-sm font-bold uppercase transition-all ${
               currentView === 'graveyard'
-                ? 'bg-danger/5 border-danger/20 text-danger'
-                : 'border-transparent text-danger hover:bg-danger/5 hover:border-danger/20'
+                ? 'bg-danger text-white border-2 border-white shadow-brutal-white translate-x-1 translate-y-1'
+                : 'bg-surface text-danger border-2 border-transparent hover:border-white hover:bg-danger hover:text-white hover:shadow-brutal-white hover:-translate-y-1 hover:-translate-x-1'
             }`}>
             💀 Dead Pokémon
           </Link>
         </div>
 
         <div>
-          <h3 className="text-xs font-semibold text-primary/60 uppercase tracking-wider mb-2">Guides</h3>
-          <Link href={`/run/${runId}/trainers`} className={`block w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          <h3 className="text-xs font-bold text-text uppercase tracking-widest mb-2 font-mono">Guides</h3>
+          <Link href={`/run/${runId}/trainers`} className={`block w-full text-left px-4 py-3 text-sm font-bold uppercase transition-all ${
               currentView === 'trainers'
-                ? 'bg-primary/5 text-primary'
-                : 'text-text hover:bg-primary/5 hover:text-primary'
+                ? 'bg-primary text-surface border-2 border-white shadow-brutal-white translate-x-1 translate-y-1'
+                : 'bg-surface text-text border-2 border-transparent hover:border-white hover:bg-primary hover:text-surface hover:shadow-brutal-white hover:-translate-y-1 hover:-translate-x-1'
             }`}>
             Trainers & Caps
           </Link>
@@ -61,10 +61,10 @@ export default function Sidebar({ currentView, runId, onMainMenu }: SidebarProps
       </div>
       
       {onMainMenu && (
-        <div className="p-4 border-t border-primary/10 mt-auto absolute bottom-0 w-64 bg-surface">
+        <div className="p-4 border-t-4 border-white mt-auto absolute bottom-0 w-64 bg-surface">
           <button
             onClick={onMainMenu}
-            className="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-primary/60 hover:bg-primary/5 hover:text-primary transition-colors flex items-center gap-2"
+            className="w-full text-left px-4 py-3 text-sm font-bold uppercase text-text hover:bg-white hover:text-surface border-2 border-transparent hover:border-white hover:shadow-brutal-white transition-all flex items-center gap-2 hover:-translate-y-1 hover:-translate-x-1"
           >
             ← Main Menu
           </button>

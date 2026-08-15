@@ -162,7 +162,7 @@ export default function App() {
     if (currentView === 'party') {
       return (
         <div>
-          <h2 className="text-2xl font-display font-semibold mb-4 text-primary">Your Team</h2>
+          <h2 className="text-3xl font-display font-black uppercase mb-8 text-primary drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">Your Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {team.map((pkmn, i) => (
               <PokemonCard key={i} pkmn={pkmn} isBox={false} />

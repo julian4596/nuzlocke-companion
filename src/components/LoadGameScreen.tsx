@@ -85,44 +85,44 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
     <div className="min-h-screen bg-surface p-8">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-display font-bold text-primary">Load Game</h1>
+          <h1 className="text-4xl font-display font-black text-text uppercase drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">Load Game</h1>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md font-display transition-colors"
+            className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-surface border-4 border-white shadow-brutal-white px-4 py-2 font-display font-black uppercase transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
           >
-            <Plus size={20} />
+            <Plus size={24} />
             Import saved game
           </button>
         </div>
 
         <div className="space-y-4">
           {runs.length === 0 ? (
-            <div className="text-center py-12 text-primary/60 bg-white rounded-lg border border-primary/20">
+            <div className="text-center py-16 text-text font-mono font-bold bg-surface border-4 border-white shadow-brutal-white">
               No saved games found. Import a save file to get started.
             </div>
           ) : (
             runs.map(run => (
-              <div key={run.id} className="bg-white rounded-lg flex flex-col md:flex-row items-stretch border border-primary/20 hover:border-primary transition-colors overflow-hidden">
+              <div key={run.id} className="bg-surface border-4 border-white shadow-brutal-white flex flex-col md:flex-row items-stretch transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none mb-4">
                 <div 
-                  className="flex-1 p-6 cursor-pointer hover:bg-surface transition-colors"
+                  className="flex-1 p-6 cursor-pointer hover:bg-primary/5 transition-colors"
                   onClick={() => onLoadRun(run)}
                 >
-                  <h2 className="text-xl font-display font-bold mb-1 text-primary">{run.name}</h2>
-                  <div className="text-sm text-primary/60 mb-3">
+                  <h2 className="text-2xl font-display font-black mb-1 text-primary uppercase">{run.name}</h2>
+                  <div className="text-sm text-text font-mono mb-3">
                     {run.gameVersion}
                   </div>
                   
-                  <div className="flex items-center gap-6 mb-4">
+                  <div className="flex items-center gap-6 mb-4 font-mono font-bold">
                     <div className="flex items-center gap-2">
-                      <span className="text-primary/60">Badges:</span>
-                      <span className="font-semibold text-primary">{run.badges}</span>
+                      <span className="text-text">Badges:</span>
+                      <span className="font-black text-success">{run.badges}</span>
                       <div className="flex gap-1 ml-2">
                         <button 
                           onClick={(e) => {
                             e.stopPropagation();
                             handleUpdateBadges(run.id, run.badges - 1);
                           }}
-                          className="w-6 h-6 flex items-center justify-center bg-surface hover:bg-primary/5 border border-primary/10 rounded text-primary"
+                          className="w-6 h-6 flex items-center justify-center bg-surface hover:bg-primary text-text hover:text-surface border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none font-black font-mono transition-all"
                           disabled={run.badges <= 0}
                           title="Decrease Badges"
                         >
@@ -133,7 +133,7 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
                             e.stopPropagation();
                             handleUpdateBadges(run.id, run.badges + 1);
                           }}
-                          className="w-6 h-6 flex items-center justify-center bg-surface hover:bg-primary/5 border border-primary/10 rounded text-primary"
+                          className="w-6 h-6 flex items-center justify-center bg-surface hover:bg-primary text-text hover:text-surface border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none font-black font-mono transition-all"
                           title="Increase Badges"
                         >
                           +
@@ -141,44 +141,44 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-primary/60">Deaths:</span>
-                      <span className="font-semibold text-primary">{run.deaths}</span>
+                      <span className="text-text">Deaths:</span>
+                      <span className="font-black text-danger">{run.deaths}</span>
                     </div>
                   </div>
 
                   <div className="flex gap-2">
                     {run.teamSprites.map((spriteId, idx) => (
-                      <div key={idx} className="w-10 h-10 bg-surface border border-primary/10 rounded flex items-center justify-center overflow-hidden">
+                      <div key={idx} className="w-12 h-12 bg-surface border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)] flex items-center justify-center overflow-hidden">
                         {spriteId > 0 ? (
                            <img 
                              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${spriteId}.png`} 
                              alt={`Pokemon ${spriteId}`}
-                             className="w-full h-full object-contain"
+                             className="w-full h-full object-contain drop-shadow-md"
                            />
                         ) : (
-                           <div className="w-6 h-6 rounded-full bg-primary/10" />
+                           <div className="w-6 h-6 rounded-full bg-text" />
                         )}
                       </div>
                     ))}
                     {Array.from({ length: Math.max(0, 6 - run.teamSprites.length) }).map((_, idx) => (
-                      <div key={`empty-${idx}`} className="w-10 h-10 bg-primary/5 rounded flex items-center justify-center">
-                        <div className="w-6 h-6 rounded-full bg-primary/10" />
+                      <div key={`empty-${idx}`} className="w-12 h-12 bg-surface border-2 border-dashed border-white flex items-center justify-center">
+                        <div className="w-4 h-4 bg-text" />
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex flex-row md:flex-col items-center justify-center gap-3 p-4 bg-surface md:border-l md:border-t-0 border-t border-primary/10">
+                <div className="flex flex-row md:flex-col items-center justify-center gap-4 p-4 bg-surface md:border-l-4 md:border-t-0 border-t-4 border-white">
                   <button 
                     onClick={() => handleDelete(run.id)}
-                    className="p-3 text-primary/60 hover:text-danger hover:bg-danger/5 rounded-full transition-colors"
+                    className="p-3 text-danger border-2 border-transparent hover:border-white hover:bg-danger hover:text-white shadow-none hover:shadow-brutal-white font-bold transition-all hover:-translate-x-1 hover:-translate-y-1"
                     title="Delete Run"
                   >
                     <Trash2 size={24} />
                   </button>
                   <button 
                     onClick={() => handleDownload(run)}
-                    className="p-3 text-primary/60 hover:text-secondary hover:bg-secondary/5 rounded-full transition-colors"
+                    className="p-3 text-secondary border-2 border-transparent hover:border-white hover:bg-secondary hover:text-white shadow-none hover:shadow-brutal-white font-bold transition-all hover:-translate-x-1 hover:-translate-y-1"
                     title="Download Save"
                   >
                     <Download size={24} />
@@ -192,9 +192,9 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
         {onBack && (
           <button 
             onClick={onBack}
-            className="mt-8 text-primary/60 hover:text-primary font-display transition-colors flex items-center gap-2"
+            className="mt-8 text-text font-mono font-bold hover:text-primary transition-colors flex items-center gap-2"
           >
-            &larr; Back to Start
+            &larr; BACK TO START
           </button>
         )}
       </div>

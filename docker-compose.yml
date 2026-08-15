@@ -6,6 +6,6 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "${APP_PORT:-5173}:5173"
+      - "${APP_PORT:-5173}:80"
     restart: unless-stopped
     container_name: nuzlocke-companion-${ENV_NAME:-main}

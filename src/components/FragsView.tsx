@@ -151,6 +151,9 @@ export default function FragsView({ team, boxes, activeRun, onUpdateRun }: Frags
               const { pkmn, status, id } = entry;
               const kos = pokemonStats[id]?.kos || 0;
               const metLocation = pokemonStats[id]?.metLocation || '';
+              const defaultMetLocationText = pkmn.metLocationId !== undefined && pkmn.metLocationId !== 0 
+                ? `Loc ID: ${pkmn.metLocationId} (Lv ${pkmn.metLevel || '?'})` 
+                : 'e.g. Route 1';
               const share = totalKOs > 0 ? ((kos / totalKOs) * 100).toFixed(1) : '0.0';
 
               return (
@@ -184,7 +187,7 @@ export default function FragsView({ team, boxes, activeRun, onUpdateRun }: Frags
                       type="text" 
                       value={metLocation}
                       onChange={(e) => handleStatChange(id, 'metLocation', e.target.value)}
-                      placeholder="e.g. Route 1"
+                      placeholder={defaultMetLocationText}
                       className="w-full bg-surface border-2 border-white focus:border-primary outline-none font-mono text-text placeholder-gray-500 transition-colors p-2 shadow-[2px_2px_0_rgba(255,255,255,1)] focus:shadow-[4px_4px_0_rgba(253,200,0,1)]"
                     />
                   </td>

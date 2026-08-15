@@ -194,7 +194,11 @@ export class GBASaveParser extends BaseSaveParser {
 
       // Decrypt Misc
       const miscOffset = dataOffset + miscIndex * SUBSTRUCTURE_SIZE;
+      const decM1 = (view.getUint32(miscOffset, true) ^ key) >>> 0;
+      const metLocationId = (decM1 >>> 8) & 0xFF;
+
       const decM2 = (view.getUint32(miscOffset + 4, true) ^ key) >>> 0;
+      const metLevel = decM2 & 0x7F;
       const ivs = {
         hp: decM2 & 0x1F,
         attack: (decM2 >>> 5) & 0x1F,
@@ -208,7 +212,7 @@ export class GBASaveParser extends BaseSaveParser {
       team.push({ 
         pid, otid, speciesId, level, experience, nature, nickname, abilityBit,
         hp, maxHp, attack, defense, speed, spAttack, spDefense,
-        moves, pp, evs, ivs
+        moves, pp, evs, ivs, metLocationId, metLevel
       });
     }
     
@@ -297,7 +301,11 @@ export class GBASaveParser extends BaseSaveParser {
 
         // Decrypt Misc for Ability and IVs
         const miscOffset = dataOffset + miscIndex * SUBSTRUCTURE_SIZE;
+        const decM1 = (pcView.getUint32(miscOffset, true) ^ key) >>> 0;
+        const metLocationId = (decM1 >>> 8) & 0xFF;
+
         const decM2 = (pcView.getUint32(miscOffset + 4, true) ^ key) >>> 0;
+        const metLevel = decM2 & 0x7F;
         const ivs = {
           hp: decM2 & 0x1F,
           attack: (decM2 >>> 5) & 0x1F,
@@ -309,7 +317,7 @@ export class GBASaveParser extends BaseSaveParser {
         const abilityBit = (decM2 >>> 31) & 1;
         
         boxes[box].push({
-          pid, otid, speciesId, nickname, abilityBit, moves, experience, nature, evs, ivs
+          pid, otid, speciesId, nickname, abilityBit, moves, experience, nature, evs, ivs, metLocationId, metLevel
         });
       }
     }

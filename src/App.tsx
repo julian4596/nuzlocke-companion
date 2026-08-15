@@ -7,6 +7,7 @@ import PokemonCard from '@/components/PokemonCard';
 import Sidebar from '@/components/Sidebar';
 import BoxView from '@/components/BoxView';
 import GraveyardView from '@/components/GraveyardView';
+import FragsView from '@/components/FragsView';
 import TrainersView, { Trainer, TrainerCapGroup } from '@/components/TrainersView';
 import StartScreen from '@/components/StartScreen';
 import LoadGameScreen from '@/components/LoadGameScreen';
@@ -181,6 +182,20 @@ export default function App() {
     if (currentView === 'graveyard') {
       return (
         <GraveyardView 
+          boxes={boxes} 
+          activeRun={activeRun!} 
+          onUpdateRun={(updatedRun) => {
+            saveRun(updatedRun);
+            setActiveRun(updatedRun);
+          }} 
+        />
+      );
+    }
+
+    if (currentView === 'frags') {
+      return (
+        <FragsView 
+          team={team} 
           boxes={boxes} 
           activeRun={activeRun!} 
           onUpdateRun={(updatedRun) => {

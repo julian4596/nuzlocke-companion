@@ -19,12 +19,19 @@ export default function Sidebar({ currentView, runId, onMainMenu }: SidebarProps
       <div className="p-4 space-y-6">
         <div>
           <h3 className="text-xs font-bold text-text uppercase tracking-widest mb-2 font-mono">Party</h3>
-          <Link href={`/run/${runId}/party`} className={`block w-full text-left px-4 py-3 text-sm font-bold uppercase transition-all ${
+          <Link href={`/run/${runId}/party`} className={`block w-full text-left px-4 py-3 text-sm font-bold uppercase transition-all mb-2 ${
               currentView === 'party'
                 ? 'bg-primary text-surface border-2 border-white shadow-brutal-white translate-x-1 translate-y-1'
                 : 'bg-surface text-text border-2 border-transparent hover:border-white hover:bg-primary hover:text-surface hover:shadow-brutal-white hover:-translate-y-1 hover:-translate-x-1'
             }`}>
             Your Team
+          </Link>
+          <Link href={`/run/${runId}/frags`} className={`block w-full text-left px-4 py-3 text-sm font-bold uppercase transition-all ${
+              currentView === 'frags'
+                ? 'bg-primary text-surface border-2 border-white shadow-brutal-white translate-x-1 translate-y-1'
+                : 'bg-surface text-text border-2 border-transparent hover:border-white hover:bg-primary hover:text-surface hover:shadow-brutal-white hover:-translate-y-1 hover:-translate-x-1'
+            }`}>
+            ⚔️ KOs / Frags
           </Link>
         </div>
 

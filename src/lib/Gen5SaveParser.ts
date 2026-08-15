@@ -162,6 +162,8 @@ export class Gen5SaveParser extends BaseSaveParser {
     const nickname = this.decodeString(unshuffledData.buffer, 0x40, 11);
     
     // Block D (offset 0x60 in unshuffledData)
+    const metLocationId = unView.getUint16(0x64, true);
+    const metLevel = unView.getUint8(0x6A) & 0x7F;
     const abilityBit = unView.getUint8(0x75) & 1;
     const nature = unView.getUint8(0x7C);
     
@@ -214,7 +216,9 @@ export class Gen5SaveParser extends BaseSaveParser {
       abilityId,
       abilityBit,
       ivs,
-      evs
+      evs,
+      metLocationId,
+      metLevel
     } as Pokemon & { isShiny?: boolean };
   }
 

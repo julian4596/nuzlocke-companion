@@ -75,7 +75,7 @@ export default function FragsView({ team, boxes, activeRun, onUpdateRun }: Frags
   };
 
   const getRowBackground = (index: number) => {
-    if (index === 0) return 'bg-[#FDC800] text-surface'; // Gold
+    if (index === 0) return 'bg-primary text-surface'; // Gold
     if (index === 1) return 'bg-[#C0C0C0] text-surface'; // Silver
     if (index === 2) return 'bg-[#CD7F32] text-surface'; // Bronze
     return 'bg-surface text-text';
@@ -84,7 +84,7 @@ export default function FragsView({ team, boxes, activeRun, onUpdateRun }: Frags
   return (
     <div>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
-        <h2 className="text-3xl font-display font-black uppercase text-primary drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">
+        <h2 className="text-4xl font-display font-black uppercase text-text drop-shadow-[4px_4px_0_rgba(253,200,0,1)]">
           KOs / Frags
         </h2>
         <div className="flex gap-2">
@@ -132,17 +132,17 @@ export default function FragsView({ team, boxes, activeRun, onUpdateRun }: Frags
         </div>
       </div>
 
-      <div className="border-4 border-white shadow-[8px_8px_0_rgba(255,255,255,1)] overflow-x-auto bg-[#1A1A1A]">
+      <div className="border-4 border-white shadow-[8px_8px_0_rgba(255,255,255,1)] overflow-x-auto bg-surface">
         <table className="w-full text-left border-collapse min-w-[800px]">
           <thead>
             <tr className="border-b-4 border-white bg-surface text-text font-display font-black uppercase text-sm">
-              <th className="p-4 border-r-2 border-white w-16 text-center">#</th>
-              <th className="p-4 border-r-2 border-white w-24">Status</th>
-              <th className="p-4 border-r-2 border-white w-20">Img</th>
-              <th className="p-4 border-r-2 border-white">Nickname</th>
-              <th className="p-4 border-r-2 border-white">Species</th>
-              <th className="p-4 border-r-2 border-white">Met Location</th>
-              <th className="p-4 border-r-2 border-white w-28">KOs</th>
+              <th className="p-4 border-r-4 border-white w-16 text-center">#</th>
+              <th className="p-4 border-r-4 border-white w-24">Status</th>
+              <th className="p-4 border-r-4 border-white w-20">Img</th>
+              <th className="p-4 border-r-4 border-white">Nickname</th>
+              <th className="p-4 border-r-4 border-white">Species</th>
+              <th className="p-4 border-r-4 border-white">Met Location</th>
+              <th className="p-4 border-r-4 border-white w-32">KOs</th>
               <th className="p-4 w-40">KO Share</th>
             </tr>
           </thead>
@@ -154,45 +154,45 @@ export default function FragsView({ team, boxes, activeRun, onUpdateRun }: Frags
               const share = totalKOs > 0 ? ((kos / totalKOs) * 100).toFixed(1) : '0.0';
 
               return (
-                <tr key={`${id}-${index}`} className="border-b-2 border-[#333] hover:bg-[#2A2A2A] transition-colors group">
-                  <td className={`p-4 border-r-2 border-[#333] font-display font-black text-xl text-center ${getRowBackground(index)}`}>
+                <tr key={`${id}-${index}`} className="border-b-4 border-white transition-colors group">
+                  <td className={`p-4 border-r-4 border-white font-display font-black text-xl text-center ${getRowBackground(index)}`}>
                     {index + 1}
                   </td>
-                  <td className="p-4 border-r-2 border-[#333]">
+                  <td className="p-4 border-r-4 border-white">
                     <span className={`px-2 py-1 text-xs font-black uppercase border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)] ${
-                      status === 'Alive' ? 'bg-success text-surface' : 'bg-danger text-white'
+                      status === 'Alive' ? 'bg-success text-surface' : 'bg-danger text-text'
                     }`}>
                       {status}
                     </span>
                   </td>
-                  <td className="p-4 border-r-2 border-[#333]">
+                  <td className="p-4 border-r-4 border-white">
                     <img 
                       src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pkmn.speciesId}.png`} 
                       alt={getSpeciesName(pkmn.speciesId)}
-                      className="w-12 h-12 pixelated"
+                      className="w-12 h-12 pixelated bg-surface border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)]"
                       style={{ imageRendering: 'pixelated' }}
                     />
                   </td>
-                  <td className="p-4 border-r-2 border-[#333] font-display font-bold uppercase text-white">
+                  <td className="p-4 border-r-4 border-white font-display font-bold uppercase text-text">
                     {pkmn.nickname || '-'}
                   </td>
-                  <td className="p-4 border-r-2 border-[#333] font-mono text-gray-300">
+                  <td className="p-4 border-r-4 border-white font-mono font-bold text-text">
                     {getSpeciesName(pkmn.speciesId)}
                   </td>
-                  <td className="p-4 border-r-2 border-[#333]">
+                  <td className="p-4 border-r-4 border-white">
                     <input 
                       type="text" 
                       value={metLocation}
                       onChange={(e) => handleStatChange(id, 'metLocation', e.target.value)}
                       placeholder="e.g. Route 1"
-                      className="w-full bg-transparent border-b-2 border-transparent focus:border-primary outline-none font-mono text-white placeholder-gray-600 transition-colors py-1"
+                      className="w-full bg-surface border-2 border-white focus:border-primary outline-none font-mono text-text placeholder-gray-500 transition-colors p-2 shadow-[2px_2px_0_rgba(255,255,255,1)] focus:shadow-[4px_4px_0_rgba(253,200,0,1)]"
                     />
                   </td>
-                  <td className="p-4 border-r-2 border-[#333]">
+                  <td className="p-4 border-r-4 border-white">
                     <div className="flex items-center">
                       <button 
                         onClick={() => handleStatChange(id, 'kos', Math.max(0, kos - 1))}
-                        className="w-6 h-6 bg-surface text-white border-2 border-white font-bold flex items-center justify-center hover:bg-primary hover:text-surface hover:shadow-[2px_2px_0_rgba(255,255,255,1)] transition-all mr-2 opacity-0 group-hover:opacity-100 focus:opacity-100"
+                        className="w-8 h-8 bg-surface text-text border-2 border-white font-black flex items-center justify-center hover:bg-primary hover:text-surface shadow-[2px_2px_0_rgba(255,255,255,1)] hover:shadow-[4px_4px_0_rgba(255,255,255,1)] transition-all mr-2 hover:-translate-y-0.5 hover:-translate-x-0.5"
                       >
                         -
                       </button>
@@ -200,19 +200,19 @@ export default function FragsView({ team, boxes, activeRun, onUpdateRun }: Frags
                         type="number" 
                         value={kos || ''}
                         onChange={(e) => handleStatChange(id, 'kos', parseInt(e.target.value) || 0)}
-                        className="w-12 bg-transparent text-white font-display font-black text-xl outline-none text-center"
+                        className="w-12 bg-surface text-text font-display font-black text-xl outline-none text-center border-b-4 border-white focus:border-primary p-1"
                         min="0"
                       />
                       <button 
                         onClick={() => handleStatChange(id, 'kos', kos + 1)}
-                        className="w-6 h-6 bg-surface text-white border-2 border-white font-bold flex items-center justify-center hover:bg-primary hover:text-surface hover:shadow-[2px_2px_0_rgba(255,255,255,1)] transition-all ml-2 opacity-0 group-hover:opacity-100 focus:opacity-100"
+                        className="w-8 h-8 bg-surface text-text border-2 border-white font-black flex items-center justify-center hover:bg-primary hover:text-surface shadow-[2px_2px_0_rgba(255,255,255,1)] hover:shadow-[4px_4px_0_rgba(255,255,255,1)] transition-all ml-2 hover:-translate-y-0.5 hover:-translate-x-0.5"
                       >
                         +
                       </button>
                     </div>
                   </td>
                   <td className="p-4">
-                    <div className="flex items-center justify-between font-mono text-white mb-1">
+                    <div className="flex items-center justify-between font-mono font-bold text-text mb-1">
                       <span>{share}%</span>
                     </div>
                     {/* Progress Bar */}

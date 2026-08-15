@@ -84,13 +84,13 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
   return (
     <div className="min-h-screen bg-surface p-8">
       <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-display font-black text-text uppercase drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">Load Game</h1>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-display font-black text-text uppercase drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">Load Game</h1>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-surface border-4 border-white shadow-brutal-white px-4 py-2 font-display font-black uppercase transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
+            className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-surface border-4 border-white shadow-brutal-white px-4 py-2 text-sm sm:text-base font-display font-black uppercase transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none w-full sm:w-auto justify-center"
           >
-            <Plus size={24} />
+            <Plus size={20} className="sm:w-6 sm:h-6" />
             Import saved game
           </button>
         </div>
@@ -104,15 +104,15 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
             runs.map(run => (
               <div key={run.id} className="bg-surface border-4 border-white shadow-brutal-white flex flex-col md:flex-row items-stretch transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none mb-4">
                 <div 
-                  className="flex-1 p-6 cursor-pointer hover:bg-primary/5 transition-colors"
+                  className="flex-1 p-4 sm:p-6 cursor-pointer hover:bg-primary/5 transition-colors"
                   onClick={() => onLoadRun(run)}
                 >
-                  <h2 className="text-2xl font-display font-black mb-1 text-primary uppercase">{run.name}</h2>
+                  <h2 className="text-xl sm:text-2xl font-display font-black mb-1 text-primary uppercase break-words">{run.name}</h2>
                   <div className="text-sm text-text font-mono mb-3">
                     {run.gameVersion}
                   </div>
                   
-                  <div className="flex items-center gap-6 mb-4 font-mono font-bold">
+                  <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-4 font-mono font-bold text-sm sm:text-base">
                     <div className="flex items-center gap-2">
                       <span className="text-text">Badges:</span>
                       <span className="font-black text-success">{run.badges}</span>
@@ -146,9 +146,9 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
                     </div>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2 mt-4 sm:mt-0">
                     {run.teamSprites.map((spriteId, idx) => (
-                      <div key={idx} className="w-12 h-12 bg-surface border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)] flex items-center justify-center overflow-hidden">
+                      <div key={idx} className="w-10 h-10 sm:w-12 sm:h-12 bg-surface border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)] flex items-center justify-center overflow-hidden">
                         {spriteId > 0 ? (
                            <img 
                              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${spriteId}.png`} 
@@ -156,13 +156,13 @@ export default function LoadGameScreen({ onBack, onLoadRun }: LoadGameScreenProp
                              className="w-full h-full object-contain drop-shadow-md"
                            />
                         ) : (
-                           <div className="w-6 h-6 rounded-full bg-text" />
+                           <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-text" />
                         )}
                       </div>
                     ))}
                     {Array.from({ length: Math.max(0, 6 - run.teamSprites.length) }).map((_, idx) => (
-                      <div key={`empty-${idx}`} className="w-12 h-12 bg-surface border-2 border-dashed border-white flex items-center justify-center">
-                        <div className="w-4 h-4 bg-text" />
+                      <div key={`empty-${idx}`} className="w-10 h-10 sm:w-12 sm:h-12 bg-surface border-2 border-dashed border-white flex items-center justify-center">
+                        <div className="w-3 h-3 sm:w-4 sm:h-4 bg-text" />
                       </div>
                     ))}
                   </div>

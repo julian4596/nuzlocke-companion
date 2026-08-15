@@ -250,7 +250,7 @@ export default function App() {
           const currentView = params.view || 'party';
           
           return (
-            <div className="flex h-screen overflow-hidden">
+            <div className="flex flex-col md:flex-row h-screen overflow-hidden">
               <Sidebar 
                 currentView={currentView} 
                 runId={runId!}
@@ -261,7 +261,7 @@ export default function App() {
                 }}
               />
               
-              <main className="flex-1 overflow-y-auto p-8 ml-64">
+              <main className="flex-1 overflow-y-auto p-4 md:p-8 mt-16 md:mt-0 mb-16 md:mb-0 md:ml-64">
                 <div className="max-w-7xl mx-auto">
                   {renderContent(currentView)}
                 </div>

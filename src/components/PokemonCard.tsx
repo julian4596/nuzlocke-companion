@@ -74,14 +74,14 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
             style={{ imageRendering: 'pixelated' }}
           />
           <div className="flex-1 min-w-0">
-            <h3 className="text-2xl font-display font-black uppercase text-text flex flex-col xl:flex-row xl:justify-between truncate">
-              <span className="truncate">
+            <h3 className="text-2xl font-display font-black uppercase text-text flex flex-col xl:flex-row xl:justify-between break-words">
+              <span className="break-words whitespace-normal">
                 {pkmn.nickname} 
                 {displayStats?.level !== undefined ? ` (Lv. ${displayStats.level})` : ''}
               </span>
-              <span className="text-text text-sm xl:ml-2 font-mono font-bold">#{pkmn.speciesId} {getSpeciesName(pkmn.speciesId)}</span>
+              <span className="text-text text-sm xl:ml-2 font-mono font-bold mt-1 xl:mt-0">#{pkmn.speciesId} {getSpeciesName(pkmn.speciesId)}</span>
             </h3>
-            <p className="text-sm text-text font-mono mt-1 truncate uppercase">
+            <p className="text-sm text-text font-mono mt-1 break-words whitespace-normal uppercase">
               Ability: <span className="text-text font-black">{getAbilityName(pkmn.speciesId, pkmn.abilityBit, pkmn.abilityId)}</span>
             </p>
         </div>
@@ -122,13 +122,13 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
               HP: {calculateHiddenPower(pkmn.ivs)} {calculateHiddenPowerPower(pkmn.ivs)}
             </span>
           </div>
-          <div className="grid grid-cols-6 gap-0 text-xs text-center border-2 border-white bg-surface mt-2 font-mono font-bold shadow-[2px_2px_0_rgba(255,255,255,1)]">
-            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">HP</div><div className={`p-1 ${pkmn.ivs.hp === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.hp}</div></div>
-            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">Atk</div><div className={`p-1 ${pkmn.ivs.attack === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.attack}</div></div>
-            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">Def</div><div className={`p-1 ${pkmn.ivs.defense === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.defense}</div></div>
-            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">SpA</div><div className={`p-1 ${pkmn.ivs.spAttack === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.spAttack}</div></div>
-            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">SpD</div><div className={`p-1 ${pkmn.ivs.spDefense === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.spDefense}</div></div>
-            <div className="border-r-0 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">Spe</div><div className={`p-1 ${pkmn.ivs.speed === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.speed}</div></div>
+          <div className="grid grid-cols-6 gap-0 text-[10px] sm:text-xs text-center border-2 border-white bg-surface mt-2 font-mono font-bold shadow-[2px_2px_0_rgba(255,255,255,1)]">
+            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-0.5 sm:p-1">HP</div><div className={`p-0.5 sm:p-1 ${pkmn.ivs.hp === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.hp}</div></div>
+            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-0.5 sm:p-1">Atk</div><div className={`p-0.5 sm:p-1 ${pkmn.ivs.attack === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.attack}</div></div>
+            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-0.5 sm:p-1">Def</div><div className={`p-0.5 sm:p-1 ${pkmn.ivs.defense === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.defense}</div></div>
+            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-0.5 sm:p-1">SpA</div><div className={`p-0.5 sm:p-1 ${pkmn.ivs.spAttack === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.spAttack}</div></div>
+            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-0.5 sm:p-1">SpD</div><div className={`p-0.5 sm:p-1 ${pkmn.ivs.spDefense === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.spDefense}</div></div>
+            <div className="border-r-0 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-0.5 sm:p-1">Spe</div><div className={`p-0.5 sm:p-1 ${pkmn.ivs.speed === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.speed}</div></div>
           </div>
         </div>
       )}
@@ -137,7 +137,7 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
         <p className="text-sm text-text mb-2 uppercase font-mono font-bold">Moves</p>
         <div className="flex flex-wrap gap-2">
           {pkmn.moves?.filter((m: number) => m > 0).map((moveId: number, idx: number) => (
-            <span key={idx} className="bg-surface text-text font-mono font-bold uppercase border-2 border-white text-xs px-2 py-1 shadow-[2px_2px_0_rgba(255,255,255,1)] truncate max-w-full">
+            <span key={idx} className="bg-surface text-text font-mono font-bold uppercase border-2 border-white text-[10px] sm:text-xs px-2 py-1 shadow-[2px_2px_0_rgba(255,255,255,1)] break-words whitespace-normal max-w-full">
               {getMoveName(moveId)}
             </span>
           ))}

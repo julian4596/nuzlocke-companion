@@ -11,6 +11,9 @@ import path from 'path';
   // Wait for the app to load
   await page.waitForTimeout(1000);
   
+  // Take screenshot of Start Screen
+  await page.screenshot({ path: 'start_screen.png' });
+  
   // Navigate to load game
   await page.click('button:has-text("Load Game")');
   
@@ -30,6 +33,12 @@ import path from 'path';
   
   // Wait for party to load
   await page.waitForSelector('h2:has-text("Your Team")');
+  
+  // Wait a bit for rendering
+  await page.waitForTimeout(500);
+
+  // Take screenshot of Party
+  await page.screenshot({ path: 'party.png' });
   
   // Click on PC Storage in the sidebar
   await page.click('a:has-text("PC Boxes")');

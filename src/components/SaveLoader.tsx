@@ -38,8 +38,8 @@ export default function SaveLoader({ onFileLoad }: Props) {
   };
 
   return (
-    <div className="p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 w-full">
-      <label htmlFor="save-upload" className="block text-sm font-medium text-gray-300 mb-2">
+    <div className="p-4 bg-white rounded-lg shadow-sm border border-primary/20 w-full">
+      <label htmlFor="save-upload" className="block text-sm font-display font-medium text-primary/80 mb-2">
         Upload Save File (.sav)
       </label>
       <div className="flex flex-col gap-3">
@@ -47,14 +47,14 @@ export default function SaveLoader({ onFileLoad }: Props) {
           <button
             type="button"
             onClick={handlePicker}
-            className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-semibold transition-colors"
+            className="w-full px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded text-sm font-display font-medium transition-colors"
           >
             Select Save File
           </button>
         )}
         {('showOpenFilePicker' in window) && (
           <div className="flex items-center">
-            <span className="text-gray-400 text-xs w-full text-center">or</span>
+            <span className="text-primary/40 font-display text-xs w-full text-center">or</span>
           </div>
         )}
         <input 
@@ -64,7 +64,7 @@ export default function SaveLoader({ onFileLoad }: Props) {
           aria-label="Upload Save File"
           onClick={(e) => { (e.target as HTMLInputElement).value = ''; }}
           onChange={handleFileChange}
-          className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-700 file:text-white hover:file:bg-gray-600 cursor-pointer" 
+          className="block w-full text-sm text-primary/60 file:mr-4 file:py-2 file:px-4 file:rounded file:border file:border-primary/20 file:text-sm file:font-display file:font-medium file:bg-surface file:text-primary hover:file:bg-primary/5 cursor-pointer" 
         />
       </div>
     </div>

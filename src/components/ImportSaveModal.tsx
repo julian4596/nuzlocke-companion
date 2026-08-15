@@ -33,13 +33,13 @@ export default function ImportSaveModal(props: {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-      <div className="bg-slate-900 border border-slate-700 rounded-xl shadow-2xl w-full max-w-md overflow-hidden relative">
-        <div className="flex items-center justify-between p-4 border-b border-slate-800">
-          <h2 className="text-xl font-bold text-white">Import Saved Game</h2>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-primary/20 backdrop-blur-sm p-4">
+      <div className="bg-surface border border-primary/20 rounded-xl shadow-md w-full max-w-md overflow-hidden relative">
+        <div className="flex items-center justify-between p-4 border-b border-primary/10">
+          <h2 className="text-xl font-display font-bold text-primary">Import Saved Game</h2>
           <button 
             onClick={handleClose}
-            className="p-1 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1 rounded-full text-primary/60 hover:text-primary hover:bg-primary/5 transition-colors"
           >
             <X size={20} />
           </button>
@@ -48,7 +48,7 @@ export default function ImportSaveModal(props: {
         <div className="p-6">
           {!saveBuffer ? (
             <div className="flex flex-col items-center">
-              <p className="text-slate-300 mb-6 text-center text-sm">
+              <p className="text-primary/80 mb-6 text-center text-sm">
                 Select your Nuzlocke companion save file to import your progress.
               </p>
               <SaveLoader onFileLoad={(buffer, _fileName, handle) => {
@@ -59,7 +59,7 @@ export default function ImportSaveModal(props: {
           ) : (
             <form onSubmit={handleImport} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1">
+                <label className="block text-sm font-display font-medium text-primary/80 mb-1">
                   Run Name
                 </label>
                 <input
@@ -68,7 +68,7 @@ export default function ImportSaveModal(props: {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g., FireRed Hardcore Nuzlocke"
-                  className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full bg-white border border-primary/20 rounded-lg px-4 py-2 text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                 />
               </div>
               
@@ -78,14 +78,14 @@ export default function ImportSaveModal(props: {
                 <button
                   type="button"
                   onClick={() => setSaveBuffer(null)}
-                  className="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 bg-slate-800 hover:bg-slate-700 transition-colors"
+                  className="px-4 py-2 rounded-lg text-sm font-medium text-primary bg-white border border-primary/20 hover:bg-surface transition-colors"
                 >
                   Back
                 </button>
                 <button
                   type="submit"
                   disabled={!name}
-                  className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="px-4 py-2 rounded-lg text-sm font-display font-medium text-white bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   Save Run
                 </button>

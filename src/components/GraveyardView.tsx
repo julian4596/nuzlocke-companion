@@ -38,23 +38,23 @@ export default function GraveyardView({ boxes, activeRun, onUpdateRun }: Graveya
 
   if (editingMode) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 px-4">
-        <h2 className="text-3xl font-bold mb-4 text-white">Set Up Your Graveyard</h2>
-        <p className="text-gray-400 mb-8 max-w-lg text-center leading-relaxed">
+      <div className="flex flex-col items-center justify-center py-20 px-4 bg-surface">
+        <h2 className="text-4xl font-display font-black uppercase text-danger drop-shadow-[2px_2px_0_rgba(255,255,255,1)] mb-6">Set Up Your Graveyard</h2>
+        <p className="text-text font-mono font-bold mb-8 max-w-lg text-center leading-relaxed">
           Select which PC boxes you are using for your dead Pokémon. The deaths counter will automatically update based on the contents of these boxes.
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-8 w-full max-w-4xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8 w-full max-w-4xl">
           {boxes.map((_, i) => (
             <button
               key={i}
               onClick={() => toggleBox(i)}
-              className={`p-3 rounded-lg border-2 font-medium transition-colors flex items-center justify-center gap-2 ${
+              className={`p-4 rounded-none border-2 font-black font-mono uppercase transition-all flex items-center justify-center gap-3 ${
                 selectedBoxes.includes(i) 
-                  ? 'border-red-500 bg-red-500/20 text-white' 
-                  : 'border-neutral-700 bg-neutral-800 text-neutral-400 hover:border-neutral-500'
+                  ? 'border-white bg-danger text-white shadow-none translate-x-1 translate-y-1' 
+                  : 'border-white bg-surface text-text shadow-[4px_4px_0_rgba(255,255,255,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-none hover:bg-text hover:text-surface'
               }`}
             >
-              <div className={`w-4 h-4 rounded-full border ${selectedBoxes.includes(i) ? 'bg-red-500 border-red-500' : 'border-neutral-500'}`} />
+              <div className={`w-4 h-4 rounded-none border-2 ${selectedBoxes.includes(i) ? 'bg-white border-white' : 'border-white bg-surface'}`} />
               Box {i + 1}
             </button>
           ))}
@@ -66,7 +66,7 @@ export default function GraveyardView({ boxes, activeRun, onUpdateRun }: Graveya
                 setSelectedBoxes(activeRun.graveyardBoxes || []);
                 setEditingMode(false);
               }}
-              className="px-6 py-2 rounded-md font-medium bg-neutral-700 hover:bg-neutral-600 text-white transition-colors"
+              className="px-6 py-3 rounded-none font-bold font-mono uppercase bg-surface border-2 border-white hover:bg-text hover:text-surface shadow-[4px_4px_0_rgba(255,255,255,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none text-text transition-all"
             >
               Cancel
             </button>
@@ -74,7 +74,7 @@ export default function GraveyardView({ boxes, activeRun, onUpdateRun }: Graveya
           <button 
             onClick={handleSave}
             disabled={selectedBoxes.length === 0}
-            className="px-6 py-2 rounded-md font-medium bg-red-600 hover:bg-red-700 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-6 py-3 rounded-none font-display font-black uppercase bg-danger border-2 border-white text-white shadow-[4px_4px_0_rgba(255,255,255,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Save Graveyard
           </button>
@@ -88,11 +88,11 @@ export default function GraveyardView({ boxes, activeRun, onUpdateRun }: Graveya
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-semibold text-white">💀 Graveyard</h2>
+      <div className="flex justify-between items-center mb-8">
+        <h2 className="text-4xl font-display font-black uppercase text-danger drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">💀 Graveyard</h2>
         <button 
           onClick={() => setEditingMode(true)}
-          className="text-sm bg-neutral-800 border border-neutral-700 hover:bg-neutral-700 text-neutral-300 px-4 py-2 rounded-md transition-colors"
+          className="text-sm bg-surface border-2 border-white text-text px-4 py-2 rounded-none font-bold font-mono uppercase shadow-[2px_2px_0_rgba(255,255,255,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none hover:bg-text hover:text-surface transition-all"
         >
           Change Boxes
         </button>

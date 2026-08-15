@@ -162,7 +162,7 @@ export default function App() {
     if (currentView === 'party') {
       return (
         <div>
-          <h2 className="text-2xl font-semibold mb-4 text-white">Your Team</h2>
+          <h2 className="text-3xl font-display font-black uppercase mb-8 text-primary drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">Your Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {team.map((pkmn, i) => (
               <PokemonCard key={i} pkmn={pkmn} isBox={false} />
@@ -211,7 +211,7 @@ export default function App() {
   return (
     <Switch>
       <Route path="/">
-        <div className="min-h-screen bg-gray-900 text-white">
+        <div className="min-h-screen">
           <StartScreen 
             mostRecentRun={mostRecentRun} 
             onContinue={() => mostRecentRun && handleLoadRun(mostRecentRun)} 
@@ -234,7 +234,7 @@ export default function App() {
           const currentView = params.view || 'party';
           
           return (
-            <div className="flex h-screen bg-gray-900 overflow-hidden text-gray-200">
+            <div className="flex h-screen overflow-hidden">
               <Sidebar 
                 currentView={currentView} 
                 runId={runId!}
@@ -245,7 +245,7 @@ export default function App() {
                 }}
               />
               
-              <main className="flex-1 overflow-y-auto p-8 bg-gray-900 ml-64">
+              <main className="flex-1 overflow-y-auto p-8 ml-64">
                 <div className="max-w-7xl mx-auto">
                   {renderContent(currentView)}
                 </div>

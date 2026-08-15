@@ -38,23 +38,23 @@ export default function SaveLoader({ onFileLoad }: Props) {
   };
 
   return (
-    <div className="p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 w-full">
-      <label htmlFor="save-upload" className="block text-sm font-medium text-gray-300 mb-2">
+    <div className="p-6 bg-surface border-4 border-white shadow-brutal-white w-full">
+      <label htmlFor="save-upload" className="block text-sm font-mono font-bold uppercase text-text mb-4">
         Upload Save File (.sav)
       </label>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-4">
         {('showOpenFilePicker' in window) && (
           <button
             type="button"
             onClick={handlePicker}
-            className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-semibold transition-colors"
+            className="w-full px-4 py-3 bg-primary hover:bg-primary/90 text-surface border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)] text-sm font-display font-black uppercase transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
           >
             Select Save File
           </button>
         )}
         {('showOpenFilePicker' in window) && (
           <div className="flex items-center">
-            <span className="text-gray-400 text-xs w-full text-center">or</span>
+            <span className="text-text font-mono font-bold text-sm w-full text-center uppercase">or</span>
           </div>
         )}
         <input 
@@ -64,7 +64,7 @@ export default function SaveLoader({ onFileLoad }: Props) {
           aria-label="Upload Save File"
           onClick={(e) => { (e.target as HTMLInputElement).value = ''; }}
           onChange={handleFileChange}
-          className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-700 file:text-white hover:file:bg-gray-600 cursor-pointer" 
+          className="block w-full text-sm text-text font-mono font-bold file:mr-4 file:py-2 file:px-4 file:border-2 file:border-white file:text-sm file:font-display file:font-black file:uppercase file:bg-surface file:text-text hover:file:bg-primary hover:file:text-surface file:shadow-[2px_2px_0_rgba(255,255,255,1)] file:transition-all cursor-pointer" 
         />
       </div>
     </div>

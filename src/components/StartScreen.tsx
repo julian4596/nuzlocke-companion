@@ -14,10 +14,11 @@ export default function StartScreen({
 }: StartScreenProps) {
   return (
     <div className="min-h-screen bg-surface flex flex-col items-center justify-center p-4">
-      <div className="text-center mb-16">
-        <h1 className="text-6xl md:text-7xl font-display font-black text-primary mb-6 tracking-tighter uppercase drop-shadow-[4px_4px_0_rgba(255,255,255,1)]">
-          Pokémon NUZLOCKE tracker
-        </h1>
+      <div className="max-w-2xl w-full flex flex-col items-center justify-center space-y-12">
+        <div className="text-center">
+          <h1 className="text-5xl md:text-7xl font-display font-black uppercase text-text drop-shadow-[4px_4px_0_rgba(253,200,0,1)] mb-6 tracking-tight">
+            Nuzlocke Companion
+          </h1>
         <p className="text-text text-xl md:text-2xl font-bold font-mono">
           Manage and track your Nuzlocke runs
         </p>
@@ -80,6 +81,7 @@ export default function StartScreen({
           <span>Load Game</span>
         </button>
       </div>
+    </div>
     </div>
   );
 }

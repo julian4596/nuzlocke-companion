@@ -12,7 +12,7 @@ export default function BoxView({ title, boxData }: BoxViewProps) {
 
   return (
     <div>
-      <h2 className="text-3xl font-display font-black uppercase mb-6 text-primary drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">{title}</h2>
+      <h2 className="text-3xl font-display font-black uppercase mb-6 text-text drop-shadow-[2px_2px_0_rgba(253,200,0,1)]">{title}</h2>
       {validPokemon.length === 0 ? (
         <p className="text-text font-mono font-bold uppercase">No Pokémon found here.</p>
       ) : (

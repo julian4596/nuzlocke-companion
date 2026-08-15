@@ -59,7 +59,7 @@ export default function TrainersView({ trainers }: Props) {
 
   return (
     <div>
-      <h2 className="text-4xl font-display font-black uppercase text-primary drop-shadow-[2px_2px_0_rgba(255,255,255,1)] mb-8">Trainers Guide</h2>
+      <h2 className="text-4xl font-display font-black uppercase text-text drop-shadow-[2px_2px_0_rgba(253,200,0,1)] mb-8">Trainers Guide</h2>
       <div className="space-y-8">
         {groups.map((group, groupIndex) => {
           const isExpanded = expandedGroups.has(groupIndex);
@@ -79,7 +79,7 @@ export default function TrainersView({ trainers }: Props) {
                 <div key={index} className="bg-surface p-5 border-4 border-white shadow-brutal-white">
                   <div className="flex justify-between items-start mb-4 border-b-4 border-white pb-3">
                     <div>
-                      <h4 className="text-2xl font-display font-black uppercase text-secondary drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">{trainer.name || "Unknown Trainer"}</h4>
+                      <h4 className="text-2xl font-display font-black uppercase text-text drop-shadow-[2px_2px_0_rgba(253,200,0,1)]">{trainer.name || "Unknown Trainer"}</h4>
                       <div className="text-sm text-text font-mono font-bold mt-1 uppercase">
                         {trainer.route} {trainer.location ? `- ${trainer.location}` : ''}
                       </div>
@@ -96,7 +96,7 @@ export default function TrainersView({ trainers }: Props) {
                       <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between bg-surface p-3 border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)]">
                         <div className="flex-1">
                           <div className="flex items-center space-x-3">
-                            <span className="font-display font-black uppercase text-primary">{pkmn.species}</span>
+                            <span className="font-display font-black uppercase text-text">{pkmn.species}</span>
                             <span className="text-xs font-mono font-black text-surface bg-primary px-2 py-0.5 border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)]">
                               Lv. {pkmn.level}
                             </span>

@@ -9,9 +9,11 @@ interface SidebarProps {
 
 export default function Sidebar({ currentView, runId, onMainMenu }: SidebarProps) {
   return (
-    <div className="w-64 border-r-4 border-white h-screen overflow-y-auto flex-shrink-0 bg-surface">
-      <div className="p-4 border-b-4 border-white">
-        <h2 className="text-2xl font-display font-black text-primary uppercase">Nuzlocke</h2>
+    <div className="w-64 bg-surface border-r-4 border-white h-screen flex flex-col flex-shrink-0 shadow-[4px_0_0_rgba(255,255,255,1)] relative z-10">
+      <div className="p-6 border-b-4 border-white">
+        <h1 className="text-2xl font-black font-display text-text uppercase drop-shadow-[2px_2px_0_rgba(253,200,0,1)] tracking-tight">
+          Nuzlocke Companion
+        </h1>
       </div>
       
       <div className="p-4 space-y-6">

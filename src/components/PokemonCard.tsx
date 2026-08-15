@@ -74,7 +74,7 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
             style={{ imageRendering: 'pixelated' }}
           />
           <div className="flex-1 min-w-0">
-            <h3 className="text-2xl font-display font-black uppercase text-primary flex flex-col xl:flex-row xl:justify-between truncate">
+            <h3 className="text-2xl font-display font-black uppercase text-text flex flex-col xl:flex-row xl:justify-between truncate">
               <span className="truncate">
                 {pkmn.nickname} 
                 {displayStats?.level !== undefined ? ` (Lv. ${displayStats.level})` : ''}
@@ -82,7 +82,7 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
               <span className="text-text text-sm xl:ml-2 font-mono font-bold">#{pkmn.speciesId} {getSpeciesName(pkmn.speciesId)}</span>
             </h3>
             <p className="text-sm text-text font-mono mt-1 truncate uppercase">
-              Ability: <span className="text-primary font-black">{getAbilityName(pkmn.speciesId, pkmn.abilityBit, pkmn.abilityId)}</span>
+              Ability: <span className="text-text font-black">{getAbilityName(pkmn.speciesId, pkmn.abilityBit, pkmn.abilityId)}</span>
             </p>
         </div>
       </div>
@@ -104,11 +104,11 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
             </div>
           )}
           <div className="grid grid-cols-2 gap-2 text-sm text-text font-mono font-bold p-3 border-2 border-white bg-surface rounded-none mt-2 shadow-[2px_2px_0_rgba(255,255,255,1)]">
-            <div>Atk: <span className="text-primary font-black">{displayStats.atk}</span></div>
-            <div>Def: <span className="text-primary font-black">{displayStats.def}</span></div>
-            <div>SpA: <span className="text-primary font-black">{displayStats.spa}</span></div>
-            <div>SpD: <span className="text-primary font-black">{displayStats.spd}</span></div>
-            <div>Spe: <span className="text-primary font-black">{displayStats.spe}</span></div>
+            <div>Atk: <span className="text-text font-black">{displayStats.atk}</span></div>
+            <div>Def: <span className="text-text font-black">{displayStats.def}</span></div>
+            <div>SpA: <span className="text-text font-black">{displayStats.spa}</span></div>
+            <div>SpD: <span className="text-text font-black">{displayStats.spd}</span></div>
+            <div>Spe: <span className="text-text font-black">{displayStats.spe}</span></div>
             <div>PID: <span className="text-text truncate font-mono font-bold" title={pkmn.pid?.toString()}>{pkmn.pid}</span></div>
           </div>
         </div>
@@ -118,17 +118,17 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
         <div className="mb-4">
           <div className="flex items-center gap-2 mb-1">
             <p className="text-sm text-text uppercase font-mono font-bold">IVs</p>
-            <span className="bg-surface text-primary border-2 border-white text-xs px-2 py-0.5 font-black uppercase shadow-[2px_2px_0_rgba(255,255,255,1)]">
+            <span className="bg-primary text-surface border-2 border-white text-xs px-2 py-0.5 font-black uppercase shadow-[2px_2px_0_rgba(255,255,255,1)]">
               HP: {calculateHiddenPower(pkmn.ivs)} {calculateHiddenPowerPower(pkmn.ivs)}
             </span>
           </div>
           <div className="grid grid-cols-6 gap-0 text-xs text-center border-2 border-white bg-surface mt-2 font-mono font-bold shadow-[2px_2px_0_rgba(255,255,255,1)]">
-            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">HP</div><div className={`p-1 ${pkmn.ivs.hp === 31 ? "text-success font-black" : "text-primary"}`}>{pkmn.ivs.hp}</div></div>
-            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">Atk</div><div className={`p-1 ${pkmn.ivs.attack === 31 ? "text-success font-black" : "text-primary"}`}>{pkmn.ivs.attack}</div></div>
-            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">Def</div><div className={`p-1 ${pkmn.ivs.defense === 31 ? "text-success font-black" : "text-primary"}`}>{pkmn.ivs.defense}</div></div>
-            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">SpA</div><div className={`p-1 ${pkmn.ivs.spAttack === 31 ? "text-success font-black" : "text-primary"}`}>{pkmn.ivs.spAttack}</div></div>
-            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">SpD</div><div className={`p-1 ${pkmn.ivs.spDefense === 31 ? "text-success font-black" : "text-primary"}`}>{pkmn.ivs.spDefense}</div></div>
-            <div className="border-r-0 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">Spe</div><div className={`p-1 ${pkmn.ivs.speed === 31 ? "text-success font-black" : "text-primary"}`}>{pkmn.ivs.speed}</div></div>
+            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">HP</div><div className={`p-1 ${pkmn.ivs.hp === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.hp}</div></div>
+            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">Atk</div><div className={`p-1 ${pkmn.ivs.attack === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.attack}</div></div>
+            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">Def</div><div className={`p-1 ${pkmn.ivs.defense === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.defense}</div></div>
+            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">SpA</div><div className={`p-1 ${pkmn.ivs.spAttack === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.spAttack}</div></div>
+            <div className="border-r-2 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">SpD</div><div className={`p-1 ${pkmn.ivs.spDefense === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.spDefense}</div></div>
+            <div className="border-r-0 border-white last:border-r-0"><div className="text-text border-b-2 border-white p-1">Spe</div><div className={`p-1 ${pkmn.ivs.speed === 31 ? "text-success font-black" : "text-text"}`}>{pkmn.ivs.speed}</div></div>
           </div>
         </div>
       )}

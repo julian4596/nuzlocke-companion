@@ -5,9 +5,10 @@ interface SidebarProps {
   runId: string;
   currentGame?: string | null;
   onMainMenu?: () => void;
+  onResumeSync?: () => void;
 }
 
-export default function Sidebar({ currentView, runId, onMainMenu }: SidebarProps) {
+export default function Sidebar({ currentView, runId, currentGame, onMainMenu, onResumeSync }: SidebarProps) {
   return (
     <>
       {/* Mobile Top Bar */}
@@ -15,14 +16,24 @@ export default function Sidebar({ currentView, runId, onMainMenu }: SidebarProps
         <h1 className="text-xl font-black font-display text-text uppercase drop-shadow-[2px_2px_0_rgba(253,200,0,1)] tracking-tight truncate flex-1">
           Nuzlocke
         </h1>
-        {onMainMenu && (
-          <button
-            onClick={onMainMenu}
-            className="text-xs font-bold uppercase text-text bg-surface px-3 py-2 border-2 border-white shadow-brutal-white active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
-          >
-            Menu
-          </button>
-        )}
+        <div className="flex gap-2 items-center">
+          {onResumeSync && (
+            <button
+              onClick={onResumeSync}
+              className="text-xs font-bold uppercase text-primary bg-surface px-3 py-2 border-2 border-primary shadow-brutal-white active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
+            >
+              Sync
+            </button>
+          )}
+          {onMainMenu && (
+            <button
+              onClick={onMainMenu}
+              className="text-xs font-bold uppercase text-text bg-surface px-3 py-2 border-2 border-white shadow-brutal-white active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
+            >
+              Menu
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Desktop Sidebar / Mobile Bottom Nav */}
@@ -95,17 +106,25 @@ export default function Sidebar({ currentView, runId, onMainMenu }: SidebarProps
           </div>
         </div>
         
-        {/* Desktop Main Menu Button */}
-        {onMainMenu && (
-          <div className="hidden md:block p-4 border-t-4 border-white mt-auto absolute bottom-0 w-64 bg-surface">
+        {/* Desktop Main Menu Button & Sync */}
+        <div className="hidden md:flex flex-col gap-2 p-4 border-t-4 border-white mt-auto absolute bottom-0 w-64 bg-surface">
+          {onResumeSync && (
+            <button
+              onClick={onResumeSync}
+              className="w-full text-center px-4 py-3 text-sm font-bold uppercase text-primary border-2 border-primary hover:bg-primary hover:text-surface hover:shadow-brutal-white transition-all flex items-center justify-center gap-2 hover:-translate-y-1 hover:-translate-x-1"
+            >
+              Resume Auto-Sync
+            </button>
+          )}
+          {onMainMenu && (
             <button
               onClick={onMainMenu}
               className="w-full text-left px-4 py-3 text-sm font-bold uppercase text-text hover:bg-white hover:text-surface border-2 border-transparent hover:border-white hover:shadow-brutal-white transition-all flex items-center gap-2 hover:-translate-y-1 hover:-translate-x-1"
             >
               ← Main Menu
             </button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </>
   );

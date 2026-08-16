@@ -6,6 +6,7 @@ import path from 'path';
   
   const viewports = [
     { name: 'desktop', viewport: { width: 1280, height: 720 } },
+    { name: 'tablet', viewport: { width: 800, height: 600 } },
     { name: 'mobile', ...devices['iPhone 13'] }
   ];
 
@@ -19,7 +20,7 @@ import path from 'path';
     const page = await context.newPage();
     
     // Navigate to the app
-    await page.goto('http://localhost:5174');
+    await page.goto('http://localhost:5173');
     
     // Wait for the app to load
     await page.waitForTimeout(1000);

@@ -1,9 +1,9 @@
-name: Deploy to Mac Mini (Test)
+name: Deploy to Mac Mini (Preview)
 
 on:
   push:
-    branches:
-      - test
+    branches-ignore:
+      - main
 
 jobs:
   deploy:
@@ -15,5 +15,5 @@ jobs:
       - name: Restart Docker Container
         run: |
           export APP_PORT=3001
-          export ENV_NAME=test
-          docker compose -p nuzlocke-test up -d --build
+          export ENV_NAME=${{ github.ref_name }}
+          docker compose -p nuzlocke-preview up -d --build

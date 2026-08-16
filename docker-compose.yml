@@ -8,4 +8,3 @@ services:
     ports:
       - "${APP_PORT:-5173}:80"
     restart: unless-stopped
-    container_name: nuzlocke-companion-${ENV_NAME:-main}

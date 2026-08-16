@@ -261,7 +261,7 @@ export default function App() {
                 }}
               />
               
-              <main className="flex-1 pt-24 pb-28 px-4 md:p-8 md:ml-64 md:overflow-y-auto">
+              <main className="flex-1 pt-24 pb-28 px-4 md:p-8 md:overflow-y-auto">
                 <div className="max-w-7xl mx-auto">
                   {renderContent(currentView)}
                 </div>

@@ -70,7 +70,7 @@ export default function PokemonCard({ pkmn, isBox = false }: PokemonCardProps) {
           <img 
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pkmn.speciesId}.png`} 
             alt={getSpeciesName(pkmn.speciesId)}
-            className="w-16 h-16 bg-surface rounded-none border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)]"
+            className="w-16 h-16 shrink-0 bg-surface rounded-none border-2 border-white shadow-[2px_2px_0_rgba(255,255,255,1)]"
             style={{ imageRendering: 'pixelated' }}
           />
           <div className="flex-1 min-w-0">

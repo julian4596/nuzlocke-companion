@@ -25,6 +25,7 @@ export default function App() {
   const [mostRecentRun, setMostRecentRun] = useState<SavedRun | null>(null);
   const [location, setLocation] = useLocation();
   const [activeRun, setActiveRun] = useState<SavedRun | null>(null);
+  const [syncNeedsPermission, setSyncNeedsPermission] = useState(false);
   const fileLastModifiedRef = useRef<number>(0);
   
   // Load runs on mount
@@ -86,6 +87,16 @@ export default function App() {
 
     const interval = setInterval(async () => {
       try {
+        if ('queryPermission' in activeRun.fileHandle) {
+          const permission = await (activeRun.fileHandle as any).queryPermission({ mode: 'read' });
+          if (permission !== 'granted') {
+            setSyncNeedsPermission(true);
+            return;
+          } else {
+            setSyncNeedsPermission(false);
+          }
+        }
+
         const file = await activeRun.fileHandle.getFile();
         if (fileLastModifiedRef.current === 0) {
           fileLastModifiedRef.current = file.lastModified;
@@ -105,6 +116,24 @@ export default function App() {
 
     return () => clearInterval(interval);
   }, [activeRun]);
+
+  const handleResumeSync = async () => {
+    if (!activeRun || !activeRun.fileHandle) return;
+    try {
+      const options = { mode: 'read' };
+      const permission = await (activeRun.fileHandle as any).requestPermission(options);
+      if (permission === 'granted') {
+        setSyncNeedsPermission(false);
+        const file = await activeRun.fileHandle.getFile();
+        const buffer = await file.arrayBuffer();
+        const updatedRun = { ...activeRun, saveBuffer: buffer };
+        fileLastModifiedRef.current = file.lastModified;
+        handleLoadRun(updatedRun);
+      }
+    } catch (err) {
+      console.error('Failed to request permission', err);
+    }
+  };
 
   const handleLoadRun = async (run: SavedRun) => {
     try {
@@ -259,6 +288,7 @@ export default function App() {
                   localStorage.removeItem('activeRunId');
                   setLocation('/');
                 }}
+                onResumeSync={syncNeedsPermission ? handleResumeSync : undefined}
               />
               
               <main className="flex-1 pt-24 pb-28 px-4 md:p-8 md:overflow-y-auto">
